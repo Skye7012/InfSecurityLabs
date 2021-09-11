@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaesarCipher.Alphabets;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace CaesarCipher
 		public MainForm()
 		{
 			InitializeComponent();
+			var test = new EnglishAlphabet();
+			var test2 = new RussianAlphabet();
 		}
 
 		private string MakeCipherSteps(string text, int steps)
@@ -52,7 +55,7 @@ namespace CaesarCipher
 			else
 			{
 				MessageBox.Show($"Cant't convert to int this: \n\"{stepsTextBox.Text}\"");
-
+				
 				if (stepsTextBox.Text.Length <= 1)
 					stepsTextBox.Text = "0";
 				else
