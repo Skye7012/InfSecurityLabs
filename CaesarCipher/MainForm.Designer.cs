@@ -52,6 +52,7 @@ namespace CaesarCipher
 			this.encryptButton.TabIndex = 6;
 			this.encryptButton.Text = "Encrypt";
 			this.encryptButton.UseVisualStyleBackColor = true;
+			this.encryptButton.Click += new System.EventHandler(this.encryptButton_Click);
 			// 
 			// stepsTextBox
 			// 
@@ -59,6 +60,7 @@ namespace CaesarCipher
 			this.stepsTextBox.Name = "stepsTextBox";
 			this.stepsTextBox.Size = new System.Drawing.Size(150, 29);
 			this.stepsTextBox.TabIndex = 5;
+			this.stepsTextBox.TextChanged += new System.EventHandler(this.stepsTextBox_TextChanged);
 			// 
 			// editingTextBox
 			// 
