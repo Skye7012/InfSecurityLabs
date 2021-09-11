@@ -22,15 +22,25 @@ namespace CaesarCipher
 		{
 			if (!string.IsNullOrEmpty(editingTextBox.Text))
 			{
-				//editingTextBox.Text = editingTextBox.Text.Select(x => x + stepsTextBox.Text);
 				string res = new string(
 					editingTextBox.Text.Select(x => (char)(x + Steps))
 					.ToArray());
 
 				editingTextBox.Text = res;
-				//editingTextBox.Text = editingTextBox.Text.Select(x => (x + 3)).First();
-				//int.Parse(editingTextBox.Text[0]);
-				//var z = (int)editingTextBox.Text[0];
+			}
+			else
+				MessageBox.Show("Input some text");
+		}
+
+		private void decryptButton_Click(object sender, EventArgs e)
+		{
+			if (!string.IsNullOrEmpty(editingTextBox.Text))
+			{
+				string res = new string(
+					editingTextBox.Text.Select(x => (char)(x - Steps))
+					.ToArray());
+
+				editingTextBox.Text = res;
 			}
 			else
 				MessageBox.Show("Input some text");
@@ -44,10 +54,14 @@ namespace CaesarCipher
 			if (int.TryParse(stepsTextBox.Text, out res))
 				Steps = res;
 
-			else if(!string.IsNullOrEmpty(stepsTextBox.Text))
+			else
 			{
 				MessageBox.Show($"Cant't convert to int this: \n\"{stepsTextBox.Text}\"");
-				stepsTextBox.Text = stepsTextBox.Text.Remove(stepsTextBox.Text.Length - 1);
+
+				if (stepsTextBox.Text.Length <= 1)
+					stepsTextBox.Text = "0";
+				else
+					stepsTextBox.Text = stepsTextBox.Text.Remove(stepsTextBox.Text.Length - 1);
 			}
 		}
 	}
