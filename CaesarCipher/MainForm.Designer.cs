@@ -43,6 +43,7 @@ namespace CaesarCipher
 			// 
 			// decryptButton
 			// 
+			this.decryptButton.Enabled = false;
 			this.decryptButton.Location = new System.Drawing.Point(770, 440);
 			this.decryptButton.Name = "decryptButton";
 			this.decryptButton.Size = new System.Drawing.Size(150, 30);
@@ -53,6 +54,7 @@ namespace CaesarCipher
 			// 
 			// encryptButton
 			// 
+			this.encryptButton.Enabled = false;
 			this.encryptButton.Location = new System.Drawing.Point(770, 120);
 			this.encryptButton.Name = "encryptButton";
 			this.encryptButton.Size = new System.Drawing.Size(150, 30);
@@ -77,6 +79,7 @@ namespace CaesarCipher
 			this.originalTextBox.TabIndex = 4;
 			this.originalTextBox.Tag = "Original Text";
 			this.originalTextBox.Text = "";
+			this.originalTextBox.TextChanged += new System.EventHandler(this.originalTextBox_TextChanged);
 			// 
 			// alphabetComboBox
 			// 
@@ -96,6 +99,7 @@ namespace CaesarCipher
 			this.cryptogramTextBox.TabIndex = 9;
 			this.cryptogramTextBox.Tag = "Cryptogram";
 			this.cryptogramTextBox.Text = "";
+			this.cryptogramTextBox.TextChanged += new System.EventHandler(this.cryptogramTextBox_TextChanged);
 			// 
 			// label1
 			// 
