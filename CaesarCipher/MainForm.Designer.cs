@@ -32,7 +32,7 @@ namespace CaesarCipher
 			this.decryptButton = new System.Windows.Forms.Button();
 			this.encryptButton = new System.Windows.Forms.Button();
 			this.stepsTextBox = new System.Windows.Forms.TextBox();
-			this.editingTextBox = new System.Windows.Forms.RichTextBox();
+			this.mainTextBox = new System.Windows.Forms.RichTextBox();
 			this.alphabetComboBox = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
@@ -63,15 +63,14 @@ namespace CaesarCipher
 			this.stepsTextBox.Size = new System.Drawing.Size(150, 29);
 			this.stepsTextBox.TabIndex = 5;
 			this.stepsTextBox.Text = "0";
-			this.stepsTextBox.TextChanged += new System.EventHandler(this.stepsTextBox_TextChanged);
 			// 
-			// editingTextBox
+			// mainTextBox
 			// 
-			this.editingTextBox.Location = new System.Drawing.Point(12, 155);
-			this.editingTextBox.Name = "editingTextBox";
-			this.editingTextBox.Size = new System.Drawing.Size(960, 449);
-			this.editingTextBox.TabIndex = 4;
-			this.editingTextBox.Text = "";
+			this.mainTextBox.Location = new System.Drawing.Point(12, 155);
+			this.mainTextBox.Name = "mainTextBox";
+			this.mainTextBox.Size = new System.Drawing.Size(960, 449);
+			this.mainTextBox.TabIndex = 4;
+			this.mainTextBox.Text = "";
 			// 
 			// alphabetComboBox
 			// 
@@ -92,7 +91,7 @@ namespace CaesarCipher
 			this.Controls.Add(this.decryptButton);
 			this.Controls.Add(this.encryptButton);
 			this.Controls.Add(this.stepsTextBox);
-			this.Controls.Add(this.editingTextBox);
+			this.Controls.Add(this.mainTextBox);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Caesar Cipher";
@@ -106,7 +105,7 @@ namespace CaesarCipher
 		private System.Windows.Forms.Button decryptButton;
 		private System.Windows.Forms.Button encryptButton;
 		private System.Windows.Forms.TextBox stepsTextBox;
-		private System.Windows.Forms.RichTextBox editingTextBox;
+		private System.Windows.Forms.RichTextBox mainTextBox;
 		private System.Windows.Forms.ComboBox alphabetComboBox;
 	}
 }
