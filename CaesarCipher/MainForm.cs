@@ -23,10 +23,14 @@ namespace CaesarCipher
 			alphabetComboBox.SelectedItem = alphabetComboBox.Items[0];
 		}
 
-		private bool AreControlsValid()
+		private bool AreControlsValid(RichTextBox richTextBox, Button button)
 		{
-			if (!alphabet.IsValid(mainTextBox.Text))
+			var oppositeRichTextBox = Controls.OfType<RichTextBox>().First(x => x != richTextBox);
+
+			 if (!alphabet.IsValid(richTextBox.Text))
 				MessageBox.Show("Input correct text according choosed alphabet");
+			else if (!string.IsNullOrEmpty(oppositeRichTextBox.Text))
+				MessageBox.Show($"Clear {oppositeRichTextBox.Tag} before {button.Text}");
 			else if (!BigInteger.TryParse(stepsTextBox.Text, out steps))
 				MessageBox.Show("Input correct key");
 			else
@@ -37,14 +41,20 @@ namespace CaesarCipher
 
 		private void encryptButton_Click(object sender, EventArgs e)
 		{
-			if (AreControlsValid())
-				mainTextBox.Text = alphabet.MakeCipherSteps(mainTextBox.Text, steps);
+			if (AreControlsValid(originalTextBox, sender as Button))
+			{
+				cryptogramTextBox.Text = alphabet.MakeCipherSteps(originalTextBox.Text, steps);
+				originalTextBox.Clear();
+			}
 		}
 
 		private void decryptButton_Click(object sender, EventArgs e)
 		{
-			if (AreControlsValid())
-				mainTextBox.Text = alphabet.MakeCipherSteps(mainTextBox.Text, -steps);
+			if (AreControlsValid(cryptogramTextBox, sender as Button))
+			{
+				originalTextBox.Text = alphabet.MakeCipherSteps(cryptogramTextBox.Text, -steps);
+				cryptogramTextBox.Clear();
+			}
 		}
 
 		private void alphabetComboBox_SelectedIndexChanged(object sender, EventArgs e)
