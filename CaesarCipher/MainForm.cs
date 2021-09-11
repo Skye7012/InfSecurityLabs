@@ -18,16 +18,17 @@ namespace CaesarCipher
 			InitializeComponent();
 		}
 
+		private string MakeCipherSteps(string text, int steps)
+		{
+			return new string(
+					text.Select(x => (char)(x + steps))
+					.ToArray());
+		}
+
 		private void encryptButton_Click(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(editingTextBox.Text))
-			{
-				string res = new string(
-					editingTextBox.Text.Select(x => (char)(x + Steps))
-					.ToArray());
-
-				editingTextBox.Text = res;
-			}
+				editingTextBox.Text = MakeCipherSteps(editingTextBox.Text, Steps);
 			else
 				MessageBox.Show("Input some text");
 		}
@@ -35,13 +36,7 @@ namespace CaesarCipher
 		private void decryptButton_Click(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(editingTextBox.Text))
-			{
-				string res = new string(
-					editingTextBox.Text.Select(x => (char)(x - Steps))
-					.ToArray());
-
-				editingTextBox.Text = res;
-			}
+				editingTextBox.Text = MakeCipherSteps(editingTextBox.Text, -Steps);
 			else
 				MessageBox.Show("Input some text");
 		}
