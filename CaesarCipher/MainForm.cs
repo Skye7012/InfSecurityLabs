@@ -1,10 +1,12 @@
 ﻿using CaesarCipher.Alphabets;
+using CaesarCipher.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,25 +15,26 @@ namespace CaesarCipher
 {
 	public partial class MainForm : Form
 	{
-		public int Steps { get; set; }
+		BigInteger Steps { get; set; }//pom
+		private Alphabet alphabet;
 		public MainForm()
 		{
 			InitializeComponent();
-			var test = new EnglishAlphabet();
-			var test2 = new RussianAlphabet();
+			alphabetComboBox.DataSource = Enum.GetValues(typeof(AlphabetsEnum));
+			alphabetComboBox.SelectedItem = alphabetComboBox.Items[0];
 		}
 
-		private string MakeCipherSteps(string text, int steps)
-		{
-			return new string(
-					text.Select(x => (char)(x + steps))
-					.ToArray());
-		}
+		//private string MakeCipherSteps(string text, int steps)
+		//{
+		//	return new string(
+		//			text.Select(x => (char)(x + steps))
+		//			.ToArray());
+		//}
 
 		private void encryptButton_Click(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(editingTextBox.Text))
-				editingTextBox.Text = MakeCipherSteps(editingTextBox.Text, Steps);
+				editingTextBox.Text = alphabet.MakeCipherSteps(editingTextBox.Text, Steps);
 			else
 				MessageBox.Show("Input some text");
 		}
@@ -39,7 +42,7 @@ namespace CaesarCipher
 		private void decryptButton_Click(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(editingTextBox.Text))
-				editingTextBox.Text = MakeCipherSteps(editingTextBox.Text, -Steps);
+				editingTextBox.Text = alphabet.MakeCipherSteps(editingTextBox.Text, -Steps);
 			else
 				MessageBox.Show("Input some text");
 		}
@@ -61,6 +64,11 @@ namespace CaesarCipher
 				else
 					stepsTextBox.Text = stepsTextBox.Text.Remove(stepsTextBox.Text.Length - 1);
 			}
+		}
+
+		private void alphabetComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			alphabet = new Alphabet((AlphabetsEnum)alphabetComboBox.SelectedItem);
 		}
 	}
 }

@@ -33,6 +33,7 @@ namespace CaesarCipher
 			this.encryptButton = new System.Windows.Forms.Button();
 			this.stepsTextBox = new System.Windows.Forms.TextBox();
 			this.editingTextBox = new System.Windows.Forms.RichTextBox();
+			this.alphabetComboBox = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// decryptButton
@@ -72,11 +73,22 @@ namespace CaesarCipher
 			this.editingTextBox.TabIndex = 4;
 			this.editingTextBox.Text = "";
 			// 
+			// alphabetComboBox
+			// 
+			this.alphabetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.alphabetComboBox.FormattingEnabled = true;
+			this.alphabetComboBox.Location = new System.Drawing.Point(400, 110);
+			this.alphabetComboBox.Name = "alphabetComboBox";
+			this.alphabetComboBox.Size = new System.Drawing.Size(150, 29);
+			this.alphabetComboBox.TabIndex = 8;
+			this.alphabetComboBox.SelectedIndexChanged += new System.EventHandler(this.alphabetComboBox_SelectedIndexChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(984, 660);
+			this.Controls.Add(this.alphabetComboBox);
 			this.Controls.Add(this.decryptButton);
 			this.Controls.Add(this.encryptButton);
 			this.Controls.Add(this.stepsTextBox);
@@ -95,6 +107,7 @@ namespace CaesarCipher
 		private System.Windows.Forms.Button encryptButton;
 		private System.Windows.Forms.TextBox stepsTextBox;
 		private System.Windows.Forms.RichTextBox editingTextBox;
+		private System.Windows.Forms.ComboBox alphabetComboBox;
 	}
 }
 
