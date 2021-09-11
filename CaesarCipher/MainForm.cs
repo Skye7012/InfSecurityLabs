@@ -61,5 +61,21 @@ namespace CaesarCipher
 		{
 			alphabet = new Alphabet((AlphabetsEnum)alphabetComboBox.SelectedItem);
 		}
+
+		private void originalTextBox_TextChanged(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(originalTextBox.Text))
+				encryptButton.Enabled = false;
+			else
+				encryptButton.Enabled = true;
+		}
+
+		private void cryptogramTextBox_TextChanged(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(cryptogramTextBox.Text))
+				decryptButton.Enabled = false;
+			else
+				decryptButton.Enabled = true;
+		}
 	}
 }
