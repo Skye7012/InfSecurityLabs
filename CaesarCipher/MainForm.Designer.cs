@@ -81,7 +81,6 @@ namespace CaesarCipher
 			this.originalTextBox.TabIndex = 4;
 			this.originalTextBox.Tag = "Original Text";
 			this.originalTextBox.Text = "";
-			this.originalTextBox.TextChanged += new System.EventHandler(this.originalTextBox_TextChanged);
 			// 
 			// alphabetComboBox
 			// 
@@ -101,7 +100,6 @@ namespace CaesarCipher
 			this.cryptogramTextBox.TabIndex = 9;
 			this.cryptogramTextBox.Tag = "Cryptogram";
 			this.cryptogramTextBox.Text = "";
-			this.cryptogramTextBox.TextChanged += new System.EventHandler(this.cryptogramTextBox_TextChanged);
 			// 
 			// label1
 			// 

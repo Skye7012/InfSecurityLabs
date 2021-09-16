@@ -8,12 +8,12 @@ using System.Text;
 
 namespace CaesarCipher
 {
-	public class CaesarCipherKey : Key, IValidable
+	public class CaesarCipherKey :  IValidable
 	{
-		public BigInteger Steps { get; protected set; }
+		//public BigInteger Steps { get; protected set; }
 
-		public CaesarCipherKey(BigInteger steps)
-			=> Steps = steps;
+		//public CaesarCipherKey(BigInteger steps)
+		//	=> Steps = steps;
 
 		public bool IsValid(string text)
 		{

@@ -13,24 +13,23 @@ namespace CaesarCipher.CipherModes
 		private readonly Alphabet _alphabet;
 		private readonly BigInteger _steps;
 
-		public VigenereCipher(Alphabet alphabet, string key)
+		public VigenereCipher(Alphabet alphabet/*, string key*/)
 		{
 			//_caesarCipherKey = new CaesarCipherKey();
 			_alphabet = alphabet;
-			_alphabet = alphabet;
-			_steps = BigInteger.Parse(key);
+			//_steps = BigInteger.Parse(key);
 		}
 
-		public string Encrypt(string text)
+		public string Encrypt(string text, string key)
 		{
-			//var steps = BigInteger.Parse(key);
-			return MakeCipherSteps(text, _steps);
+			var steps = BigInteger.Parse(key);
+			return MakeCipherSteps(text, steps);
 		}
 
-		public string Decrypt(string text)
+		public string Decrypt(string text, string key)
 		{
-			//var steps = BigInteger.Parse(key);
-			return MakeCipherSteps(text, _steps * -1);
+			var steps = BigInteger.Parse(key);
+			return MakeCipherSteps(text, steps * -1);
 		}
 
 		public bool IsKeyValid(string key)
