@@ -31,7 +31,7 @@ namespace CaesarCipher
 		{
 			this.decryptButton = new System.Windows.Forms.Button();
 			this.encryptButton = new System.Windows.Forms.Button();
-			this.stepsTextBox = new System.Windows.Forms.TextBox();
+			this.keyTextBox = new System.Windows.Forms.TextBox();
 			this.originalTextBox = new System.Windows.Forms.RichTextBox();
 			this.alphabetComboBox = new System.Windows.Forms.ComboBox();
 			this.cryptogramTextBox = new System.Windows.Forms.RichTextBox();
@@ -39,6 +39,8 @@ namespace CaesarCipher
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.cipherModesComboBox = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// decryptButton
@@ -63,13 +65,13 @@ namespace CaesarCipher
 			this.encryptButton.UseVisualStyleBackColor = true;
 			this.encryptButton.Click += new System.EventHandler(this.encryptButton_Click);
 			// 
-			// stepsTextBox
+			// keyTextBox
 			// 
-			this.stepsTextBox.Location = new System.Drawing.Point(770, 252);
-			this.stepsTextBox.Name = "stepsTextBox";
-			this.stepsTextBox.Size = new System.Drawing.Size(150, 29);
-			this.stepsTextBox.TabIndex = 5;
-			this.stepsTextBox.Text = "0";
+			this.keyTextBox.Location = new System.Drawing.Point(770, 252);
+			this.keyTextBox.Name = "keyTextBox";
+			this.keyTextBox.Size = new System.Drawing.Size(150, 29);
+			this.keyTextBox.TabIndex = 5;
+			this.keyTextBox.Text = "0";
 			// 
 			// originalTextBox
 			// 
@@ -137,11 +139,32 @@ namespace CaesarCipher
 			this.label4.TabIndex = 13;
 			this.label4.Text = "Key";
 			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(501, 255);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(96, 21);
+			this.label5.TabIndex = 15;
+			this.label5.Text = "CipherMode";
+			// 
+			// cipherModesComboBox
+			// 
+			this.cipherModesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cipherModesComboBox.FormattingEnabled = true;
+			this.cipherModesComboBox.Location = new System.Drawing.Point(501, 279);
+			this.cipherModesComboBox.Name = "cipherModesComboBox";
+			this.cipherModesComboBox.Size = new System.Drawing.Size(150, 29);
+			this.cipherModesComboBox.TabIndex = 16;
+			this.cipherModesComboBox.SelectedIndexChanged += new System.EventHandler(this.cipherModesComboBox_SelectedIndexChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(984, 560);
+			this.Controls.Add(this.cipherModesComboBox);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
@@ -150,7 +173,7 @@ namespace CaesarCipher
 			this.Controls.Add(this.alphabetComboBox);
 			this.Controls.Add(this.decryptButton);
 			this.Controls.Add(this.encryptButton);
-			this.Controls.Add(this.stepsTextBox);
+			this.Controls.Add(this.keyTextBox);
 			this.Controls.Add(this.originalTextBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "MainForm";
@@ -165,7 +188,7 @@ namespace CaesarCipher
 
 		private System.Windows.Forms.Button decryptButton;
 		private System.Windows.Forms.Button encryptButton;
-		private System.Windows.Forms.TextBox stepsTextBox;
+		private System.Windows.Forms.TextBox keyTextBox;
 		private System.Windows.Forms.RichTextBox originalTextBox;
 		private System.Windows.Forms.ComboBox alphabetComboBox;
 		private System.Windows.Forms.RichTextBox cryptogramTextBox;
@@ -173,6 +196,8 @@ namespace CaesarCipher
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.ComboBox cipherModesComboBox;
 	}
 }
 

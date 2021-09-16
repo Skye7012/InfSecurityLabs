@@ -7,32 +7,11 @@ using System.Text;
 
 namespace CaesarCipher
 {
-	public class Alphabet
+	public class Alphabets
 	{
 		readonly string englishAlphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 		readonly string russianAlphabet = "0123456789АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюя";
 		public string CurrentAlphabet { get; protected set; }
-
-		public Alphabet(AlphabetsEnum alphabet)
-		{
-			ChangeAlphabet(alphabet);
-		}
-
-		public Alphabet() { }
-
-		public int IndexOf(char c)
-			=> CurrentAlphabet.IndexOf(c);
-		//впр
-		//return index of char in the CurrentAlphabet
-		public int this[char c]
-		{
-			get
-			{
-				return CurrentAlphabet.IndexOf(c);
-				//int alphabetLength = CurrentAlphabet.Length;
-				//index = (int)((index + steps) % alphabetSize);
-			}
-		}
 
 		public string MakeCipherSteps(string text, BigInteger steps)
 		{
