@@ -1,5 +1,5 @@
 ﻿
-namespace CaesarCipher
+namespace Cryptography
 {
 	partial class MainForm
 	{
@@ -176,7 +176,7 @@ namespace CaesarCipher
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Caesar Cipher";
+			this.Text = "Cryptography";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

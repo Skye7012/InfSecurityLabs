@@ -1,11 +1,9 @@
-﻿using CaesarCipher.Enums;
-using System;
-using System.Collections.Generic;
+﻿using Cryptography.Enums;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 
-namespace CaesarCipher
+namespace Cryptography
 {
 	public class Alphabet
 	{
@@ -39,10 +37,10 @@ namespace CaesarCipher
 			int alphabetSize = CurrentAlphabet.Length;
 			StringBuilder res = new StringBuilder();
 
-			foreach(var c in text)
+			foreach (var c in text)
 			{
 				var index = new string(CurrentAlphabet).IndexOf(c);
-				index = (int) ((index + steps) % alphabetSize);
+				index = (int)((index + steps) % alphabetSize);
 
 				if (index < 0)
 					index += alphabetSize;

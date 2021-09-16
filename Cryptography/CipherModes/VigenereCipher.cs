@@ -1,12 +1,10 @@
-﻿using CaesarCipher.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using Cryptography.Interfaces;
 using System.Numerics;
 using System.Text;
 
-namespace CaesarCipher.CipherModes
+namespace Cryptography.CipherModes
 {
-	public class VigenereCipher : ICryptography
+	public class VigenereCipher : ICryptographer
 	{
 		private readonly Alphabet _alphabet;
 

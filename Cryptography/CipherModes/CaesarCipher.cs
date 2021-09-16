@@ -1,16 +1,14 @@
-﻿using CaesarCipher.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using Cryptography.Interfaces;
 using System.Numerics;
 using System.Text;
 
-namespace CaesarCipher.CipherModes
+namespace Cryptography.CipherModes
 {
-	public class CaesarCipherRename : ICryptography
+	public class CaesarCipher : ICryptographer
 	{
 		private readonly Alphabet _alphabet;
 
-		public CaesarCipherRename(Alphabet alphabet)
+		public CaesarCipher(Alphabet alphabet)
 		{
 			_alphabet = alphabet;
 		}

@@ -1,22 +1,15 @@
-﻿using CaesarCipher.CipherModes;
-using CaesarCipher.Enums;
-using CaesarCipher.Interfaces;
+﻿using Cryptography.CipherModes;
+using Cryptography.Enums;
+using Cryptography.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CaesarCipher
+namespace Cryptography
 {
 	public partial class MainForm : Form
 	{
-		private ICryptography _cryptography;
+		private ICryptographer _cryptographer;
 		private Alphabet _alphabet = new Alphabet();
 		public MainForm()
 		{
@@ -34,7 +27,7 @@ namespace CaesarCipher
 		{
 			if (!_alphabet.IsValid(richTextBox.Text))
 				MessageBox.Show("Input correct text according choosed alphabet");
-			else if (!_cryptography.IsKeyValid(keyTextBox.Text))
+			else if (!_cryptographer.IsKeyValid(keyTextBox.Text))
 				MessageBox.Show("Input correct key");
 			else
 				return true;
@@ -46,7 +39,7 @@ namespace CaesarCipher
 		{
 			if (AreControlsValid(originalTextBox))
 			{
-				cryptogramTextBox.Text = _cryptography.Encrypt(originalTextBox.Text, keyTextBox.Text);
+				cryptogramTextBox.Text = _cryptographer.Encrypt(originalTextBox.Text, keyTextBox.Text);
 				originalTextBox.Clear();
 			}
 		}
@@ -55,7 +48,7 @@ namespace CaesarCipher
 		{
 			if (AreControlsValid(cryptogramTextBox))
 			{
-				originalTextBox.Text = _cryptography.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
+				originalTextBox.Text = _cryptographer.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
 				cryptogramTextBox.Clear();
 			}
 		}
@@ -72,10 +65,10 @@ namespace CaesarCipher
 			switch (cipherMode)
 			{
 				case CipherModesEnum.CaesarCipher:
-					_cryptography = new CaesarCipherRename(_alphabet);
+					_cryptographer = new CaesarCipher(_alphabet);
 					break;
 				case CipherModesEnum.VigenereCipher:
-					_cryptography = new VigenereCipher(_alphabet);
+					_cryptographer = new VigenereCipher(_alphabet);
 					break;
 			}
 		}
