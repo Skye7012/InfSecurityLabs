@@ -6,6 +6,7 @@ namespace CaesarCipher.Enums
 {
 	public enum CipherModesEnum
 	{
-		CaesarCipher
+		CaesarCipher,
+		VigenereCipher
 	}
 }

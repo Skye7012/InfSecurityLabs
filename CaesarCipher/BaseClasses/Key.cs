@@ -6,12 +6,8 @@ using System.Text;
 
 namespace CaesarCipher.BaseClasses
 {
-	public class Key : IValidable
+	abstract public class Key 
 	{
-		public string KeyAlphabet { get; protected set; }
-
-		public bool IsValide(string text)
-			=> !string.IsNullOrEmpty(text)
-			&& text.All(x => KeyAlphabet.Contains(x));
+		
 	}
 }

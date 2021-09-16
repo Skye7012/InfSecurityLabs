@@ -8,11 +8,17 @@ using System.Text;
 
 namespace CaesarCipher
 {
-	public class CaesarCipherKey: Key
+	public class CaesarCipherKey : Key, IValidable
 	{
 		public BigInteger Steps { get; protected set; }
 
-		public CaesarCipherKey()
-			=> KeyAlphabet = "0123456789";
+		public CaesarCipherKey(BigInteger steps)
+			=> Steps = steps;
+
+		public bool IsValid(string text)
+		{
+			BigInteger steps;
+			return BigInteger.TryParse(text, out steps);
+		}
 	}
 }

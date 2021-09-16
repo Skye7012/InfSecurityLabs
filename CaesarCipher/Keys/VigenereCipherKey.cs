@@ -7,7 +7,7 @@ namespace CaesarCipher
 {
 	public class VigenereCipherKey: Key
 	{
-		public VigenereCipherKey(Alphabet alphabet)
-			=> KeyAlphabet = alphabet.CurrentAlphabet;
+		//public VigenereCipherKey(Alphabet alphabet)
+		//	=> KeyAlphabet = alphabet.CurrentAlphabet;
 	}
 }

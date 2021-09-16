@@ -6,6 +6,6 @@ namespace CaesarCipher.Interfaces
 {
 	public interface IValidable
 	{
-		bool IsValide(string text);
+		bool IsValid(string text);
 	}
 }

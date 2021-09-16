@@ -7,15 +7,16 @@ using System.Text;
 
 namespace CaesarCipher.CipherModes
 {
-	public class CaesarCipherRename : ICryptography
+	public class VigenereCipher : ICryptography
 	{
 		//private readonly CaesarCipherKey _caesarCipherKey;
 		private readonly Alphabet _alphabet;
 		private readonly BigInteger _steps;
 
-		public CaesarCipherRename(Alphabet alphabet, string key)
+		public VigenereCipher(Alphabet alphabet, string key)
 		{
 			//_caesarCipherKey = new CaesarCipherKey();
+			_alphabet = alphabet;
 			_alphabet = alphabet;
 			_steps = BigInteger.Parse(key);
 		}
@@ -40,6 +41,9 @@ namespace CaesarCipher.CipherModes
 
 		private string MakeCipherSteps(string text, BigInteger steps)
 		{
+			steps++;
+
+
 			int alphabetSize = _alphabet.CurrentAlphabet.Length;
 			StringBuilder res = new StringBuilder();
 
