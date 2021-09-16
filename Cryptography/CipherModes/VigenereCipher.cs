@@ -1,4 +1,5 @@
 ﻿using Cryptography.Interfaces;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 
@@ -15,39 +16,37 @@ namespace Cryptography.CipherModes
 
 		public string Encrypt(string text, string key)
 		{
-			var steps = BigInteger.Parse(key);
-			return MakeCipherSteps(text, steps);
+			return MakeCipherSteps(text, key);
 		}
 
 		public string Decrypt(string text, string key)
 		{
-			var steps = BigInteger.Parse(key);
-			return MakeCipherSteps(text, steps * -1);
+			//var steps = BigInteger.Parse(key);
+			//return MakeCipherSteps(text, key);
+			return text;
 		}
 
 		public bool IsKeyValid(string key)
+			=> _alphabet.IsValid(key);
+
+		private string MakeCipherSteps(string text, string key)
 		{
-			BigInteger steps;
-			return BigInteger.TryParse(key, out steps);
-		}
-
-		private string MakeCipherSteps(string text, BigInteger steps)
-		{
-			steps++;
-
-
 			int alphabetSize = _alphabet.CurrentAlphabet.Length;
+			int keyIndex = 0;
 			StringBuilder res = new StringBuilder();
 
 			foreach (var c in text)
 			{
 				var index = _alphabet.IndexOf(c);
-				index = (int)((index + steps) % alphabetSize);
+				var keyIndexInAlphabet = _alphabet.IndexOf(key[keyIndex]);
+				index = (int)((index + keyIndexInAlphabet) % alphabetSize);
 
 				if (index < 0)
 					index += alphabetSize;
 
 				res.Append(_alphabet.CurrentAlphabet[index]);
+
+				keyIndex = (keyIndex + 1) % key.Length;
 			}
 
 			return res.ToString();
