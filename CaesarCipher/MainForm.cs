@@ -16,7 +16,6 @@ namespace CaesarCipher
 {
 	public partial class MainForm : Form
 	{
-		//private IValidable _key;
 		private ICryptography _cryptography;
 		private Alphabet _alphabet = new Alphabet();
 		public MainForm()
@@ -30,25 +29,6 @@ namespace CaesarCipher
 			originalTextBox.TextChanged += new EventHandler(RichTextBoxes_TextChanged);
 			cryptogramTextBox.TextChanged += new EventHandler(RichTextBoxes_TextChanged);
 		}
-
-		//private bool AreControlsValid(RichTextBox richTextBox, Button button)
-		//{
-		//	var oppositeRichTextBox = Controls.OfType<RichTextBox>().First(x => x != richTextBox);
-
-		//	if (!_alphabet.IsValid(richTextBox.Text))
-		//		MessageBox.Show("Input correct text according choosed alphabet");
-		//	else if (!string.IsNullOrEmpty(oppositeRichTextBox.Text))
-		//		MessageBox.Show($"Clear {oppositeRichTextBox.Tag} before {button.Text}");
-		//	else if (!_cryptography.IsKeyValid(keyTextBox.Text))
-		//		MessageBox.Show("Input correct key");
-		//	else
-		//	{
-			
-		//		return true;
-		//	}
-
-		//	return false;
-		//}
 
 		private bool AreControlsValid(RichTextBox richTextBox)
 		{
@@ -66,8 +46,6 @@ namespace CaesarCipher
 		{
 			if (AreControlsValid(originalTextBox))
 			{
-				//	cryptogramTextBox.Text = alphabet.MakeCipherSteps(originalTextBox.Text, steps);
-				//cryptogramTextBox.Text = new CaesarCipherRename(_alphabet, steps).Encrypt(originalTextBox.Text);
 				cryptogramTextBox.Text = _cryptography.Encrypt(originalTextBox.Text, keyTextBox.Text);
 				originalTextBox.Clear();
 			}
@@ -77,7 +55,6 @@ namespace CaesarCipher
 		{
 			if (AreControlsValid(cryptogramTextBox))
 			{
-				//originalTextBox.Text = alphabet.MakeCipherSteps(cryptogramTextBox.Text, -steps);
 				originalTextBox.Text = _cryptography.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
 				cryptogramTextBox.Clear();
 			}
@@ -85,23 +62,7 @@ namespace CaesarCipher
 
 		private void alphabetComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			//alphabet = new Alphabet((AlphabetsEnum)alphabetComboBox.SelectedItem);
 			_alphabet.ChangeAlphabet((AlphabetsEnum)alphabetComboBox.SelectedItem);
-		}
-
-		private void RichTextBoxes_TextChanged(object sender, EventArgs e)
-		{
-			bool isCryptogramNull = string.IsNullOrEmpty(cryptogramTextBox.Text);
-			bool isOriginalTextNull = string.IsNullOrEmpty(originalTextBox.Text);
-			List<Button> buttons = new List<Button>() { encryptButton, decryptButton };
-
-			if (isCryptogramNull && isOriginalTextNull
-				|| !isCryptogramNull && !isOriginalTextNull)
-				buttons.ForEach(x => x.Enabled = false);
-			else if (!isOriginalTextNull)
-				encryptButton.Enabled = true;
-			else if (!isCryptogramNull)
-				decryptButton.Enabled = true;
 		}
 
 		private void cipherModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,6 +78,21 @@ namespace CaesarCipher
 					_cryptography = new VigenereCipher(_alphabet);
 					break;
 			}
+		}
+
+		private void RichTextBoxes_TextChanged(object sender, EventArgs e)
+		{
+			bool isCryptogramNull = string.IsNullOrEmpty(cryptogramTextBox.Text);
+			bool isOriginalTextNull = string.IsNullOrEmpty(originalTextBox.Text);
+			List<Button> buttons = new List<Button>() { encryptButton, decryptButton };
+
+			if (isCryptogramNull && isOriginalTextNull
+				|| !isCryptogramNull && !isOriginalTextNull)
+				buttons.ForEach(x => x.Enabled = false);
+			else if (!isOriginalTextNull)
+				encryptButton.Enabled = true;
+			else if (!isCryptogramNull)
+				decryptButton.Enabled = true;
 		}
 	}
 }

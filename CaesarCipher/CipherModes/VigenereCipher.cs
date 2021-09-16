@@ -1,5 +1,4 @@
-﻿using CaesarCipher.BaseClasses;
-using CaesarCipher.Interfaces;
+﻿using CaesarCipher.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -9,15 +8,11 @@ namespace CaesarCipher.CipherModes
 {
 	public class VigenereCipher : ICryptography
 	{
-		//private readonly CaesarCipherKey _caesarCipherKey;
 		private readonly Alphabet _alphabet;
-		private readonly BigInteger _steps;
 
-		public VigenereCipher(Alphabet alphabet/*, string key*/)
+		public VigenereCipher(Alphabet alphabet)
 		{
-			//_caesarCipherKey = new CaesarCipherKey();
 			_alphabet = alphabet;
-			//_steps = BigInteger.Parse(key);
 		}
 
 		public string Encrypt(string text, string key)
