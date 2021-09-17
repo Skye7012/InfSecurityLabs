@@ -46,7 +46,7 @@ namespace Cryptography
 			// decryptButton
 			// 
 			this.decryptButton.Enabled = false;
-			this.decryptButton.Location = new System.Drawing.Point(770, 440);
+			this.decryptButton.Location = new System.Drawing.Point(770, 460);
 			this.decryptButton.Name = "decryptButton";
 			this.decryptButton.Size = new System.Drawing.Size(150, 30);
 			this.decryptButton.TabIndex = 7;
@@ -57,7 +57,7 @@ namespace Cryptography
 			// encryptButton
 			// 
 			this.encryptButton.Enabled = false;
-			this.encryptButton.Location = new System.Drawing.Point(770, 120);
+			this.encryptButton.Location = new System.Drawing.Point(770, 100);
 			this.encryptButton.Name = "encryptButton";
 			this.encryptButton.Size = new System.Drawing.Size(150, 30);
 			this.encryptButton.TabIndex = 6;
@@ -67,7 +67,7 @@ namespace Cryptography
 			// 
 			// keyTextBox
 			// 
-			this.keyTextBox.Location = new System.Drawing.Point(770, 252);
+			this.keyTextBox.Location = new System.Drawing.Point(770, 275);
 			this.keyTextBox.Name = "keyTextBox";
 			this.keyTextBox.Size = new System.Drawing.Size(150, 29);
 			this.keyTextBox.TabIndex = 5;
@@ -86,7 +86,7 @@ namespace Cryptography
 			// 
 			this.alphabetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.alphabetComboBox.FormattingEnabled = true;
-			this.alphabetComboBox.Location = new System.Drawing.Point(770, 308);
+			this.alphabetComboBox.Location = new System.Drawing.Point(770, 211);
 			this.alphabetComboBox.Name = "alphabetComboBox";
 			this.alphabetComboBox.Size = new System.Drawing.Size(150, 29);
 			this.alphabetComboBox.TabIndex = 8;
@@ -122,16 +122,16 @@ namespace Cryptography
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(770, 284);
+			this.label3.Location = new System.Drawing.Point(770, 187);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(79, 21);
+			this.label3.Size = new System.Drawing.Size(72, 21);
 			this.label3.TabIndex = 12;
-			this.label3.Text = "Alphabets";
+			this.label3.Text = "Alphabet";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(770, 228);
+			this.label4.Location = new System.Drawing.Point(770, 251);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(35, 21);
 			this.label4.TabIndex = 13;
@@ -140,7 +140,7 @@ namespace Cryptography
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(501, 255);
+			this.label5.Location = new System.Drawing.Point(770, 316);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(96, 21);
 			this.label5.TabIndex = 15;
@@ -150,7 +150,7 @@ namespace Cryptography
 			// 
 			this.cipherModesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cipherModesComboBox.FormattingEnabled = true;
-			this.cipherModesComboBox.Location = new System.Drawing.Point(501, 279);
+			this.cipherModesComboBox.Location = new System.Drawing.Point(770, 340);
 			this.cipherModesComboBox.Name = "cipherModesComboBox";
 			this.cipherModesComboBox.Size = new System.Drawing.Size(150, 29);
 			this.cipherModesComboBox.TabIndex = 16;
