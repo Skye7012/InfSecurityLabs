@@ -16,37 +16,41 @@ namespace Cryptography.CipherModes
 
 		public string Encrypt(string text, string key)
 		{
-			return MakeCipherSteps(text, key);
+			return MakeCipherSteps(text, key, true);
 		}
 
 		public string Decrypt(string text, string key)
 		{
-			//var steps = BigInteger.Parse(key);
-			//return MakeCipherSteps(text, key);
-			return text;
+			return MakeCipherSteps(text, key, false);
 		}
 
 		public bool IsKeyValid(string key)
 			=> _alphabet.IsValid(key);
 
-		private string MakeCipherSteps(string text, string key)
+		private string MakeCipherSteps(string text, string key, bool IsEncrypt)
 		{
 			int alphabetSize = _alphabet.CurrentAlphabet.Length;
-			int keyIndex = 0;
 			StringBuilder res = new StringBuilder();
 
-			foreach (var c in text)
+			for (int i = 0, j = 0;
+				i < text.Length;
+				i++, j = (j + 1) % key.Length)
 			{
-				var index = _alphabet.IndexOf(c);
-				var keyIndexInAlphabet = _alphabet.IndexOf(key[keyIndex]);
-				index = (int)((index + keyIndexInAlphabet) % alphabetSize);
+				char textChar = text[i];
+				char keyChar = key[j];
 
-				if (index < 0)
-					index += alphabetSize;
+				var textIndex = _alphabet.IndexOf(textChar);
+				var keyIndex = _alphabet.IndexOf(keyChar);
 
-				res.Append(_alphabet.CurrentAlphabet[index]);
+				if (IsEncrypt)
+					textIndex = (int)((textIndex + keyIndex) % alphabetSize);
+				else
+					textIndex = (int)((textIndex - keyIndex) % alphabetSize);
 
-				keyIndex = (keyIndex + 1) % key.Length;
+				if (textIndex < 0)
+					textIndex += alphabetSize;
+
+				res.Append(_alphabet.CurrentAlphabet[textIndex]);
 			}
 
 			return res.ToString();
