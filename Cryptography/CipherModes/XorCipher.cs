@@ -1,4 +1,5 @@
 ﻿using Cryptography.Interfaces;
+using System;
 using System.Collections;
 using System.Linq;
 using System.Numerics;
@@ -32,27 +33,19 @@ namespace Cryptography.CipherModes
 		{
 			int alphabetSize = _alphabet.CurrentAlphabet.Length;
 			StringBuilder res = new StringBuilder();
-			BitArray b = 2; 
+			var intKey = Convert.ToInt32(key, 2);
+			if (!IsEncrypt)
+				intKey *= -1;
 
-			for (int i = 0, j = 0;
-				i < text.Length;
-				i++, j = (j + 1) % key.Length)
+			foreach (var c in text)
 			{
-				char textChar = text[i];
-				char keyChar = key[j];
+				var index = _alphabet.IndexOf(c);
+				index = (int)((index + intKey) % alphabetSize);
 
-				var textIndex = _alphabet.IndexOf(textChar);
-				var keyIndex = _alphabet.IndexOf(keyChar);
+				if (index < 0)
+					index += alphabetSize;
 
-				if (IsEncrypt)
-					textIndex = (int)((textIndex + keyIndex) % alphabetSize);
-				else
-					textIndex = (int)((textIndex - keyIndex) % alphabetSize);
-
-				if (textIndex < 0)
-					textIndex += alphabetSize;
-
-				res.Append(_alphabet.CurrentAlphabet[textIndex]);
+				res.Append(_alphabet.CurrentAlphabet[index]);
 			}
 
 			return res.ToString();
