@@ -21,6 +21,7 @@ namespace Cryptography
 
 			originalTextBox.TextChanged += new EventHandler(RichTextBoxes_TextChanged);
 			cryptogramTextBox.TextChanged += new EventHandler(RichTextBoxes_TextChanged);
+			keyTextBox.TextChanged += new EventHandler(RichTextBoxes_TextChanged);
 		}
 
 		private bool AreControlsValid(RichTextBox richTextBox)
@@ -83,7 +84,8 @@ namespace Cryptography
 			List<Button> buttons = new List<Button>() { encryptButton, decryptButton };
 
 			if (isCryptogramNull && isOriginalTextNull
-				|| !isCryptogramNull && !isOriginalTextNull)
+				|| !isCryptogramNull && !isOriginalTextNull
+				|| string.IsNullOrWhiteSpace(keyTextBox.Text))
 				buttons.ForEach(x => x.Enabled = false);
 			else if (!isOriginalTextNull)
 				encryptButton.Enabled = true;

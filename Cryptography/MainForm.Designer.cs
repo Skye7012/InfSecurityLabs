@@ -71,7 +71,6 @@ namespace Cryptography
 			this.keyTextBox.Name = "keyTextBox";
 			this.keyTextBox.Size = new System.Drawing.Size(150, 29);
 			this.keyTextBox.TabIndex = 5;
-			this.keyTextBox.Text = "0";
 			// 
 			// originalTextBox
 			// 
