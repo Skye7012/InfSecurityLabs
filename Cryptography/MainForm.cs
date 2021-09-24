@@ -71,9 +71,9 @@ namespace Cryptography
 				case CipherModesEnum.VigenereCipher:
 					_cryptographer = new VigenereCipher(_alphabet);
 					break;
-				case CipherModesEnum.XorCipher:
-					_cryptographer = new XorCipher(_alphabet);
-					break;
+				//case CipherModesEnum.XorCipher:
+				//	_cryptographer = new XorCipher(_alphabet);
+				//	break;
 			}
 		}
 

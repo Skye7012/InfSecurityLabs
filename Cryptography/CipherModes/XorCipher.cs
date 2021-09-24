@@ -15,7 +15,8 @@ namespace Cryptography.CipherModes
 
 		public XorCipher(Alphabet alphabet)
 		{
-			_alphabet = alphabet;
+			//_alphabet = alphabet;
+			_alphabet = Alphabet.CreateTestAlphabet();
 		}
 
 		public string Encrypt(string text, string key)
@@ -30,13 +31,16 @@ namespace Cryptography.CipherModes
 
 		public bool IsKeyValid(string key)
 		{
-			var chars =  new char[] { '0','1',' '};
-			return key.All(x => chars.Contains(x));
+			var chars =  new char[] { '0','1',' '};	
+			var intKeys = key.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+				.Select(x => Convert.ToInt32(x, 2)).ToArray();
+
+			return key.All(x => chars.Contains(x)) 
+				&& intKeys.All(x => x <= _alphabet.CurrentAlphabet.Length);
 		}
 
 		private string MakeCipherSteps(string text, string key, bool IsEncrypt)
 		{
-			_alphabet = Alphabet.CreateTestAlphabet();
 			int alphabetSize = _alphabet.CurrentAlphabet.Length;
 			StringBuilder res = new StringBuilder();
 			var intKeys = key.Split(' ', StringSplitOptions.RemoveEmptyEntries)
@@ -50,7 +54,7 @@ namespace Cryptography.CipherModes
 				var intKey = intKeys[j];
 
 				var test = (index ^ intKey);
-				index = (index ^ intKey) % alphabetSize;
+				index = index ^ intKey/* % alphabetSize*/;
 
 				if (index < 0)
 					index += alphabetSize;
