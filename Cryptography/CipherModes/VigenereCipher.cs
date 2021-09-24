@@ -43,9 +43,9 @@ namespace Cryptography.CipherModes
 				var keyIndex = _alphabet.IndexOf(keyChar);
 
 				if (IsEncrypt)
-					textIndex = (int)((textIndex + keyIndex) % alphabetSize);
+					textIndex = (textIndex + keyIndex) % alphabetSize;//test
 				else
-					textIndex = (int)((textIndex - keyIndex) % alphabetSize);
+					textIndex = (textIndex - keyIndex) % alphabetSize;
 
 				if (textIndex < 0)
 					textIndex += alphabetSize;

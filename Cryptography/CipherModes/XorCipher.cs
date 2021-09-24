@@ -11,7 +11,7 @@ namespace Cryptography.CipherModes
 {
 	public class XorCipher : ICryptographer
 	{
-		private readonly Alphabet _alphabet;
+		private /*readonly*/ Alphabet _alphabet;
 
 		public XorCipher(Alphabet alphabet)
 		{
@@ -33,19 +33,14 @@ namespace Cryptography.CipherModes
 			var chars =  new char[] { '0','1',' '};
 			return key.All(x => chars.Contains(x));
 		}
-			//=> key.All(x=> x=='0' || x=='1');
-
 
 		private string MakeCipherSteps(string text, string key, bool IsEncrypt)
 		{
+			_alphabet = Alphabet.CreateTestAlphabet();
 			int alphabetSize = _alphabet.CurrentAlphabet.Length;
 			StringBuilder res = new StringBuilder();
-			var test = key.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 			var intKeys = key.Split(' ', StringSplitOptions.RemoveEmptyEntries)
 				.Select(x => Convert.ToInt32(x, 2)).ToArray();
-			if (!IsEncrypt)				
-				intKeys = intKeys.Select(x => -x).ToArray();
-
 
 			for (int i = 0, j = 0;
 				i < text.Length;
@@ -54,7 +49,8 @@ namespace Cryptography.CipherModes
 				var index = _alphabet.IndexOf(text[i]);
 				var intKey = intKeys[j];
 
-				index = (int)((index + intKey) % alphabetSize);
+				var test = (index ^ intKey);
+				index = (index ^ intKey) % alphabetSize;
 
 				if (index < 0)
 					index += alphabetSize;

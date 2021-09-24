@@ -20,17 +20,6 @@ namespace Cryptography
 
 		public int IndexOf(char c)
 			=> CurrentAlphabet.IndexOf(c);
-		//впр
-		//return index of char in the CurrentAlphabet
-		public int this[char c]
-		{
-			get
-			{
-				return CurrentAlphabet.IndexOf(c);
-				//int alphabetLength = CurrentAlphabet.Length;
-				//index = (int)((index + steps) % alphabetSize);
-			}
-		}
 
 		public string MakeCipherSteps(string text, BigInteger steps)
 		{
@@ -66,6 +55,11 @@ namespace Cryptography
 					CurrentAlphabet = russianAlphabet;
 					break;
 			}
+		}
+
+		public static Alphabet CreateTestAlphabet()
+		{
+			return new Alphabet() { CurrentAlphabet = "0123" };
 		}
 	}
 }
