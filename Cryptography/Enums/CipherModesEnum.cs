@@ -4,6 +4,6 @@
 	{
 		CaesarCipher,
 		VigenereCipher,
-		//XorCipher
+		XorCipher
 	}
 }

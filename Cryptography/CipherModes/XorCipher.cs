@@ -37,7 +37,16 @@ namespace Cryptography.CipherModes
 				if (index < 0)
 					index += alphabetSize;
 
-				res.Append(Convert.ToString(index,2) + " ");
+				//string format = string.Format("{{0:D{0}}}", _alphabet.GetBinaryLength());
+				//string format = string.Format("{0:D2}");
+				//var str = string.Format(format, Convert.ToString(index, 2));
+
+				var str = Convert.ToString(index, 2).
+					PadLeft(_alphabet.GetBinaryLength(), '0');
+				//var str = string.Format(("{0:D3}"), Convert.ToString(index, 2));
+				
+
+				res.Append(str);
 			}
 
 			return res.ToString();
@@ -104,9 +113,9 @@ namespace Cryptography.CipherModes
 			var keyLength = _alphabet.GetBinaryLength();
 			var keys = new List<string>();
 
-			for (int i = 0; i < keyLength; i += keyLength)
+			for (int i = 0; i < text.Length; i += keyLength)
 			{
-				keys.Add(text.Substring(i, i + keyLength - 1));
+				keys.Add(text.Substring(i, keyLength));
 			}
 
 			return keys;
