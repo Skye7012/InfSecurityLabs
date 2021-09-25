@@ -1,4 +1,5 @@
 ﻿using Cryptography.Enums;
+using System;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -57,9 +58,14 @@ namespace Cryptography
 			}
 		}
 
+		public int GetBinaryLength()
+		{
+			return (int)Math.Ceiling(Math.Sqrt(CurrentAlphabet.Length));
+		}
+
 		public static Alphabet CreateTestAlphabet()
 		{
-			return new Alphabet() { CurrentAlphabet = "0123" };
+			return new Alphabet() { CurrentAlphabet = "01234" };
 		}
 	}
 }

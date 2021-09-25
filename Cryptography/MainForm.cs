@@ -49,8 +49,15 @@ namespace Cryptography
 		{
 			if (AreControlsValid(cryptogramTextBox))
 			{
-				originalTextBox.Text = _cryptographer.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
-				cryptogramTextBox.Clear();
+				try
+				{
+					originalTextBox.Text = _cryptographer.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
+					cryptogramTextBox.Clear();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
 			}
 		}
 
