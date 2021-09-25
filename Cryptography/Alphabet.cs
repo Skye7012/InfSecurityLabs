@@ -60,7 +60,8 @@ namespace Cryptography
 
 		public int GetBinaryLength()
 		{
-			return (int)Math.Ceiling(Math.Sqrt(CurrentAlphabet.Length));
+			var sqrt =  Math.Ceiling(Math.Log2(CurrentAlphabet.Length));
+			return (int)sqrt + 1;
 		}
 
 		public static Alphabet CreateTestAlphabet()

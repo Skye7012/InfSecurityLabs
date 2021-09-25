@@ -43,7 +43,7 @@ namespace Cryptography.CipherModes
 				var keyIndex = _alphabet.IndexOf(keyChar);
 
 				if (IsEncrypt)
-					textIndex = (textIndex + keyIndex) % alphabetSize;//test
+					textIndex = (textIndex + keyIndex) % alphabetSize;
 				else
 					textIndex = (textIndex - keyIndex) % alphabetSize;
 

@@ -11,12 +11,11 @@ namespace Cryptography.CipherModes
 {
 	public class XorCipher : ICryptographer
 	{
-		private /*readonly*/ Alphabet _alphabet;
+		private readonly Alphabet _alphabet;
 
 		public XorCipher(Alphabet alphabet)
 		{
-			//_alphabet = alphabet;
-			_alphabet = Alphabet.CreateTestAlphabet();
+			_alphabet = alphabet;
 		}
 
 		public string Encrypt(string text, string key)
@@ -37,15 +36,9 @@ namespace Cryptography.CipherModes
 				if (index < 0)
 					index += alphabetSize;
 
-				//string format = string.Format("{{0:D{0}}}", _alphabet.GetBinaryLength());
-				//string format = string.Format("{0:D2}");
-				//var str = string.Format(format, Convert.ToString(index, 2));
-
 				var str = Convert.ToString(index, 2).
 					PadLeft(_alphabet.GetBinaryLength(), '0');
-				//var str = string.Format(("{0:D3}"), Convert.ToString(index, 2));
 				
-
 				res.Append(str);
 			}
 
@@ -89,22 +82,6 @@ namespace Cryptography.CipherModes
 				|| !key.All(x => chars.Contains(x)))
 				return false;
 
-
-			//var keys = new List<string>();
-
-			//for (int i = 0; i < keyLength; i+=keyLength)
-			//{
-			//	keys.Add(key.Substring(i, i + keyLength-1));
-			//}
-
-			//var intKeys = key.Split(' ', StringSplitOptions.RemoveEmptyEntries)
-			//	.Select(x => Convert.ToInt32(x, 2)).ToArray();
-			var keys = GetSplittedBinaries(key);
-			var intKeys = keys.Select(x => Convert.ToInt32(x, 2));
-
-			//return key.All(x => chars.Contains(x)) 
-			//	&& intKeys.All(x => x <= _alphabet.CurrentAlphabet.Length);
-
 			return true;
 		}
 
@@ -139,30 +116,7 @@ namespace Cryptography.CipherModes
 				var index = _alphabet.IndexOf(text[i]);
 				var intKey = intKeys[j];
 
-				var test = (index ^ intKey);
-				index = index ^ intKey/* % alphabetSize*/;
-
-				if (index < 0)
-					index += alphabetSize;
-
-				res.Append(_alphabet.CurrentAlphabet[index]);
-			}
-
-			return res.ToString();
-		}
-
-		private string MakeCipherStepsOld(string text, string key, bool IsEncrypt)
-		{
-			int alphabetSize = _alphabet.CurrentAlphabet.Length;
-			StringBuilder res = new StringBuilder();
-			var intKey = Convert.ToInt32(key, 2);
-			if (!IsEncrypt)
-				intKey *= -1;
-
-			foreach (var c in text)
-			{
-				var index = _alphabet.IndexOf(c);
-				index = (int)((index + intKey) % alphabetSize);
+				index = index ^ intKey;
 
 				if (index < 0)
 					index += alphabetSize;
