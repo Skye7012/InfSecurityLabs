@@ -105,9 +105,9 @@ namespace Cryptography
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(20, 16);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 21);
+			this.label1.Size = new System.Drawing.Size(74, 21);
 			this.label1.TabIndex = 10;
-			this.label1.Text = "Original Text";
+			this.label1.Text = "Plain Text";
 			// 
 			// label2
 			// 
