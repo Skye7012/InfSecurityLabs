@@ -9,20 +9,14 @@ namespace Cryptography.CipherModes
 	{
 		private readonly Alphabet _alphabet;
 
-		public VigenereCipher(Alphabet alphabet)
-		{
-			_alphabet = alphabet;
-		}
+		public VigenereCipher(Alphabet alphabet) 
+			=> _alphabet = alphabet;
 
 		public string Encrypt(string text, string key)
-		{
-			return MakeCipherSteps(text, key, true);
-		}
+			=> MakeCipherSteps(text, key, true);
 
 		public string Decrypt(string text, string key)
-		{
-			return MakeCipherSteps(text, key, false);
-		}
+			=> MakeCipherSteps(text, key, false);
 
 		public bool IsKeyValid(string key)
 			=> _alphabet.IsValid(key);

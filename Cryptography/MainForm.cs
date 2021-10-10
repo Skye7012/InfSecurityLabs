@@ -49,22 +49,13 @@ namespace Cryptography
 		{
 			if (AreControlsValid(cryptogramTextBox))
 			{
-				try
-				{
-					originalTextBox.Text = _cryptographer.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
-					cryptogramTextBox.Clear();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-				}
+				originalTextBox.Text = _cryptographer.Decrypt(cryptogramTextBox.Text, keyTextBox.Text);
+				cryptogramTextBox.Clear();
 			}
 		}
 
 		private void alphabetComboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			_alphabet.ChangeAlphabet((AlphabetsEnum)alphabetComboBox.SelectedItem);
-		}
+			=> _alphabet.ChangeAlphabet((AlphabetsEnum)alphabetComboBox.SelectedItem);
 
 		private void cipherModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{

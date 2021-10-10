@@ -13,33 +13,12 @@ namespace Cryptography
 		public string CurrentAlphabet { get; protected set; }
 
 		public Alphabet(AlphabetsEnum alphabet)
-		{
-			ChangeAlphabet(alphabet);
-		}
+			=> ChangeAlphabet(alphabet);
 
 		public Alphabet() { }
 
 		public int IndexOf(char c)
 			=> CurrentAlphabet.IndexOf(c);
-
-		public string MakeCipherSteps(string text, BigInteger steps)
-		{
-			int alphabetSize = CurrentAlphabet.Length;
-			StringBuilder res = new StringBuilder();
-
-			foreach (var c in text)
-			{
-				var index = new string(CurrentAlphabet).IndexOf(c);
-				index = (int)((index + steps) % alphabetSize);
-
-				if (index < 0)
-					index += alphabetSize;
-
-				res.Append(CurrentAlphabet[index]);
-			}
-
-			return res.ToString();
-		}
 
 		public bool IsValid(string text) =>
 			!string.IsNullOrEmpty(text)
@@ -65,8 +44,6 @@ namespace Cryptography
 		}
 
 		public static Alphabet CreateTestAlphabet()
-		{
-			return new Alphabet() { CurrentAlphabet = "01234" };
-		}
+			=> new Alphabet() { CurrentAlphabet = "01234" };
 	}
 }

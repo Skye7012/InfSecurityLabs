@@ -9,9 +9,7 @@ namespace Cryptography.CipherModes
 		private readonly Alphabet _alphabet;
 
 		public CaesarCipher(Alphabet alphabet)
-		{
-			_alphabet = alphabet;
-		}
+			=> _alphabet = alphabet;
 
 		public string Encrypt(string text, string key)
 		{

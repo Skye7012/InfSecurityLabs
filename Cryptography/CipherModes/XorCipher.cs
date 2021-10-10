@@ -14,9 +14,7 @@ namespace Cryptography.CipherModes
 		private readonly Alphabet _alphabet;
 
 		public XorCipher(Alphabet alphabet)
-		{
-			_alphabet = alphabet;
-		}
+			=> _alphabet = alphabet;
 
 		public string Encrypt(string text, string key)
 		{
@@ -100,31 +98,6 @@ namespace Cryptography.CipherModes
 
 		int[] GetIntsFromBinaries(string text)
 			=> GetSplittedBinaries(text).Select(x => Convert.ToInt32(x, 2)).ToArray();
-		
 
-		private string MakeCipherSteps(string text, string key, bool IsEncrypt)
-		{
-			int alphabetSize = _alphabet.CurrentAlphabet.Length;
-			StringBuilder res = new StringBuilder();
-			var intKeys = key.Split(' ', StringSplitOptions.RemoveEmptyEntries)
-				.Select(x => Convert.ToInt32(x, 2)).ToArray();
-
-			for (int i = 0, j = 0;
-				i < text.Length;
-				i++, j = (j + 1) % intKeys.Length)
-			{
-				var index = _alphabet.IndexOf(text[i]);
-				var intKey = intKeys[j];
-
-				index = index ^ intKey;
-
-				if (index < 0)
-					index += alphabetSize;
-
-				res.Append(_alphabet.CurrentAlphabet[index]);
-			}
-
-			return res.ToString();
-		}
 	}
 }
