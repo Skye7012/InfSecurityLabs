@@ -52,6 +52,7 @@ namespace XorManulKey
 			this.encryptBtn = new System.Windows.Forms.Button();
 			this.keyToBinaryBtn = new System.Windows.Forms.Button();
 			this.plainToBinaryBtn = new System.Windows.Forms.Button();
+			this.restartBtn = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -279,11 +280,22 @@ namespace XorManulKey
 			this.plainToBinaryBtn.UseVisualStyleBackColor = true;
 			this.plainToBinaryBtn.Click += new System.EventHandler(this.plainToBinaryBtn_Click);
 			// 
+			// restartBtn
+			// 
+			this.restartBtn.Location = new System.Drawing.Point(220, 420);
+			this.restartBtn.Name = "restartBtn";
+			this.restartBtn.Size = new System.Drawing.Size(200, 40);
+			this.restartBtn.TabIndex = 5;
+			this.restartBtn.Text = "Заново";
+			this.restartBtn.UseVisualStyleBackColor = true;
+			this.restartBtn.Click += new System.EventHandler(this.restartBtn_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(624, 560);
+			this.ClientSize = new System.Drawing.Size(624, 471);
+			this.Controls.Add(this.restartBtn);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -319,6 +331,7 @@ namespace XorManulKey
 		private TextBox decryptedPlainTextTbx;
 		private Label label7;
 		private Button decryptedPlainTextToBinaryBtn;
+		private Button restartBtn;
 	}
 }
 

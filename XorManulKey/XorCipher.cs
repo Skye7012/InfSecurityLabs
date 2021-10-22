@@ -46,22 +46,5 @@ namespace XorManulKey
 
 			return res.ToString();
 		}
-
-		//List<string> GetSplittedBinaries(string text)
-		//{
-		//	var keyLength = _alphabet.BinaryLength;
-		//	var keys = new List<string>();
-
-		//	for (int i = 0; i < text.Length; i += keyLength)
-		//	{
-		//		keys.Add(text.Substring(i, keyLength));
-		//	}
-
-		//	return keys;
-		//}
-
-		//int[] GetIntsFromBinaries(string text)
-		//	=> GetSplittedBinaries(text).Select(x => Convert.ToInt32(x, 2)).ToArray();
-
 	}
 }

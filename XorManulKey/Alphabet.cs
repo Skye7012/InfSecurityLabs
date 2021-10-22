@@ -61,7 +61,7 @@ namespace XorManulKey
 			return keys;
 		}
 
-		public int[] GetIntsFromBinaries(string bin)//что-то где-то убрать
+		public int[] GetIntsFromBinaries(string bin)
 			=> GetSplittedBinaries(bin).Select(x => Convert.ToInt32(x, 2)).ToArray();
 	}
 }
