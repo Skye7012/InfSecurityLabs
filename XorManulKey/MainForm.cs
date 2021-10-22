@@ -7,17 +7,20 @@ namespace XorManulKey
 {
 	public partial class MainForm : Form
 	{
-		//private ICryptographer _cryptographer;
-		private Alphabet _alphabet = new Alphabet();
+		private readonly Alphabet _alphabet = new Alphabet();
+		private readonly XorCipher _cryptographer;
 		private readonly Control[] _plainTextControls;
 		private readonly Control[] _keyControls;
+		private readonly Control[] _encryptControls;
 		private readonly List<Control[]> _controls;
 
 		public MainForm()
 		{
 			InitializeComponent();
+			_cryptographer = new XorCipher(_alphabet);
 			_plainTextControls = new Control[] { plainTextBox, binaryPlainTextBox, plainToBinaryBtn }; //renameToGroup
 			_keyControls = new Control[] { keyTbx, binaryKeyTbx, keyToBinaryBtn };
+			_encryptControls = new Control[] { gammaTbx, encryptBtn };
 			_controls = new List<Control[]> { _plainTextControls, _keyControls };
 
 			//originalTextBox.TextChanged += new EventHandler(IsValidAccordingAlphabet);
@@ -44,6 +47,13 @@ namespace XorManulKey
 			binaryKeyTbx.Text = _alphabet.ConvertToBinary(keyTbx.Text);
 			DisableControlGroup(_keyControls);
 		}
+
+		private void encryptBtn_Click(object sender, EventArgs e)
+		{
+			gammaTbx.Text = _cryptographer.Encrypt(binaryPlainTextBox.Text, binaryKeyTbx.Text);
+			DisableControlGroup(_encryptControls);
+		}
+
 		private bool IsValidAccordingAlphabet(string text)
 		{
 			return _alphabet.IsValid(text);
@@ -55,6 +65,8 @@ namespace XorManulKey
 		void DisableControlGroup(Control[] controls)
 			=> controls.ToList().
 				ForEach(x => x.Enabled = false);
+
+
 
 		//private void IsValidAccordingAlphabet(object sender, EventArgs e)
 		//{
