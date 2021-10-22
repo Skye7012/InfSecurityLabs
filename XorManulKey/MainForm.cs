@@ -37,6 +37,8 @@ namespace XorManulKey
 
 			_controls.Skip(1).ToList()
 				.ForEach(x => DisableControlGroup(x));
+
+			comboBox.SelectedItem = comboBox.Items[0];
 		}
 
 		private void restartBtn_Click(object sender, EventArgs e)
@@ -118,6 +120,20 @@ namespace XorManulKey
 
 			DisableControlGroup(_controls[index]);
 			EnableControlGroup(_controls[index + 1]);
+		}
+		private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (comboBox.SelectedItem == comboBox.Items[1])
+			{
+				generateKeyBtn.Show();
+				keyLabel.Hide();
+				keyTbx.Hide();
+			}
+		}
+
+		private void generateKeyBtn_Click(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

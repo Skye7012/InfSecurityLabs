@@ -43,10 +43,13 @@ namespace XorManulKey
 			this.binaryKeyTbx = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.keyTbx = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.keyLabel = new System.Windows.Forms.Label();
 			this.binaryPlainTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.label8 = new System.Windows.Forms.Label();
+			this.comboBox = new System.Windows.Forms.ComboBox();
+			this.generateKeyBtn = new System.Windows.Forms.Button();
 			this.decryptedPlainTextToBinaryBtn = new System.Windows.Forms.Button();
 			this.decryptBtn = new System.Windows.Forms.Button();
 			this.encryptBtn = new System.Windows.Forms.Button();
@@ -87,7 +90,7 @@ namespace XorManulKey
 			this.panel1.Controls.Add(this.binaryKeyTbx);
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Controls.Add(this.keyTbx);
-			this.panel1.Controls.Add(this.label4);
+			this.panel1.Controls.Add(this.keyLabel);
 			this.panel1.Controls.Add(this.binaryPlainTextBox);
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.plainTextBox);
@@ -188,15 +191,15 @@ namespace XorManulKey
 			this.keyTbx.TabIndex = 13;
 			this.keyTbx.Tag = "";
 			// 
-			// label4
+			// keyLabel
 			// 
-			this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label4.Location = new System.Drawing.Point(0, 100);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(400, 21);
-			this.label4.TabIndex = 14;
-			this.label4.Text = "Ключ";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.keyLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.keyLabel.Location = new System.Drawing.Point(0, 100);
+			this.keyLabel.Name = "keyLabel";
+			this.keyLabel.Size = new System.Drawing.Size(400, 21);
+			this.keyLabel.TabIndex = 14;
+			this.keyLabel.Text = "Ключ";
+			this.keyLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// binaryPlainTextBox
 			// 
@@ -220,6 +223,9 @@ namespace XorManulKey
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.label8);
+			this.panel2.Controls.Add(this.comboBox);
+			this.panel2.Controls.Add(this.generateKeyBtn);
 			this.panel2.Controls.Add(this.decryptedPlainTextToBinaryBtn);
 			this.panel2.Controls.Add(this.decryptBtn);
 			this.panel2.Controls.Add(this.encryptBtn);
@@ -229,6 +235,40 @@ namespace XorManulKey
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(194, 393);
 			this.panel2.TabIndex = 18;
+			// 
+			// label8
+			// 
+			this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label8.Location = new System.Drawing.Point(0, 0);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(194, 21);
+			this.label8.TabIndex = 11;
+			this.label8.Text = "Режим";
+			this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// comboBox
+			// 
+			this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox.FormattingEnabled = true;
+			this.comboBox.Items.AddRange(new object[] {
+            "ManualKey",
+            "GenerateKey"});
+			this.comboBox.Location = new System.Drawing.Point(4, 21);
+			this.comboBox.Name = "comboBox";
+			this.comboBox.Size = new System.Drawing.Size(187, 29);
+			this.comboBox.TabIndex = 6;
+			this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+			// 
+			// generateKeyBtn
+			// 
+			this.generateKeyBtn.Location = new System.Drawing.Point(0, 121);
+			this.generateKeyBtn.Name = "generateKeyBtn";
+			this.generateKeyBtn.Size = new System.Drawing.Size(194, 30);
+			this.generateKeyBtn.TabIndex = 5;
+			this.generateKeyBtn.Text = "Сгенерировать ключ";
+			this.generateKeyBtn.UseVisualStyleBackColor = true;
+			this.generateKeyBtn.Visible = false;
+			this.generateKeyBtn.Click += new System.EventHandler(this.generateKeyBtn_Click);
 			// 
 			// decryptedPlainTextToBinaryBtn
 			// 
@@ -320,7 +360,7 @@ namespace XorManulKey
 		private TextBox binaryKeyTbx;
 		private Label label3;
 		private TextBox keyTbx;
-		private Label label4;
+		private Label keyLabel;
 		private Button keyToBinaryBtn;
 		private TextBox gammaTbx;
 		private Label label5;
@@ -332,6 +372,9 @@ namespace XorManulKey
 		private Label label7;
 		private Button decryptedPlainTextToBinaryBtn;
 		private Button restartBtn;
+		private Button generateKeyBtn;
+		private ComboBox comboBox;
+		private Label label8;
 	}
 }
 
