@@ -21,9 +21,12 @@ namespace XorManulKey
 			_plainTextControls = new Control[] { plainTextBox, binaryPlainTextBox, plainToBinaryBtn }; //renameToGroup
 			_keyControls = new Control[] { keyTbx, binaryKeyTbx, keyToBinaryBtn };
 			_encryptControls = new Control[] { gammaTbx, encryptBtn };
-			_controls = new List<Control[]> { _plainTextControls, _keyControls };
+			_controls = new List<Control[]> { _plainTextControls, _keyControls, _encryptControls };
 
 			//originalTextBox.TextChanged += new EventHandler(IsValidAccordingAlphabet);
+
+			DisableControlGroup(_keyControls);
+			DisableControlGroup(_encryptControls);
 		}
 
 		private void plainToBinaryBtn_Click(object sender, EventArgs e)
@@ -34,7 +37,7 @@ namespace XorManulKey
 				return;
 			}
 			binaryPlainTextBox.Text = _alphabet.ConvertToBinary(plainTextBox.Text);
-			DisableControlGroup(_plainTextControls);
+			NextControlGroup(_plainTextControls);
 		}
 
 		private void keyToBinaryBtn_Click(object sender, EventArgs e)
@@ -45,13 +48,13 @@ namespace XorManulKey
 				return;
 			}
 			binaryKeyTbx.Text = _alphabet.ConvertToBinary(keyTbx.Text);
-			DisableControlGroup(_keyControls);
+			NextControlGroup(_keyControls);
 		}
 
 		private void encryptBtn_Click(object sender, EventArgs e)
 		{
 			gammaTbx.Text = _cryptographer.Encrypt(binaryPlainTextBox.Text, binaryKeyTbx.Text);
-			DisableControlGroup(_encryptControls);
+			NextControlGroup(_encryptControls);
 		}
 
 		private bool IsValidAccordingAlphabet(string text)
@@ -65,6 +68,24 @@ namespace XorManulKey
 		void DisableControlGroup(Control[] controls)
 			=> controls.ToList().
 				ForEach(x => x.Enabled = false);
+
+		void EnableControlGroup(Control[] controls)
+			=> controls.ToList().
+				ForEach(x => x.Enabled = true);
+
+		void NextControlGroup(Control[] controls)
+		{
+			if (controls == _controls.Last())
+				return;
+
+			int index = _controls.FindIndex(x => x == controls);
+
+			//if (index == _controls.Count - 1)
+			//	return;
+
+			DisableControlGroup(_controls[index]);
+			EnableControlGroup(_controls[index+1]);
+		}
 
 
 
