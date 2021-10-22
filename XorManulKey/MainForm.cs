@@ -13,6 +13,7 @@ namespace XorManulKey
 		private readonly Control[] _keyControls;
 		private readonly Control[] _encryptControls;
 		private readonly Control[] _decryptControls;
+		private readonly Control[] _decryptPlainTextControls;
 		private readonly List<Control[]> _controls;
 
 		public MainForm()
@@ -23,12 +24,15 @@ namespace XorManulKey
 			_keyControls = new Control[] { keyTbx, binaryKeyTbx, keyToBinaryBtn };
 			_encryptControls = new Control[] { gammaTbx, encryptBtn };
 			_decryptControls = new Control[] { decryptedGammaTbx, decryptBtn };
+			_decryptPlainTextControls = new Control[] { decryptedPlainTextTbx, decryptedPlainTextToBinaryBtn };
+			
 			_controls = new List<Control[]> 
 				{ 
 					_plainTextControls, 
 					_keyControls, 
 					_encryptControls, 
-					_decryptControls 
+					_decryptControls,
+					_decryptPlainTextControls,
 				};
 
 			//originalTextBox.TextChanged += new EventHandler(IsValidAccordingAlphabet);
@@ -57,6 +61,12 @@ namespace XorManulKey
 			}
 			binaryKeyTbx.Text = _alphabet.ConvertToBinary(keyTbx.Text);
 			NextControlGroup(_keyControls);
+		}
+
+		private void decryptedPlainTextToBinaryBtn_Click(object sender, EventArgs e)
+		{
+			decryptedPlainTextTbx.Text = _alphabet.ConvertFromBinary(decryptedGammaTbx.Text);
+			DisableControlGroup(_decryptPlainTextControls);
 		}
 
 		private void encryptBtn_Click(object sender, EventArgs e)

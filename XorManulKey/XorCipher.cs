@@ -28,8 +28,8 @@ namespace XorManulKey
 
 		public string MakeSipherSteps(string binText, string binKey)
 		{
-			var intLetters = GetIntsFromBinaries(binText);
-			var intKeys = GetIntsFromBinaries(binKey);
+			var intLetters = _alphabet.GetIntsFromBinaries(binText);
+			var intKeys = _alphabet.GetIntsFromBinaries(binKey);
 			StringBuilder res = new StringBuilder();
 
 			for (int i = 0, j = 0;
@@ -47,21 +47,21 @@ namespace XorManulKey
 			return res.ToString();
 		}
 
-		List<string> GetSplittedBinaries(string text)
-		{
-			var keyLength = _alphabet.BinaryLength;
-			var keys = new List<string>();
+		//List<string> GetSplittedBinaries(string text)
+		//{
+		//	var keyLength = _alphabet.BinaryLength;
+		//	var keys = new List<string>();
 
-			for (int i = 0; i < text.Length; i += keyLength)
-			{
-				keys.Add(text.Substring(i, keyLength));
-			}
+		//	for (int i = 0; i < text.Length; i += keyLength)
+		//	{
+		//		keys.Add(text.Substring(i, keyLength));
+		//	}
 
-			return keys;
-		}
+		//	return keys;
+		//}
 
-		int[] GetIntsFromBinaries(string text)
-			=> GetSplittedBinaries(text).Select(x => Convert.ToInt32(x, 2)).ToArray();
+		//int[] GetIntsFromBinaries(string text)
+		//	=> GetSplittedBinaries(text).Select(x => Convert.ToInt32(x, 2)).ToArray();
 
 	}
 }

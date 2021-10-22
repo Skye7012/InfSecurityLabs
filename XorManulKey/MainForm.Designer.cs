@@ -34,6 +34,10 @@ namespace XorManulKey
 			this.plainTextBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.decryptedPlainTextTbx = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.decryptedGammaTbx = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
 			this.gammaTbx = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.binaryKeyTbx = new System.Windows.Forms.TextBox();
@@ -43,12 +47,11 @@ namespace XorManulKey
 			this.binaryPlainTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.decryptedPlainTextToBinaryBtn = new System.Windows.Forms.Button();
+			this.decryptBtn = new System.Windows.Forms.Button();
 			this.encryptBtn = new System.Windows.Forms.Button();
 			this.keyToBinaryBtn = new System.Windows.Forms.Button();
 			this.plainToBinaryBtn = new System.Windows.Forms.Button();
-			this.decryptedGammaTbx = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.decryptBtn = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -74,6 +77,8 @@ namespace XorManulKey
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.decryptedPlainTextTbx);
+			this.panel1.Controls.Add(this.label7);
 			this.panel1.Controls.Add(this.decryptedGammaTbx);
 			this.panel1.Controls.Add(this.label6);
 			this.panel1.Controls.Add(this.gammaTbx);
@@ -90,6 +95,48 @@ namespace XorManulKey
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(400, 393);
 			this.panel1.TabIndex = 17;
+			// 
+			// decryptedPlainTextTbx
+			// 
+			this.decryptedPlainTextTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.decryptedPlainTextTbx.Location = new System.Drawing.Point(0, 321);
+			this.decryptedPlainTextTbx.Name = "decryptedPlainTextTbx";
+			this.decryptedPlainTextTbx.ReadOnly = true;
+			this.decryptedPlainTextTbx.Size = new System.Drawing.Size(400, 29);
+			this.decryptedPlainTextTbx.TabIndex = 21;
+			this.decryptedPlainTextTbx.Tag = "Original Text";
+			// 
+			// label7
+			// 
+			this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label7.Location = new System.Drawing.Point(0, 300);
+			this.label7.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(400, 21);
+			this.label7.TabIndex = 22;
+			this.label7.Text = "Расшифрованный исходный текст";
+			this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// decryptedGammaTbx
+			// 
+			this.decryptedGammaTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.decryptedGammaTbx.Location = new System.Drawing.Point(0, 271);
+			this.decryptedGammaTbx.Name = "decryptedGammaTbx";
+			this.decryptedGammaTbx.ReadOnly = true;
+			this.decryptedGammaTbx.Size = new System.Drawing.Size(400, 29);
+			this.decryptedGammaTbx.TabIndex = 19;
+			this.decryptedGammaTbx.Tag = "Original Text";
+			// 
+			// label6
+			// 
+			this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label6.Location = new System.Drawing.Point(0, 250);
+			this.label6.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(400, 21);
+			this.label6.TabIndex = 20;
+			this.label6.Text = "Расшифрованная гамма";
+			this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// gammaTbx
 			// 
@@ -172,6 +219,7 @@ namespace XorManulKey
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.decryptedPlainTextToBinaryBtn);
 			this.panel2.Controls.Add(this.decryptBtn);
 			this.panel2.Controls.Add(this.encryptBtn);
 			this.panel2.Controls.Add(this.keyToBinaryBtn);
@@ -180,6 +228,26 @@ namespace XorManulKey
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(194, 393);
 			this.panel2.TabIndex = 18;
+			// 
+			// decryptedPlainTextToBinaryBtn
+			// 
+			this.decryptedPlainTextToBinaryBtn.Location = new System.Drawing.Point(0, 321);
+			this.decryptedPlainTextToBinaryBtn.Name = "decryptedPlainTextToBinaryBtn";
+			this.decryptedPlainTextToBinaryBtn.Size = new System.Drawing.Size(194, 30);
+			this.decryptedPlainTextToBinaryBtn.TabIndex = 4;
+			this.decryptedPlainTextToBinaryBtn.Text = "Перевести";
+			this.decryptedPlainTextToBinaryBtn.UseVisualStyleBackColor = true;
+			this.decryptedPlainTextToBinaryBtn.Click += new System.EventHandler(this.decryptedPlainTextToBinaryBtn_Click);
+			// 
+			// decryptBtn
+			// 
+			this.decryptBtn.Location = new System.Drawing.Point(0, 271);
+			this.decryptBtn.Name = "decryptBtn";
+			this.decryptBtn.Size = new System.Drawing.Size(194, 30);
+			this.decryptBtn.TabIndex = 3;
+			this.decryptBtn.Text = "Расшифровать";
+			this.decryptBtn.UseVisualStyleBackColor = true;
+			this.decryptBtn.Click += new System.EventHandler(this.decryptBtn_Click);
 			// 
 			// encryptBtn
 			// 
@@ -210,37 +278,6 @@ namespace XorManulKey
 			this.plainToBinaryBtn.Text = "Перевести";
 			this.plainToBinaryBtn.UseVisualStyleBackColor = true;
 			this.plainToBinaryBtn.Click += new System.EventHandler(this.plainToBinaryBtn_Click);
-			// 
-			// decryptedGammaTbx
-			// 
-			this.decryptedGammaTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.decryptedGammaTbx.Location = new System.Drawing.Point(0, 271);
-			this.decryptedGammaTbx.Name = "decryptedGammaTbx";
-			this.decryptedGammaTbx.ReadOnly = true;
-			this.decryptedGammaTbx.Size = new System.Drawing.Size(400, 29);
-			this.decryptedGammaTbx.TabIndex = 19;
-			this.decryptedGammaTbx.Tag = "Original Text";
-			// 
-			// label6
-			// 
-			this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label6.Location = new System.Drawing.Point(0, 250);
-			this.label6.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(400, 21);
-			this.label6.TabIndex = 20;
-			this.label6.Text = "Расшифрованная гамма";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			// 
-			// decryptBtn
-			// 
-			this.decryptBtn.Location = new System.Drawing.Point(0, 271);
-			this.decryptBtn.Name = "decryptBtn";
-			this.decryptBtn.Size = new System.Drawing.Size(194, 30);
-			this.decryptBtn.TabIndex = 3;
-			this.decryptBtn.Text = "Расшифровать";
-			this.decryptBtn.UseVisualStyleBackColor = true;
-			this.decryptBtn.Click += new System.EventHandler(this.decryptBtn_Click);
 			// 
 			// MainForm
 			// 
@@ -279,6 +316,9 @@ namespace XorManulKey
 		private TextBox decryptedGammaTbx;
 		private Label label6;
 		private Button decryptBtn;
+		private TextBox decryptedPlainTextTbx;
+		private Label label7;
+		private Button decryptedPlainTextToBinaryBtn;
 	}
 }
 

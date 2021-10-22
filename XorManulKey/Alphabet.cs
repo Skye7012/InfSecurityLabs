@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -43,11 +44,24 @@ namespace XorManulKey
 
 		public string ConvertFromBinary(string bin)
 		{
-
-			return "asd";
+			var indexes = GetIntsFromBinaries(bin);
+			return String.Join("", indexes.Select(x => CurrentAlphabet[x]));
 		}
 
-		public static Alphabet CreateTestAlphabet()
-			=> new Alphabet() { CurrentAlphabet = "01234" };//del
+		public List<string> GetSplittedBinaries(string bin)
+		{
+			var keyLength = BinaryLength;
+			var keys = new List<string>();
+
+			for (int i = 0; i < bin.Length; i += keyLength)
+			{
+				keys.Add(bin.Substring(i, keyLength));
+			}
+
+			return keys;
+		}
+
+		public int[] GetIntsFromBinaries(string bin)//что-то где-то убрать
+			=> GetSplittedBinaries(bin).Select(x => Convert.ToInt32(x, 2)).ToArray();
 	}
 }
