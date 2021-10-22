@@ -16,39 +16,55 @@ namespace XorManulKey
 		public MainForm()
 		{
 			InitializeComponent();
-			_plainTextControls = new Control[] { plainTextBox, binaryPlainTextBox, plainToBinaryBtn };
+			_plainTextControls = new Control[] { plainTextBox, binaryPlainTextBox, plainToBinaryBtn }; //renameToGroup
 			_keyControls = new Control[] { keyTbx, binaryKeyTbx, keyToBinaryBtn };
 			_controls = new List<Control[]> { _plainTextControls, _keyControls };
 
-			originalTextBox.TextChanged += new EventHandler(IsValidAccordingAlphabet);
+			//originalTextBox.TextChanged += new EventHandler(IsValidAccordingAlphabet);
 		}
 
 		private void plainToBinaryBtn_Click(object sender, EventArgs e)
 		{
+			if (!IsValidAccordingAlphabet(plainTextBox.Text))
+			{
+				MessageBox.Show("Введите правильные символы, которые входят в алфавит");
+				return;
+			}
 			binaryPlainTextBox.Text = _alphabet.ConvertToBinary(plainTextBox.Text);
+			DisableControlGroup(_plainTextControls);
 		}
 
 		private void keyToBinaryBtn_Click(object sender, EventArgs e)
 		{
-			if (!IsValidAccordingAlphabet(binaryKeyTbx.Text))
+			if (!IsValidAccordingAlphabet(keyTbx.Text))
+			{
+				MessageBox.Show("Введите правильные символы, которые входят в алфавит");
 				return;
+			}
 			binaryKeyTbx.Text = _alphabet.ConvertToBinary(keyTbx.Text);
+			DisableControlGroup(_keyControls);
 		}
 		private bool IsValidAccordingAlphabet(string text)
 		{
-			var b = _alphabet.IsValid(text);
-			if(!b)
-				MessageBox.Show("Введите правильные символы, которые входят в алфавит");
-			return b;
+			return _alphabet.IsValid(text);
+			//if(!b)
+			//	MessageBox.Show("Введите правильные символы, которые входят в алфавит");
+			//return b;
 		}
-		private void IsValidAccordingAlphabet(object sender, EventArgs e)
-		{
-			var button = (Button)sender;
 
-			var controls = _controls.Single(x => x[0] == button);
+		void DisableControlGroup(Control[] controls)
+			=> controls.ToList().
+				ForEach(x => x.Enabled = false);
 
-			if(IsValidAccordingAlphabet(controls[0].Text))
-		}
+		//private void IsValidAccordingAlphabet(object sender, EventArgs e)
+		//{
+		//	var button = (Button)sender;
+
+		//	var controls = _controls.Single(x => x[0] == button);
+
+		//	if(IsValidAccordingAlphabet(controls[0].Text))
+
+		//}
 
 		//private bool AreControlsValid(RichTextBox richTextBox)
 		//{
