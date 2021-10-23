@@ -36,6 +36,9 @@ namespace XorManulKey
 			comboBox.SelectedItem = comboBox.Items[0];
 			comboBox.Enabled = true;
 		}
+
+		#region ServiceMethods
+
 		void Restart()
 		{
 			foreach (var group in ControlGroups)
@@ -52,6 +55,90 @@ namespace XorManulKey
 			ControlGroups.ForEach(x => DisableControlGroup(x));
 			EnableControlGroup(ControlGroups[0]);
 			comboBox.Enabled = true;
+		}
+
+		private bool IsValidAccordingAlphabet(string text)
+		{
+			return _alphabet.IsValid(text);
+		}
+
+		void UpdateControlGroups()
+		{
+			ControlGroups = new List<List<Control>>
+				{
+					_plainTextControls,
+					_keyControls,
+					_encryptControls,
+					_decryptControls,
+					_decryptPlainTextControls,
+				};
+		}
+
+#endregion
+
+		#region Navigation
+
+		void DisableControlGroup(List<Control> controls)
+			=> controls.ToList().
+				ForEach(x => x.Enabled = false);
+
+		void EnableControlGroup(List<Control> controls)
+			=> controls.ToList().
+				ForEach(x => x.Enabled = true);
+
+		void NextControlGroup(List<Control> controls)
+		{
+			if (controls == ControlGroups.Last())
+				return;
+
+			int index = ControlGroups.FindIndex(x => x == controls);
+
+			DisableControlGroup(ControlGroups[index]);
+			EnableControlGroup(ControlGroups[index + 1]);
+		}
+
+#endregion
+
+		#region Controls
+
+		private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (_prevComboBoxItem == comboBox.SelectedItem)
+				return;
+
+			_prevComboBoxItem = comboBox.SelectedItem;
+			
+			if (comboBox.SelectedItem == comboBox.Items[1])
+			{
+				binaryKeyLabel.Text = "Ключ";
+				generateKeyBtn.Text = "Сгенирировать ключ";
+				generateKeyBtn.Enabled = true;
+				keyConvertLabel.Hide();
+				keyToBinaryBtn.Hide();
+				keyLabel.Hide();
+				keyTbx.Hide();
+				_keyControls.Add(generateKeyBtn);
+				Restart();
+			}
+			else
+			{
+				binaryKeyLabel.Text = "Бинарное представление ключа";
+				generateKeyBtn.Text = "";
+				generateKeyBtn.Enabled = false;
+				keyConvertLabel.Show();
+				keyToBinaryBtn.Show();
+				keyLabel.Show();
+				keyTbx.Show();
+				_keyControls.Remove(generateKeyBtn);
+				Restart();
+			}
+		}
+
+		private void generateKeyBtn_Click(object sender, EventArgs e)
+		{
+			binaryKeyTbx.Text = _cryptographer.GenerateKey(binaryPlainTextBox.Text);
+
+			NextControlGroup(_keyControls);
 		}
 
 		private void plainToBinaryBtn_Click(object sender, EventArgs e)
@@ -94,96 +181,11 @@ namespace XorManulKey
 			NextControlGroup(_decryptControls);
 		}
 
-		private bool IsValidAccordingAlphabet(string text)
-		{
-			return _alphabet.IsValid(text);
-		}
-
-		void UpdateControlGroups()
-		{
-			ControlGroups = new List<List<Control>>
-				{
-					_plainTextControls,
-					_keyControls,
-					_encryptControls,
-					_decryptControls,
-					_decryptPlainTextControls,
-				};
-		}
-
-		void DisableControlGroup(List<Control> controls)
-			=> controls.ToList().
-				ForEach(x => x.Enabled = false);
-
-		void EnableControlGroup(List<Control> controls)
-			=> controls.ToList().
-				ForEach(x => x.Enabled = true);
-
-		void NextControlGroup(List<Control> controls)
-		{
-			if (controls == ControlGroups.Last())
-				return;
-
-			int index = ControlGroups.FindIndex(x => x == controls);
-
-			DisableControlGroup(ControlGroups[index]);
-			EnableControlGroup(ControlGroups[index + 1]);
-		}
-		private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (_prevComboBoxItem == comboBox.SelectedItem)
-				return;
-
-			_prevComboBoxItem = comboBox.SelectedItem;
-			
-			if (comboBox.SelectedItem == comboBox.Items[1])
-			{
-				binaryKeyLabel.Text = "Ключ";
-				generateKeyBtn.Text = "Сгенирировать ключ";
-				generateKeyBtn.Enabled = true;
-				keyConvertLabel.Hide();
-				keyToBinaryBtn.Hide();
-				keyLabel.Hide();
-				keyTbx.Hide();
-				_keyControls.Add(generateKeyBtn);
-				Restart();
-				comboBox.Enabled = false;
-			}
-			else
-			{
-				binaryKeyLabel.Text = "Бинарное представление ключа";
-				generateKeyBtn.Text = "";
-				generateKeyBtn.Enabled = false;
-				keyConvertLabel.Show();
-				keyToBinaryBtn.Show();
-				keyLabel.Show();
-				keyTbx.Show();
-				_keyControls.Remove(generateKeyBtn);
-				Restart();
-				comboBox.Enabled = false;
-			}
-		}
-
-		private void generateKeyBtn_Click(object sender, EventArgs e)
-		{
-			int length = binaryPlainTextBox.Text.Length;
-
-			string res = "";
-
-			res += new string('0', length / 2);
-			res += new string('1', length / 2);
-
-			var rnd = new Random();
-			res = String.Concat(res.OrderBy(x => rnd.Next()));
-
-			binaryKeyTbx.Text = res;
-
-			NextControlGroup(_keyControls);
-		}
-
 		private void restartBtn_Click(object sender, EventArgs e)
 		{
 			Restart();
 		}
+
+		#endregion
 	}
 }

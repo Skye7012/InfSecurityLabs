@@ -46,5 +46,20 @@ namespace XorManulKey
 
 			return res.ToString();
 		}
+
+		public string GenerateKey(string binText)
+		{
+			int length = binText.Length;
+
+			string res = "";
+
+			res += new string('0', length / 2);
+			res += new string('1', length / 2);
+
+			var rnd = new Random();
+			res = String.Concat(res.OrderBy(x => rnd.Next()));
+
+			return res;
+		}
 	}
 }
