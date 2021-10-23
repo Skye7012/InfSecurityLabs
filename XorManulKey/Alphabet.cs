@@ -63,5 +63,10 @@ namespace XorManulKey
 
 		public int[] GetIntsFromBinaries(string bin)
 			=> GetSplittedBinaries(bin).Select(x => Convert.ToInt32(x, 2)).ToArray();
+
+		//public string GenerateKey()
+		//{
+
+		//}
 	}
 }

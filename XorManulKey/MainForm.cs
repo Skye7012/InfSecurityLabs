@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace XorManulKey
@@ -9,41 +10,35 @@ namespace XorManulKey
 	{
 		private readonly Alphabet _alphabet = new Alphabet();
 		private readonly XorCipher _cryptographer;
-		private readonly Control[] _plainTextControls;
-		private readonly Control[] _keyControls;
-		private readonly Control[] _encryptControls;
-		private readonly Control[] _decryptControls;
-		private readonly Control[] _decryptPlainTextControls;
-		private readonly List<Control[]> _controls;
+		private readonly List<Control> _plainTextControls;
+		private readonly List<Control> _keyControls;
+		private readonly List<Control> _encryptControls;
+		private readonly List<Control> _decryptControls;
+		private readonly List<Control> _decryptPlainTextControls;
+		private object _prevComboBoxItem;
+		public List<List<Control>> ControlGroups { get; protected set; }
 
 		public MainForm()
 		{
 			InitializeComponent();
 			_cryptographer = new XorCipher(_alphabet);
-			_plainTextControls = new Control[] { plainTextBox, binaryPlainTextBox, plainToBinaryBtn }; //renameToGroup
-			_keyControls = new Control[] { keyTbx, binaryKeyTbx, keyToBinaryBtn };
-			_encryptControls = new Control[] { gammaTbx, encryptBtn };
-			_decryptControls = new Control[] { decryptedGammaTbx, decryptBtn };
-			_decryptPlainTextControls = new Control[] { decryptedPlainTextTbx, decryptedPlainTextToBinaryBtn };
-			
-			_controls = new List<Control[]> 
-				{ 
-					_plainTextControls, 
-					_keyControls, 
-					_encryptControls, 
-					_decryptControls,
-					_decryptPlainTextControls,
-				};
+			_plainTextControls = new List<Control> { plainTextBox, binaryPlainTextBox, plainToBinaryBtn }; //renameToGroup
+			_keyControls = new List<Control> { keyTbx, binaryKeyTbx, keyToBinaryBtn };
+			_encryptControls = new List<Control> { gammaTbx, encryptBtn };
+			_decryptControls = new List<Control> { decryptedGammaTbx, decryptBtn };
+			_decryptPlainTextControls = new List<Control> { decryptedPlainTextTbx, decryptedPlainTextToBinaryBtn };
 
-			_controls.Skip(1).ToList()
+			UpdateControlGroups();
+
+			ControlGroups.Skip(1).ToList()
 				.ForEach(x => DisableControlGroup(x));
 
 			comboBox.SelectedItem = comboBox.Items[0];
+			comboBox.Enabled = true;
 		}
-
-		private void restartBtn_Click(object sender, EventArgs e)
+		void Restart()
 		{
-			foreach(var group in _controls)
+			foreach (var group in ControlGroups)
 			{
 				foreach (var control in group)
 				{
@@ -54,8 +49,9 @@ namespace XorManulKey
 					}
 				}
 			}
-			_controls.ForEach(x => DisableControlGroup(x));
-			EnableControlGroup(_controls[0]);
+			ControlGroups.ForEach(x => DisableControlGroup(x));
+			EnableControlGroup(ControlGroups[0]);
+			comboBox.Enabled = true;
 		}
 
 		private void plainToBinaryBtn_Click(object sender, EventArgs e)
@@ -103,49 +99,91 @@ namespace XorManulKey
 			return _alphabet.IsValid(text);
 		}
 
-		void DisableControlGroup(Control[] controls)
+		void UpdateControlGroups()
+		{
+			ControlGroups = new List<List<Control>>
+				{
+					_plainTextControls,
+					_keyControls,
+					_encryptControls,
+					_decryptControls,
+					_decryptPlainTextControls,
+				};
+		}
+
+		void DisableControlGroup(List<Control> controls)
 			=> controls.ToList().
 				ForEach(x => x.Enabled = false);
 
-		void EnableControlGroup(Control[] controls)
+		void EnableControlGroup(List<Control> controls)
 			=> controls.ToList().
 				ForEach(x => x.Enabled = true);
 
-		void NextControlGroup(Control[] controls)
+		void NextControlGroup(List<Control> controls)
 		{
-			if (controls == _controls.Last())
+			if (controls == ControlGroups.Last())
 				return;
 
-			int index = _controls.FindIndex(x => x == controls);
+			int index = ControlGroups.FindIndex(x => x == controls);
 
-			DisableControlGroup(_controls[index]);
-			EnableControlGroup(_controls[index + 1]);
+			DisableControlGroup(ControlGroups[index]);
+			EnableControlGroup(ControlGroups[index + 1]);
 		}
 		private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{			
+		{
+			if (_prevComboBoxItem == comboBox.SelectedItem)
+				return;
+
+			_prevComboBoxItem = comboBox.SelectedItem;
+			
 			if (comboBox.SelectedItem == comboBox.Items[1])
 			{
+				binaryKeyLabel.Text = "Ключ";
 				generateKeyBtn.Text = "Сгенирировать ключ";
 				generateKeyBtn.Enabled = true;
 				keyConvertLabel.Hide();
 				keyToBinaryBtn.Hide();
 				keyLabel.Hide();
 				keyTbx.Hide();
+				_keyControls.Add(generateKeyBtn);
+				Restart();
+				comboBox.Enabled = false;
 			}
 			else
 			{
+				binaryKeyLabel.Text = "Бинарное представление ключа";
 				generateKeyBtn.Text = "";
 				generateKeyBtn.Enabled = false;
 				keyConvertLabel.Show();
 				keyToBinaryBtn.Show();
 				keyLabel.Show();
 				keyTbx.Show();
+				_keyControls.Remove(generateKeyBtn);
+				Restart();
+				comboBox.Enabled = false;
 			}
 		}
 
 		private void generateKeyBtn_Click(object sender, EventArgs e)
 		{
-			
+			int length = binaryPlainTextBox.Text.Length;
+
+			string res = "";
+
+			res += new string('0', length / 2);
+			res += new string('1', length / 2);
+
+			var rnd = new Random();
+			res = String.Concat(res.OrderBy(x => rnd.Next()));
+
+			binaryKeyTbx.Text = res;
+
+			NextControlGroup(_keyControls);
+		}
+
+		private void restartBtn_Click(object sender, EventArgs e)
+		{
+			Restart();
 		}
 	}
 }

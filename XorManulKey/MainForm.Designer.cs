@@ -41,7 +41,7 @@ namespace XorManulKey
 			this.gammaTbx = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.binaryKeyTbx = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.binaryKeyLabel = new System.Windows.Forms.Label();
 			this.keyTbx = new System.Windows.Forms.TextBox();
 			this.keyLabel = new System.Windows.Forms.Label();
 			this.binaryPlainTextBox = new System.Windows.Forms.TextBox();
@@ -94,7 +94,7 @@ namespace XorManulKey
 			this.panel1.Controls.Add(this.gammaTbx);
 			this.panel1.Controls.Add(this.label5);
 			this.panel1.Controls.Add(this.binaryKeyTbx);
-			this.panel1.Controls.Add(this.label3);
+			this.panel1.Controls.Add(this.binaryKeyLabel);
 			this.panel1.Controls.Add(this.keyTbx);
 			this.panel1.Controls.Add(this.keyLabel);
 			this.panel1.Controls.Add(this.binaryPlainTextBox);
@@ -178,15 +178,15 @@ namespace XorManulKey
 			this.binaryKeyTbx.TabIndex = 15;
 			this.binaryKeyTbx.Tag = "Original Text";
 			// 
-			// label3
+			// binaryKeyLabel
 			// 
-			this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label3.Location = new System.Drawing.Point(0, 150);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(400, 21);
-			this.label3.TabIndex = 16;
-			this.label3.Text = "Бинарное представление ключа";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.binaryKeyLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.binaryKeyLabel.Location = new System.Drawing.Point(0, 150);
+			this.binaryKeyLabel.Name = "binaryKeyLabel";
+			this.binaryKeyLabel.Size = new System.Drawing.Size(400, 21);
+			this.binaryKeyLabel.TabIndex = 16;
+			this.binaryKeyLabel.Text = "Бинарное представление ключа";
+			this.binaryKeyLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// keyTbx
 			// 
@@ -430,7 +430,7 @@ namespace XorManulKey
 		private Panel panel2;
 		private Button plainToBinaryBtn;
 		private TextBox binaryKeyTbx;
-		private Label label3;
+		private Label binaryKeyLabel;
 		private TextBox keyTbx;
 		private Label keyLabel;
 		private Button keyToBinaryBtn;
