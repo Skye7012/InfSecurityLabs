@@ -54,7 +54,7 @@ namespace XorManulKey
 			this.encryptBtn = new System.Windows.Forms.Button();
 			this.label11 = new System.Windows.Forms.Label();
 			this.keyToBinaryBtn = new System.Windows.Forms.Button();
-			this.label10 = new System.Windows.Forms.Label();
+			this.keyConvertLabel = new System.Windows.Forms.Label();
 			this.generateKeyBtn = new System.Windows.Forms.Button();
 			this.genLabel = new System.Windows.Forms.Label();
 			this.plainToBinaryBtn = new System.Windows.Forms.Button();
@@ -236,7 +236,7 @@ namespace XorManulKey
 			this.panel2.Controls.Add(this.encryptBtn);
 			this.panel2.Controls.Add(this.label11);
 			this.panel2.Controls.Add(this.keyToBinaryBtn);
-			this.panel2.Controls.Add(this.label10);
+			this.panel2.Controls.Add(this.keyConvertLabel);
 			this.panel2.Controls.Add(this.generateKeyBtn);
 			this.panel2.Controls.Add(this.genLabel);
 			this.panel2.Controls.Add(this.plainToBinaryBtn);
@@ -319,25 +319,24 @@ namespace XorManulKey
 			this.keyToBinaryBtn.UseVisualStyleBackColor = true;
 			this.keyToBinaryBtn.Click += new System.EventHandler(this.keyToBinaryBtn_Click);
 			// 
-			// label10
+			// keyConvertLabel
 			// 
-			this.label10.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label10.Location = new System.Drawing.Point(0, 150);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(194, 20);
-			this.label10.TabIndex = 21;
-			this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.keyConvertLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.keyConvertLabel.Location = new System.Drawing.Point(0, 150);
+			this.keyConvertLabel.Name = "keyConvertLabel";
+			this.keyConvertLabel.Size = new System.Drawing.Size(194, 20);
+			this.keyConvertLabel.TabIndex = 21;
+			this.keyConvertLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// generateKeyBtn
 			// 
 			this.generateKeyBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.generateKeyBtn.Enabled = false;
 			this.generateKeyBtn.Location = new System.Drawing.Point(0, 120);
 			this.generateKeyBtn.Name = "generateKeyBtn";
 			this.generateKeyBtn.Size = new System.Drawing.Size(194, 30);
 			this.generateKeyBtn.TabIndex = 5;
-			this.generateKeyBtn.Text = "Сгенерировать ключ";
 			this.generateKeyBtn.UseVisualStyleBackColor = true;
-			this.generateKeyBtn.Visible = false;
 			this.generateKeyBtn.Click += new System.EventHandler(this.generateKeyBtn_Click);
 			// 
 			// genLabel
@@ -348,7 +347,6 @@ namespace XorManulKey
 			this.genLabel.Size = new System.Drawing.Size(194, 20);
 			this.genLabel.TabIndex = 15;
 			this.genLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.genLabel.Visible = false;
 			// 
 			// plainToBinaryBtn
 			// 
@@ -376,8 +374,8 @@ namespace XorManulKey
 			this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox.FormattingEnabled = true;
 			this.comboBox.Items.AddRange(new object[] {
-            "ManualKey",
-            "GenerateKey"});
+            "Ручной ввод",
+            "Автоматический ввод"});
 			this.comboBox.Location = new System.Drawing.Point(0, 21);
 			this.comboBox.Name = "comboBox";
 			this.comboBox.Size = new System.Drawing.Size(194, 29);
@@ -452,7 +450,7 @@ namespace XorManulKey
 		private Label label9;
 		private Label genLabel;
 		private Label label11;
-		private Label label10;
+		private Label keyConvertLabel;
 		private Label label12;
 		private Label label13;
 	}

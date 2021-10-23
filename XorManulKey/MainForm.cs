@@ -122,13 +122,24 @@ namespace XorManulKey
 			EnableControlGroup(_controls[index + 1]);
 		}
 		private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
+		{			
 			if (comboBox.SelectedItem == comboBox.Items[1])
 			{
-				generateKeyBtn.Show();
-				genLabel.Show();
+				generateKeyBtn.Text = "Сгенирировать ключ";
+				generateKeyBtn.Enabled = true;
+				keyConvertLabel.Hide();
+				keyToBinaryBtn.Hide();
 				keyLabel.Hide();
 				keyTbx.Hide();
+			}
+			else
+			{
+				generateKeyBtn.Text = "";
+				generateKeyBtn.Enabled = false;
+				keyConvertLabel.Show();
+				keyToBinaryBtn.Show();
+				keyLabel.Show();
+				keyTbx.Show();
 			}
 		}
 
