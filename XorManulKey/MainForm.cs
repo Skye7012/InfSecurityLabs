@@ -22,7 +22,7 @@ namespace XorManulKey
 		{
 			InitializeComponent();
 			_cryptographer = new XorCipher(_alphabet);
-			_plainTextControls = new List<Control> { plainTextBox, binaryPlainTextBox, plainToBinaryBtn }; //renameToGroup
+			_plainTextControls = new List<Control> { plainTbx, binaryPlainTbx, plainToBinaryBtn }; 
 			_keyControls = new List<Control> { keyTbx, binaryKeyTbx, keyToBinaryBtn };
 			_encryptControls = new List<Control> { gammaTbx, encryptBtn };
 			_decryptControls = new List<Control> { decryptedGammaTbx, decryptBtn };
@@ -34,7 +34,6 @@ namespace XorManulKey
 				.ForEach(x => DisableControlGroup(x));
 
 			comboBox.SelectedItem = comboBox.Items[0];
-			comboBox.Enabled = true;
 		}
 
 		#region ServiceMethods
@@ -136,19 +135,19 @@ namespace XorManulKey
 
 		private void generateKeyBtn_Click(object sender, EventArgs e)
 		{
-			binaryKeyTbx.Text = _cryptographer.GenerateKey(binaryPlainTextBox.Text);
+			binaryKeyTbx.Text = _cryptographer.GenerateKey(binaryPlainTbx.Text);
 
 			NextControlGroup(_keyControls);
 		}
 
 		private void plainToBinaryBtn_Click(object sender, EventArgs e)
 		{
-			if (!IsValidAccordingAlphabet(plainTextBox.Text))
+			if (!IsValidAccordingAlphabet(plainTbx.Text))
 			{
 				MessageBox.Show("Введите правильные символы, которые входят в алфавит");
 				return;
 			}
-			binaryPlainTextBox.Text = _alphabet.ConvertToBinary(plainTextBox.Text);
+			binaryPlainTbx.Text = _alphabet.ConvertToBinary(plainTbx.Text);
 			NextControlGroup(_plainTextControls);
 		}
 
@@ -171,7 +170,7 @@ namespace XorManulKey
 
 		private void encryptBtn_Click(object sender, EventArgs e)
 		{
-			gammaTbx.Text = _cryptographer.Encrypt(binaryPlainTextBox.Text, binaryKeyTbx.Text);
+			gammaTbx.Text = _cryptographer.Encrypt(binaryPlainTbx.Text, binaryKeyTbx.Text);
 			NextControlGroup(_encryptControls);
 		}
 

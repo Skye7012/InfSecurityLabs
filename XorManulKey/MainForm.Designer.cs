@@ -31,7 +31,7 @@ namespace XorManulKey
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.plainTextBox = new System.Windows.Forms.TextBox();
+			this.plainTbx = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.decryptedPlainTextTbx = new System.Windows.Forms.TextBox();
@@ -44,7 +44,7 @@ namespace XorManulKey
 			this.binaryKeyLabel = new System.Windows.Forms.Label();
 			this.keyTbx = new System.Windows.Forms.TextBox();
 			this.keyLabel = new System.Windows.Forms.Label();
-			this.binaryPlainTextBox = new System.Windows.Forms.TextBox();
+			this.binaryPlainTbx = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.decryptedPlainTextToBinaryBtn = new System.Windows.Forms.Button();
@@ -68,12 +68,12 @@ namespace XorManulKey
 			// 
 			// plainTextBox
 			// 
-			this.plainTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-			this.plainTextBox.Location = new System.Drawing.Point(0, 21);
-			this.plainTextBox.Name = "plainTextBox";
-			this.plainTextBox.Size = new System.Drawing.Size(400, 29);
-			this.plainTextBox.TabIndex = 4;
-			this.plainTextBox.Tag = "";
+			this.plainTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.plainTbx.Location = new System.Drawing.Point(0, 21);
+			this.plainTbx.Name = "plainTextBox";
+			this.plainTbx.Size = new System.Drawing.Size(400, 29);
+			this.plainTbx.TabIndex = 4;
+			this.plainTbx.Tag = "";
 			// 
 			// label1
 			// 
@@ -97,9 +97,9 @@ namespace XorManulKey
 			this.panel1.Controls.Add(this.binaryKeyLabel);
 			this.panel1.Controls.Add(this.keyTbx);
 			this.panel1.Controls.Add(this.keyLabel);
-			this.panel1.Controls.Add(this.binaryPlainTextBox);
+			this.panel1.Controls.Add(this.binaryPlainTbx);
 			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.plainTextBox);
+			this.panel1.Controls.Add(this.plainTbx);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Location = new System.Drawing.Point(12, 12);
 			this.panel1.Name = "panel1";
@@ -209,13 +209,13 @@ namespace XorManulKey
 			// 
 			// binaryPlainTextBox
 			// 
-			this.binaryPlainTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-			this.binaryPlainTextBox.Location = new System.Drawing.Point(0, 71);
-			this.binaryPlainTextBox.Name = "binaryPlainTextBox";
-			this.binaryPlainTextBox.ReadOnly = true;
-			this.binaryPlainTextBox.Size = new System.Drawing.Size(400, 29);
-			this.binaryPlainTextBox.TabIndex = 11;
-			this.binaryPlainTextBox.Tag = "Original Text";
+			this.binaryPlainTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.binaryPlainTbx.Location = new System.Drawing.Point(0, 71);
+			this.binaryPlainTbx.Name = "binaryPlainTextBox";
+			this.binaryPlainTbx.ReadOnly = true;
+			this.binaryPlainTbx.Size = new System.Drawing.Size(400, 29);
+			this.binaryPlainTbx.TabIndex = 11;
+			this.binaryPlainTbx.Tag = "Original Text";
 			// 
 			// label2
 			// 
@@ -422,10 +422,10 @@ namespace XorManulKey
 		}
 
 		#endregion
-		private System.Windows.Forms.TextBox plainTextBox;
+		private System.Windows.Forms.TextBox plainTbx;
 		private System.Windows.Forms.Label label1;
 		private Panel panel1;
-		private TextBox binaryPlainTextBox;
+		private TextBox binaryPlainTbx;
 		private Label label2;
 		private Panel panel2;
 		private Button plainToBinaryBtn;
