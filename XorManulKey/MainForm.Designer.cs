@@ -47,14 +47,20 @@ namespace XorManulKey
 			this.binaryPlainTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.label8 = new System.Windows.Forms.Label();
-			this.comboBox = new System.Windows.Forms.ComboBox();
-			this.generateKeyBtn = new System.Windows.Forms.Button();
 			this.decryptedPlainTextToBinaryBtn = new System.Windows.Forms.Button();
+			this.label13 = new System.Windows.Forms.Label();
 			this.decryptBtn = new System.Windows.Forms.Button();
+			this.label12 = new System.Windows.Forms.Label();
 			this.encryptBtn = new System.Windows.Forms.Button();
+			this.label11 = new System.Windows.Forms.Label();
 			this.keyToBinaryBtn = new System.Windows.Forms.Button();
+			this.label10 = new System.Windows.Forms.Label();
+			this.generateKeyBtn = new System.Windows.Forms.Button();
+			this.genLabel = new System.Windows.Forms.Label();
 			this.plainToBinaryBtn = new System.Windows.Forms.Button();
+			this.label9 = new System.Windows.Forms.Label();
+			this.comboBox = new System.Windows.Forms.ComboBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.restartBtn = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -223,18 +229,160 @@ namespace XorManulKey
 			// 
 			// panel2
 			// 
-			this.panel2.Controls.Add(this.label8);
-			this.panel2.Controls.Add(this.comboBox);
-			this.panel2.Controls.Add(this.generateKeyBtn);
 			this.panel2.Controls.Add(this.decryptedPlainTextToBinaryBtn);
+			this.panel2.Controls.Add(this.label13);
 			this.panel2.Controls.Add(this.decryptBtn);
+			this.panel2.Controls.Add(this.label12);
 			this.panel2.Controls.Add(this.encryptBtn);
+			this.panel2.Controls.Add(this.label11);
 			this.panel2.Controls.Add(this.keyToBinaryBtn);
+			this.panel2.Controls.Add(this.label10);
+			this.panel2.Controls.Add(this.generateKeyBtn);
+			this.panel2.Controls.Add(this.genLabel);
 			this.panel2.Controls.Add(this.plainToBinaryBtn);
+			this.panel2.Controls.Add(this.label9);
+			this.panel2.Controls.Add(this.comboBox);
+			this.panel2.Controls.Add(this.label8);
 			this.panel2.Location = new System.Drawing.Point(418, 12);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(194, 393);
 			this.panel2.TabIndex = 18;
+			// 
+			// decryptedPlainTextToBinaryBtn
+			// 
+			this.decryptedPlainTextToBinaryBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.decryptedPlainTextToBinaryBtn.Location = new System.Drawing.Point(0, 320);
+			this.decryptedPlainTextToBinaryBtn.Name = "decryptedPlainTextToBinaryBtn";
+			this.decryptedPlainTextToBinaryBtn.Size = new System.Drawing.Size(194, 30);
+			this.decryptedPlainTextToBinaryBtn.TabIndex = 4;
+			this.decryptedPlainTextToBinaryBtn.Text = "Перевести";
+			this.decryptedPlainTextToBinaryBtn.UseVisualStyleBackColor = true;
+			this.decryptedPlainTextToBinaryBtn.Click += new System.EventHandler(this.decryptedPlainTextToBinaryBtn_Click);
+			// 
+			// label13
+			// 
+			this.label13.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label13.Location = new System.Drawing.Point(0, 300);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(194, 20);
+			this.label13.TabIndex = 24;
+			this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// decryptBtn
+			// 
+			this.decryptBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.decryptBtn.Location = new System.Drawing.Point(0, 270);
+			this.decryptBtn.Name = "decryptBtn";
+			this.decryptBtn.Size = new System.Drawing.Size(194, 30);
+			this.decryptBtn.TabIndex = 3;
+			this.decryptBtn.Text = "Расшифровать";
+			this.decryptBtn.UseVisualStyleBackColor = true;
+			this.decryptBtn.Click += new System.EventHandler(this.decryptBtn_Click);
+			// 
+			// label12
+			// 
+			this.label12.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label12.Location = new System.Drawing.Point(0, 250);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(194, 20);
+			this.label12.TabIndex = 23;
+			this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// encryptBtn
+			// 
+			this.encryptBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.encryptBtn.Location = new System.Drawing.Point(0, 220);
+			this.encryptBtn.Name = "encryptBtn";
+			this.encryptBtn.Size = new System.Drawing.Size(194, 30);
+			this.encryptBtn.TabIndex = 2;
+			this.encryptBtn.Text = "Зашифровать";
+			this.encryptBtn.UseVisualStyleBackColor = true;
+			this.encryptBtn.Click += new System.EventHandler(this.encryptBtn_Click);
+			// 
+			// label11
+			// 
+			this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label11.Location = new System.Drawing.Point(0, 200);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(194, 20);
+			this.label11.TabIndex = 22;
+			this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// keyToBinaryBtn
+			// 
+			this.keyToBinaryBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.keyToBinaryBtn.Location = new System.Drawing.Point(0, 170);
+			this.keyToBinaryBtn.Name = "keyToBinaryBtn";
+			this.keyToBinaryBtn.Size = new System.Drawing.Size(194, 30);
+			this.keyToBinaryBtn.TabIndex = 1;
+			this.keyToBinaryBtn.Text = "Перевести";
+			this.keyToBinaryBtn.UseVisualStyleBackColor = true;
+			this.keyToBinaryBtn.Click += new System.EventHandler(this.keyToBinaryBtn_Click);
+			// 
+			// label10
+			// 
+			this.label10.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label10.Location = new System.Drawing.Point(0, 150);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(194, 20);
+			this.label10.TabIndex = 21;
+			this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// generateKeyBtn
+			// 
+			this.generateKeyBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.generateKeyBtn.Location = new System.Drawing.Point(0, 120);
+			this.generateKeyBtn.Name = "generateKeyBtn";
+			this.generateKeyBtn.Size = new System.Drawing.Size(194, 30);
+			this.generateKeyBtn.TabIndex = 5;
+			this.generateKeyBtn.Text = "Сгенерировать ключ";
+			this.generateKeyBtn.UseVisualStyleBackColor = true;
+			this.generateKeyBtn.Visible = false;
+			this.generateKeyBtn.Click += new System.EventHandler(this.generateKeyBtn_Click);
+			// 
+			// genLabel
+			// 
+			this.genLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.genLabel.Location = new System.Drawing.Point(0, 100);
+			this.genLabel.Name = "genLabel";
+			this.genLabel.Size = new System.Drawing.Size(194, 20);
+			this.genLabel.TabIndex = 15;
+			this.genLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.genLabel.Visible = false;
+			// 
+			// plainToBinaryBtn
+			// 
+			this.plainToBinaryBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.plainToBinaryBtn.Location = new System.Drawing.Point(0, 70);
+			this.plainToBinaryBtn.Name = "plainToBinaryBtn";
+			this.plainToBinaryBtn.Size = new System.Drawing.Size(194, 30);
+			this.plainToBinaryBtn.TabIndex = 0;
+			this.plainToBinaryBtn.Text = "Перевести";
+			this.plainToBinaryBtn.UseVisualStyleBackColor = true;
+			this.plainToBinaryBtn.Click += new System.EventHandler(this.plainToBinaryBtn_Click);
+			// 
+			// label9
+			// 
+			this.label9.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label9.Location = new System.Drawing.Point(0, 50);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(194, 20);
+			this.label9.TabIndex = 16;
+			this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// comboBox
+			// 
+			this.comboBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox.FormattingEnabled = true;
+			this.comboBox.Items.AddRange(new object[] {
+            "ManualKey",
+            "GenerateKey"});
+			this.comboBox.Location = new System.Drawing.Point(0, 21);
+			this.comboBox.Name = "comboBox";
+			this.comboBox.Size = new System.Drawing.Size(194, 29);
+			this.comboBox.TabIndex = 20;
+			this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
 			// 
 			// label8
 			// 
@@ -245,80 +393,6 @@ namespace XorManulKey
 			this.label8.TabIndex = 11;
 			this.label8.Text = "Режим";
 			this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			// 
-			// comboBox
-			// 
-			this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox.FormattingEnabled = true;
-			this.comboBox.Items.AddRange(new object[] {
-            "ManualKey",
-            "GenerateKey"});
-			this.comboBox.Location = new System.Drawing.Point(4, 21);
-			this.comboBox.Name = "comboBox";
-			this.comboBox.Size = new System.Drawing.Size(187, 29);
-			this.comboBox.TabIndex = 6;
-			this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
-			// 
-			// generateKeyBtn
-			// 
-			this.generateKeyBtn.Location = new System.Drawing.Point(0, 121);
-			this.generateKeyBtn.Name = "generateKeyBtn";
-			this.generateKeyBtn.Size = new System.Drawing.Size(194, 30);
-			this.generateKeyBtn.TabIndex = 5;
-			this.generateKeyBtn.Text = "Сгенерировать ключ";
-			this.generateKeyBtn.UseVisualStyleBackColor = true;
-			this.generateKeyBtn.Visible = false;
-			this.generateKeyBtn.Click += new System.EventHandler(this.generateKeyBtn_Click);
-			// 
-			// decryptedPlainTextToBinaryBtn
-			// 
-			this.decryptedPlainTextToBinaryBtn.Location = new System.Drawing.Point(0, 321);
-			this.decryptedPlainTextToBinaryBtn.Name = "decryptedPlainTextToBinaryBtn";
-			this.decryptedPlainTextToBinaryBtn.Size = new System.Drawing.Size(194, 30);
-			this.decryptedPlainTextToBinaryBtn.TabIndex = 4;
-			this.decryptedPlainTextToBinaryBtn.Text = "Перевести";
-			this.decryptedPlainTextToBinaryBtn.UseVisualStyleBackColor = true;
-			this.decryptedPlainTextToBinaryBtn.Click += new System.EventHandler(this.decryptedPlainTextToBinaryBtn_Click);
-			// 
-			// decryptBtn
-			// 
-			this.decryptBtn.Location = new System.Drawing.Point(0, 271);
-			this.decryptBtn.Name = "decryptBtn";
-			this.decryptBtn.Size = new System.Drawing.Size(194, 30);
-			this.decryptBtn.TabIndex = 3;
-			this.decryptBtn.Text = "Расшифровать";
-			this.decryptBtn.UseVisualStyleBackColor = true;
-			this.decryptBtn.Click += new System.EventHandler(this.decryptBtn_Click);
-			// 
-			// encryptBtn
-			// 
-			this.encryptBtn.Location = new System.Drawing.Point(0, 221);
-			this.encryptBtn.Name = "encryptBtn";
-			this.encryptBtn.Size = new System.Drawing.Size(194, 30);
-			this.encryptBtn.TabIndex = 2;
-			this.encryptBtn.Text = "Зашифровать";
-			this.encryptBtn.UseVisualStyleBackColor = true;
-			this.encryptBtn.Click += new System.EventHandler(this.encryptBtn_Click);
-			// 
-			// keyToBinaryBtn
-			// 
-			this.keyToBinaryBtn.Location = new System.Drawing.Point(0, 171);
-			this.keyToBinaryBtn.Name = "keyToBinaryBtn";
-			this.keyToBinaryBtn.Size = new System.Drawing.Size(194, 30);
-			this.keyToBinaryBtn.TabIndex = 1;
-			this.keyToBinaryBtn.Text = "Перевести";
-			this.keyToBinaryBtn.UseVisualStyleBackColor = true;
-			this.keyToBinaryBtn.Click += new System.EventHandler(this.keyToBinaryBtn_Click);
-			// 
-			// plainToBinaryBtn
-			// 
-			this.plainToBinaryBtn.Location = new System.Drawing.Point(0, 71);
-			this.plainToBinaryBtn.Name = "plainToBinaryBtn";
-			this.plainToBinaryBtn.Size = new System.Drawing.Size(194, 30);
-			this.plainToBinaryBtn.TabIndex = 0;
-			this.plainToBinaryBtn.Text = "Перевести";
-			this.plainToBinaryBtn.UseVisualStyleBackColor = true;
-			this.plainToBinaryBtn.Click += new System.EventHandler(this.plainToBinaryBtn_Click);
 			// 
 			// restartBtn
 			// 
@@ -375,6 +449,12 @@ namespace XorManulKey
 		private Button generateKeyBtn;
 		private ComboBox comboBox;
 		private Label label8;
+		private Label label9;
+		private Label genLabel;
+		private Label label11;
+		private Label label10;
+		private Label label12;
+		private Label label13;
 	}
 }
 

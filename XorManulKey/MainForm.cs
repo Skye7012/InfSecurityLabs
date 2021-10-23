@@ -126,6 +126,7 @@ namespace XorManulKey
 			if (comboBox.SelectedItem == comboBox.Items[1])
 			{
 				generateKeyBtn.Show();
+				genLabel.Show();
 				keyLabel.Hide();
 				keyTbx.Hide();
 			}
