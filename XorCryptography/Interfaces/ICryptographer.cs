@@ -1,4 +1,4 @@
-﻿namespace Cryptography.Interfaces
+﻿namespace XorCryptography.Interfaces
 {
 	public interface ICryptographer
 	{

@@ -1,7 +1,7 @@
 ﻿
 using System.Windows.Forms;
 
-namespace XorManulKey
+namespace XorCryptography
 {
 	partial class MainForm : Form
 	{
@@ -66,11 +66,11 @@ namespace XorManulKey
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// plainTextBox
+			// plainTbx
 			// 
 			this.plainTbx.Dock = System.Windows.Forms.DockStyle.Top;
 			this.plainTbx.Location = new System.Drawing.Point(0, 21);
-			this.plainTbx.Name = "plainTextBox";
+			this.plainTbx.Name = "plainTbx";
 			this.plainTbx.Size = new System.Drawing.Size(400, 29);
 			this.plainTbx.TabIndex = 4;
 			this.plainTbx.Tag = "";
@@ -207,11 +207,11 @@ namespace XorManulKey
 			this.keyLabel.Text = "Ключ";
 			this.keyLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
-			// binaryPlainTextBox
+			// binaryPlainTbx
 			// 
 			this.binaryPlainTbx.Dock = System.Windows.Forms.DockStyle.Top;
 			this.binaryPlainTbx.Location = new System.Drawing.Point(0, 71);
-			this.binaryPlainTbx.Name = "binaryPlainTextBox";
+			this.binaryPlainTbx.Name = "binaryPlainTbx";
 			this.binaryPlainTbx.ReadOnly = true;
 			this.binaryPlainTbx.Size = new System.Drawing.Size(400, 29);
 			this.binaryPlainTbx.TabIndex = 11;
@@ -413,7 +413,7 @@ namespace XorManulKey
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Cryptography";
+			this.Text = "XorCryptography";
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
