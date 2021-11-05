@@ -1,7 +1,7 @@
 ﻿
-namespace Labs.PowLab
+namespace Labs.GcdLab
 {
-	partial class PowForm
+	partial class GcdForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -34,15 +34,17 @@ namespace Labs.PowLab
 			this.label1 = new System.Windows.Forms.Label();
 			this.varGroupBox = new System.Windows.Forms.GroupBox();
 			this.calculateBtn = new System.Windows.Forms.Button();
-			this.nTbx = new System.Windows.Forms.TextBox();
-			this.nLbl = new System.Windows.Forms.Label();
 			this.bTbx = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.aTbx = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.zTbx = new System.Windows.Forms.TextBox();
+			this.gcdTbx = new System.Windows.Forms.TextBox();
 			this.zLbl = new System.Windows.Forms.Label();
+			this.xTbx = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.yTbx = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.varGroupBox.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -67,24 +69,22 @@ namespace Labs.PowLab
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(303, 75);
+			this.label1.Location = new System.Drawing.Point(301, 60);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(113, 21);
+			this.label1.Size = new System.Drawing.Size(155, 21);
 			this.label1.TabIndex = 2;
-			this.label1.Text = "a^b mod n = z";
+			this.label1.Text = "A*x + B*y = Gcd(A,B)";
 			// 
 			// varGroupBox
 			// 
 			this.varGroupBox.Controls.Add(this.calculateBtn);
-			this.varGroupBox.Controls.Add(this.nTbx);
-			this.varGroupBox.Controls.Add(this.nLbl);
 			this.varGroupBox.Controls.Add(this.bTbx);
 			this.varGroupBox.Controls.Add(this.label3);
 			this.varGroupBox.Controls.Add(this.aTbx);
 			this.varGroupBox.Controls.Add(this.label2);
-			this.varGroupBox.Location = new System.Drawing.Point(12, 113);
+			this.varGroupBox.Location = new System.Drawing.Point(12, 102);
 			this.varGroupBox.Name = "varGroupBox";
-			this.varGroupBox.Size = new System.Drawing.Size(776, 211);
+			this.varGroupBox.Size = new System.Drawing.Size(776, 161);
 			this.varGroupBox.TabIndex = 3;
 			this.varGroupBox.TabStop = false;
 			// 
@@ -92,7 +92,7 @@ namespace Labs.PowLab
 			// 
 			this.calculateBtn.Dock = System.Windows.Forms.DockStyle.Top;
 			this.calculateBtn.Enabled = false;
-			this.calculateBtn.Location = new System.Drawing.Point(3, 175);
+			this.calculateBtn.Location = new System.Drawing.Point(3, 125);
 			this.calculateBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.calculateBtn.Name = "calculateBtn";
 			this.calculateBtn.Size = new System.Drawing.Size(770, 30);
@@ -100,23 +100,6 @@ namespace Labs.PowLab
 			this.calculateBtn.Text = "Calculate";
 			this.calculateBtn.UseVisualStyleBackColor = true;
 			this.calculateBtn.Click += new System.EventHandler(this.calculateBtn_Click);
-			// 
-			// nTbx
-			// 
-			this.nTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.nTbx.Location = new System.Drawing.Point(3, 146);
-			this.nTbx.Name = "nTbx";
-			this.nTbx.Size = new System.Drawing.Size(770, 29);
-			this.nTbx.TabIndex = 5;
-			// 
-			// nLbl
-			// 
-			this.nLbl.Dock = System.Windows.Forms.DockStyle.Top;
-			this.nLbl.Location = new System.Drawing.Point(3, 125);
-			this.nLbl.Name = "nLbl";
-			this.nLbl.Size = new System.Drawing.Size(770, 21);
-			this.nLbl.TabIndex = 4;
-			this.nLbl.Text = "n";
 			// 
 			// bTbx
 			// 
@@ -133,7 +116,7 @@ namespace Labs.PowLab
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(770, 21);
 			this.label3.TabIndex = 2;
-			this.label3.Text = "b";
+			this.label3.Text = "B";
 			// 
 			// aTbx
 			// 
@@ -150,26 +133,30 @@ namespace Labs.PowLab
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(770, 21);
 			this.label2.TabIndex = 0;
-			this.label2.Text = "a";
+			this.label2.Text = "A";
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.zTbx);
+			this.groupBox2.Controls.Add(this.yTbx);
+			this.groupBox2.Controls.Add(this.label5);
+			this.groupBox2.Controls.Add(this.xTbx);
+			this.groupBox2.Controls.Add(this.label4);
+			this.groupBox2.Controls.Add(this.gcdTbx);
 			this.groupBox2.Controls.Add(this.zLbl);
-			this.groupBox2.Location = new System.Drawing.Point(15, 324);
+			this.groupBox2.Location = new System.Drawing.Point(15, 260);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(770, 114);
+			this.groupBox2.Size = new System.Drawing.Size(770, 178);
 			this.groupBox2.TabIndex = 4;
 			this.groupBox2.TabStop = false;
 			// 
-			// zTbx
+			// gcdTbx
 			// 
-			this.zTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.zTbx.Location = new System.Drawing.Point(3, 46);
-			this.zTbx.Name = "zTbx";
-			this.zTbx.ReadOnly = true;
-			this.zTbx.Size = new System.Drawing.Size(764, 29);
-			this.zTbx.TabIndex = 10;
+			this.gcdTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.gcdTbx.Location = new System.Drawing.Point(3, 46);
+			this.gcdTbx.Name = "gcdTbx";
+			this.gcdTbx.ReadOnly = true;
+			this.gcdTbx.Size = new System.Drawing.Size(764, 29);
+			this.gcdTbx.TabIndex = 10;
 			// 
 			// zLbl
 			// 
@@ -178,9 +165,45 @@ namespace Labs.PowLab
 			this.zLbl.Name = "zLbl";
 			this.zLbl.Size = new System.Drawing.Size(764, 21);
 			this.zLbl.TabIndex = 9;
-			this.zLbl.Text = "z";
+			this.zLbl.Text = "Gcd(A,B)";
 			// 
-			// PowForm
+			// xTbx
+			// 
+			this.xTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.xTbx.Location = new System.Drawing.Point(3, 96);
+			this.xTbx.Name = "xTbx";
+			this.xTbx.ReadOnly = true;
+			this.xTbx.Size = new System.Drawing.Size(764, 29);
+			this.xTbx.TabIndex = 12;
+			// 
+			// label4
+			// 
+			this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label4.Location = new System.Drawing.Point(3, 75);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(764, 21);
+			this.label4.TabIndex = 11;
+			this.label4.Text = "x";
+			// 
+			// yTbx
+			// 
+			this.yTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.yTbx.Location = new System.Drawing.Point(3, 146);
+			this.yTbx.Name = "yTbx";
+			this.yTbx.ReadOnly = true;
+			this.yTbx.Size = new System.Drawing.Size(764, 29);
+			this.yTbx.TabIndex = 14;
+			// 
+			// label5
+			// 
+			this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label5.Location = new System.Drawing.Point(3, 125);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(764, 21);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "y";
+			// 
+			// GcdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -189,8 +212,8 @@ namespace Labs.PowLab
 			this.Controls.Add(this.varGroupBox);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.menuStrip1);
-			this.Name = "PowForm";
-			this.Text = "PowForm";
+			this.Name = "GcdForm";
+			this.Text = "GcdForm";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.varGroupBox.ResumeLayout(false);
@@ -213,10 +236,12 @@ namespace Labs.PowLab
 		private System.Windows.Forms.TextBox bTbx;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button calculateBtn;
-		private System.Windows.Forms.TextBox nTbx;
-		private System.Windows.Forms.Label nLbl;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.TextBox zTbx;
+		private System.Windows.Forms.TextBox gcdTbx;
 		private System.Windows.Forms.Label zLbl;
+		private System.Windows.Forms.TextBox yTbx;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox xTbx;
+		private System.Windows.Forms.Label label4;
 	}
 }

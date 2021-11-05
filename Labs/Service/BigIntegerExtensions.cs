@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Labs.PowLab
+namespace Labs.Servise
 {
 	using System;
 	using System.Numerics;
