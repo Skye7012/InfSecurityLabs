@@ -13,34 +13,33 @@ namespace Labs.Servise
 	{
 		public static string ToBinaryString(this BigInteger bigint)
 		{
-			try
+			Stack<char> stack = new Stack<char>();
+
+			BigInteger mod;
+			BigInteger div;
+
+			do
 			{
-				Stack<char> stack = new Stack<char>();
-
-				BigInteger mod;
-				BigInteger div;
-
-				do
+				mod = bigint % 2;
+				div = bigint / 2;
+				if (div == 0)
 				{
-					mod = bigint % 2;
-					div = bigint / 2;
-					if (div == 0)
-					{
-						stack.Push('1');
-						break;
-					}
-					stack.Push(Convert.ToString(mod)[0]);
-					bigint = div;
+					stack.Push('1');
+					break;
 				}
-				while (true);
+				stack.Push(Convert.ToString(mod)[0]);
+				bigint = div;
+			}
+			while (true);
 
-				return new string(stack.ToArray());
-			}
-			catch
-			{
-				MessageBox.Show("Неверные данные");
-				return null;
-			}
+			return new string(stack.ToArray());
+		}
+		public static string ToStringProp(this BigInteger bigint)
+		{
+			throw new Exception();//do
+			return null;
 		}
 	}
 }
+
+
