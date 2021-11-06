@@ -107,7 +107,7 @@ namespace Labs.GcdLab
 
 			bool isValid = _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
 				&& BigInteger.TryParse(x.Text, out temp)
-				&& temp >= 0);
+				&& temp > 0);
 
 			if (isValid)
 				return true;
@@ -124,7 +124,14 @@ namespace Labs.GcdLab
 
 		private void calculateBtn_Click(object sender, EventArgs e)
 		{
-			Calculate();
+			try
+			{
+				Calculate();
+			}
+			catch
+			{
+				MessageBox.Show("Неверные данные");
+			}
 		}
 
 

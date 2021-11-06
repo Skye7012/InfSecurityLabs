@@ -39,7 +39,7 @@ namespace Labs.PowLab
 
 		#region Logic
 
-		BigInteger Calculate()
+		void Calculate()
 		{
 			MapVars();
 
@@ -56,7 +56,7 @@ namespace Labs.PowLab
 					aS.Add((aS[i - 1] * aS[i - 1] * _a) % _n);
 			}
 
-			return aS.Last();
+			zTbx.Text = Convert.ToString(aS.Last());
 		}
 
 		void MapVars()
@@ -77,7 +77,7 @@ namespace Labs.PowLab
 
 			bool isValid = _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
 				&& BigInteger.TryParse(x.Text, out temp)
-				&& temp >= 0);
+				&& temp > 0);
 
 			if (isValid)
 				return true;
@@ -94,7 +94,14 @@ namespace Labs.PowLab
 
 		private void calculateBtn_Click(object sender, EventArgs e)
 		{
-			zTbx.Text = Convert.ToString(Calculate());
+			try
+			{
+				Calculate();
+			}
+			catch
+			{
+				MessageBox.Show("Неверные данные");
+			}
 		}
 
 		#endregion
