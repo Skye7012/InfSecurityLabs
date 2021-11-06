@@ -21,10 +21,6 @@ namespace Labs.GcdLab
 		{
 			InitializeComponent();
 
-			var enums = Enum.GetValues(typeof(MainEnum)).Cast<object>().ToArray();
-			mainComboBox.Items.AddRange(enums);
-			mainComboBox.SelectedItem = MainEnum.Gcd;
-
 			_varTextBoxes = new List<TextBox>()
 			{
 				aTbx, bTbx,
@@ -46,17 +42,22 @@ namespace Labs.GcdLab
 			var vars = new List<(BigInteger A, BigInteger B)>() { (_a, _b) };
 			var operations = new List<(BigInteger mod, BigInteger div)>() { (_a % _b, _a / _b) };
 
-			for (int i = 1; ; i++)
+			if (_a % _b == 0)
+				gcd = gcd = vars.Last().B;
+			else
 			{
-				vars.Add((vars[i - 1].B, operations[i - 1].mod));
-				var a = vars[i].A;
-				var b = vars[i].B;
-				operations.Add((a % b, a / b));
-
-				if (a % b == 0)
+				for (int i = 1; ; i++)
 				{
-					gcd = vars.Last().B;
-					break;
+					vars.Add((vars[i - 1].B, operations[i - 1].mod));
+					var a = vars[i].A;
+					var b = vars[i].B;
+					operations.Add((a % b, a / b));
+
+					if (a % b == 0)
+					{
+						gcd = vars.Last().B;
+						break;
+					}
 				}
 			}
 
@@ -128,16 +129,5 @@ namespace Labs.GcdLab
 
 
 		#endregion
-
-		private void mainComboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if ((MainEnum)mainComboBox.SelectedItem != MainEnum.Gcd)
-			{
-				//var x = new PowForm();
-				//x.Show();
-				//Close();
-				//this = new PowForm();
-			}
-		}
 	}
 }

@@ -29,8 +29,6 @@ namespace Labs.GcdLab
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-			this.mainComboBox = new System.Windows.Forms.ToolStripComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.varGroupBox = new System.Windows.Forms.GroupBox();
 			this.calculateBtn = new System.Windows.Forms.Button();
@@ -45,27 +43,9 @@ namespace Labs.GcdLab
 			this.label4 = new System.Windows.Forms.Label();
 			this.gcdTbx = new System.Windows.Forms.TextBox();
 			this.zLbl = new System.Windows.Forms.Label();
-			this.mainMenuStrip.SuspendLayout();
 			this.varGroupBox.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// mainMenuStrip
-			// 
-			this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainComboBox});
-			this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-			this.mainMenuStrip.Name = "mainMenuStrip";
-			this.mainMenuStrip.Size = new System.Drawing.Size(800, 33);
-			this.mainMenuStrip.TabIndex = 1;
-			this.mainMenuStrip.Text = "menuStrip1";
-			// 
-			// mainComboBox
-			// 
-			this.mainComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.mainComboBox.Name = "mainComboBox";
-			this.mainComboBox.Size = new System.Drawing.Size(121, 29);
-			this.mainComboBox.SelectedIndexChanged += new System.EventHandler(this.mainComboBox_SelectedIndexChanged);
 			// 
 			// label1
 			// 
@@ -212,11 +192,8 @@ namespace Labs.GcdLab
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.varGroupBox);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.mainMenuStrip);
 			this.Name = "GcdForm";
 			this.Text = "GcdForm";
-			this.mainMenuStrip.ResumeLayout(false);
-			this.mainMenuStrip.PerformLayout();
 			this.varGroupBox.ResumeLayout(false);
 			this.varGroupBox.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -227,9 +204,6 @@ namespace Labs.GcdLab
 		}
 
 		#endregion
-
-		private System.Windows.Forms.MenuStrip mainMenuStrip;
-		private System.Windows.Forms.ToolStripComboBox mainComboBox;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox varGroupBox;
 		private System.Windows.Forms.TextBox aTbx;

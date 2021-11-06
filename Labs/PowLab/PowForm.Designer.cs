@@ -29,8 +29,6 @@ namespace Labs.PowLab
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.mainComboBox = new System.Windows.Forms.ToolStripComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.varGroupBox = new System.Windows.Forms.GroupBox();
 			this.calculateBtn = new System.Windows.Forms.Button();
@@ -43,26 +41,9 @@ namespace Labs.PowLab
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.zTbx = new System.Windows.Forms.TextBox();
 			this.zLbl = new System.Windows.Forms.Label();
-			this.menuStrip1.SuspendLayout();
 			this.varGroupBox.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// menuStrip1
-			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainComboBox});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 33);
-			this.menuStrip1.TabIndex = 1;
-			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// mainComboBox
-			// 
-			this.mainComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.mainComboBox.Name = "mainComboBox";
-			this.mainComboBox.Size = new System.Drawing.Size(121, 29);
 			// 
 			// label1
 			// 
@@ -188,11 +169,8 @@ namespace Labs.PowLab
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.varGroupBox);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.menuStrip1);
 			this.Name = "PowForm";
 			this.Text = "PowForm";
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
 			this.varGroupBox.ResumeLayout(false);
 			this.varGroupBox.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -203,9 +181,6 @@ namespace Labs.PowLab
 		}
 
 		#endregion
-
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripComboBox mainComboBox;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox varGroupBox;
 		private System.Windows.Forms.TextBox aTbx;
