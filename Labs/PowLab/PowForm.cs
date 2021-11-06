@@ -43,8 +43,16 @@ namespace Labs.PowLab
 		{
 			MapVars();
 
-			var binDegree = _b.ToBinaryString().TrimStart('0');
+			var binDegree = _b.ToBinaryString();
+
+			if(binDegree.Length == 1)
+			{
+				zTbx.Text = Convert.ToString(_a%_n);
+				return;
+			}
+
 			var aS = new List<BigInteger>() { _a };
+
 
 			for (int i = 1; i < binDegree.Length; i++)
 			{
