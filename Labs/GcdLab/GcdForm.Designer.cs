@@ -29,7 +29,7 @@ namespace Labs.GcdLab
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.mainComboBox = new System.Windows.Forms.ToolStripComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.varGroupBox = new System.Windows.Forms.GroupBox();
@@ -39,32 +39,33 @@ namespace Labs.GcdLab
 			this.aTbx = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.gcdTbx = new System.Windows.Forms.TextBox();
-			this.zLbl = new System.Windows.Forms.Label();
-			this.xTbx = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
 			this.yTbx = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.menuStrip1.SuspendLayout();
+			this.xTbx = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.gcdTbx = new System.Windows.Forms.TextBox();
+			this.zLbl = new System.Windows.Forms.Label();
+			this.mainMenuStrip.SuspendLayout();
 			this.varGroupBox.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// menuStrip1
+			// mainMenuStrip
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainComboBox});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 33);
-			this.menuStrip1.TabIndex = 1;
-			this.menuStrip1.Text = "menuStrip1";
+			this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+			this.mainMenuStrip.Name = "mainMenuStrip";
+			this.mainMenuStrip.Size = new System.Drawing.Size(800, 33);
+			this.mainMenuStrip.TabIndex = 1;
+			this.mainMenuStrip.Text = "menuStrip1";
 			// 
 			// mainComboBox
 			// 
 			this.mainComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.mainComboBox.Name = "mainComboBox";
 			this.mainComboBox.Size = new System.Drawing.Size(121, 29);
+			this.mainComboBox.SelectedIndexChanged += new System.EventHandler(this.mainComboBox_SelectedIndexChanged);
 			// 
 			// label1
 			// 
@@ -149,23 +150,23 @@ namespace Labs.GcdLab
 			this.groupBox2.TabIndex = 4;
 			this.groupBox2.TabStop = false;
 			// 
-			// gcdTbx
+			// yTbx
 			// 
-			this.gcdTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.gcdTbx.Location = new System.Drawing.Point(3, 46);
-			this.gcdTbx.Name = "gcdTbx";
-			this.gcdTbx.ReadOnly = true;
-			this.gcdTbx.Size = new System.Drawing.Size(764, 29);
-			this.gcdTbx.TabIndex = 10;
+			this.yTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.yTbx.Location = new System.Drawing.Point(3, 146);
+			this.yTbx.Name = "yTbx";
+			this.yTbx.ReadOnly = true;
+			this.yTbx.Size = new System.Drawing.Size(764, 29);
+			this.yTbx.TabIndex = 14;
 			// 
-			// zLbl
+			// label5
 			// 
-			this.zLbl.Dock = System.Windows.Forms.DockStyle.Top;
-			this.zLbl.Location = new System.Drawing.Point(3, 25);
-			this.zLbl.Name = "zLbl";
-			this.zLbl.Size = new System.Drawing.Size(764, 21);
-			this.zLbl.TabIndex = 9;
-			this.zLbl.Text = "Gcd(A,B)";
+			this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label5.Location = new System.Drawing.Point(3, 125);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(764, 21);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "y";
 			// 
 			// xTbx
 			// 
@@ -185,23 +186,23 @@ namespace Labs.GcdLab
 			this.label4.TabIndex = 11;
 			this.label4.Text = "x";
 			// 
-			// yTbx
+			// gcdTbx
 			// 
-			this.yTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.yTbx.Location = new System.Drawing.Point(3, 146);
-			this.yTbx.Name = "yTbx";
-			this.yTbx.ReadOnly = true;
-			this.yTbx.Size = new System.Drawing.Size(764, 29);
-			this.yTbx.TabIndex = 14;
+			this.gcdTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.gcdTbx.Location = new System.Drawing.Point(3, 46);
+			this.gcdTbx.Name = "gcdTbx";
+			this.gcdTbx.ReadOnly = true;
+			this.gcdTbx.Size = new System.Drawing.Size(764, 29);
+			this.gcdTbx.TabIndex = 10;
 			// 
-			// label5
+			// zLbl
 			// 
-			this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label5.Location = new System.Drawing.Point(3, 125);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(764, 21);
-			this.label5.TabIndex = 13;
-			this.label5.Text = "y";
+			this.zLbl.Dock = System.Windows.Forms.DockStyle.Top;
+			this.zLbl.Location = new System.Drawing.Point(3, 25);
+			this.zLbl.Name = "zLbl";
+			this.zLbl.Size = new System.Drawing.Size(764, 21);
+			this.zLbl.TabIndex = 9;
+			this.zLbl.Text = "Gcd(A,B)";
 			// 
 			// GcdForm
 			// 
@@ -211,11 +212,11 @@ namespace Labs.GcdLab
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.varGroupBox);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.mainMenuStrip);
 			this.Name = "GcdForm";
 			this.Text = "GcdForm";
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
+			this.mainMenuStrip.ResumeLayout(false);
+			this.mainMenuStrip.PerformLayout();
 			this.varGroupBox.ResumeLayout(false);
 			this.varGroupBox.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -227,7 +228,7 @@ namespace Labs.GcdLab
 
 		#endregion
 
-		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.MenuStrip mainMenuStrip;
 		private System.Windows.Forms.ToolStripComboBox mainComboBox;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox varGroupBox;

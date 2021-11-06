@@ -7,6 +7,8 @@ using System.Numerics;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using Labs.Enums;
+using Labs.PowLab;
 
 namespace Labs.GcdLab
 {
@@ -15,10 +17,13 @@ namespace Labs.GcdLab
 		BigInteger _a;
 		BigInteger _b;
 		List<TextBox> _varTextBoxes;
-		List<BigInteger> _vars;
 		public GcdForm()
 		{
 			InitializeComponent();
+
+			var enums = Enum.GetValues(typeof(MainEnum)).Cast<object>().ToArray();
+			mainComboBox.Items.AddRange(enums);
+			mainComboBox.SelectedItem = MainEnum.Gcd;
 
 			_varTextBoxes = new List<TextBox>()
 			{
@@ -37,15 +42,9 @@ namespace Labs.GcdLab
 		{
 			MapVars();
 
-			//var table = new List<(BigInteger A, BigInteger B, BigInteger mod, BigInteger div, BigInteger x, BigInteger y)>()
-			//{
-			//	(_a, _b,)
-			//}
-
 			BigInteger gcd;
 			var vars = new List<(BigInteger A, BigInteger B)>() { (_a, _b) };
-			var operations = new List<(BigInteger mod, BigInteger div)>() { (_a%_b,_a/_b) };
-			var res = new List<(BigInteger x, BigInteger y)>() { (0,1)};
+			var operations = new List<(BigInteger mod, BigInteger div)>() { (_a % _b, _a / _b) };
 
 			for (int i = 1; ; i++)
 			{
@@ -54,21 +53,14 @@ namespace Labs.GcdLab
 				var b = vars[i].B;
 				operations.Add((a % b, a / b));
 
-				if(a%b==0)
+				if (a % b == 0)
 				{
 					gcd = vars.Last().B;
 					break;
-				}	
+				}
 			}
 
-			for (int i = 1; i < vars.Count; i++)
-			{
-				res.Add((0, 0));
-			}
-
-			res.Reverse();
-
-			//make res initialize method
+			var res = InitializeRes(vars.Count);
 
 			for (int i = vars.Count - 1 - 1; i >= 0; i--)
 			{
@@ -87,6 +79,20 @@ namespace Labs.GcdLab
 		{
 			_a = BigInteger.Parse(aTbx.Text);
 			_b = BigInteger.Parse(bTbx.Text);
+		}
+
+		List<(BigInteger x, BigInteger y)> InitializeRes(int num)
+		{
+			List<(BigInteger x, BigInteger y)> res = new List<(BigInteger x, BigInteger y)>() { (0, 1 )};
+
+			for (int i = 1; i < num; i++)
+			{
+				res.Add((0, 0));
+			}
+
+			res.Reverse();
+
+			return res;
 		}
 
 		#endregion
@@ -120,6 +126,18 @@ namespace Labs.GcdLab
 			Calculate();
 		}
 
+
 		#endregion
+
+		private void mainComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if((MainEnum)mainComboBox.SelectedItem != MainEnum.Gcd)
+			{
+				//var x = new PowForm();
+				//x.Show();
+				//Close();
+				//this = new PowForm();
+			}
+		}
 	}
 }
