@@ -83,7 +83,7 @@ namespace Labs.GcdLab
 
 		List<(BigInteger x, BigInteger y)> InitializeRes(int num)
 		{
-			List<(BigInteger x, BigInteger y)> res = new List<(BigInteger x, BigInteger y)>() { (0, 1 )};
+			List<(BigInteger x, BigInteger y)> res = new List<(BigInteger x, BigInteger y)>() { (0, 1) };
 
 			for (int i = 1; i < num; i++)
 			{
@@ -104,9 +104,9 @@ namespace Labs.GcdLab
 		{
 			BigInteger temp;
 
-			bool isValid = _varTextBoxes.All(x => BigInteger.TryParse
-				 (x.Text, out temp)
-				 && !string.IsNullOrWhiteSpace(x.Text));
+			bool isValid = _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
+				&& BigInteger.TryParse(x.Text, out temp)
+				&& temp >= 0);
 
 			if (isValid)
 				return true;
@@ -131,7 +131,7 @@ namespace Labs.GcdLab
 
 		private void mainComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if((MainEnum)mainComboBox.SelectedItem != MainEnum.Gcd)
+			if ((MainEnum)mainComboBox.SelectedItem != MainEnum.Gcd)
 			{
 				//var x = new PowForm();
 				//x.Show();

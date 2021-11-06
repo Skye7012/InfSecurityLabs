@@ -75,9 +75,9 @@ namespace Labs.PowLab
 		{
 			BigInteger temp;
 
-			bool isValid = _varTextBoxes.All(x => BigInteger.TryParse
-				 (x.Text, out temp)
-				 && !string.IsNullOrWhiteSpace(x.Text));
+			bool isValid = _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
+				&& BigInteger.TryParse(x.Text, out temp)
+				&& temp >= 0);
 
 			if (isValid)
 				return true;
