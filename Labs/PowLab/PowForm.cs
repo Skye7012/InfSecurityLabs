@@ -43,28 +43,30 @@ namespace Labs.PowLab
 		{
 			MapVars();
 
-			var binDegree = _b.ToBinaryString();
+			//var binDegree = _b.ToBinaryString();
 
-			if(binDegree.Length == 1)
-			{
-				zTbx.Text = Convert.ToString(_a%_n);
-				return;
-			}
+			//if(binDegree.Length == 1)
+			//{
+			//	zTbx.Text = Convert.ToString(_a%_n);
+			//	return;
+			//}
 
-			var aS = new List<BigInteger>() { _a };
+			//var aS = new List<BigInteger>() { _a };
 
 
-			for (int i = 1; i < binDegree.Length; i++)
-			{
-				int b = Convert.ToInt32(binDegree[i].ToString());
+			//for (int i = 1; i < binDegree.Length; i++)
+			//{
+			//	int b = Convert.ToInt32(binDegree[i].ToString());
 
-				if (b == 0)
-					aS.Add((aS[i - 1] * aS[i - 1]) % _n);
-				else if (b == 1)
-					aS.Add((aS[i - 1] * aS[i - 1] * _a) % _n);
-			}
+			//	if (b == 0)
+			//		aS.Add((aS[i - 1] * aS[i - 1]) % _n);
+			//	else if (b == 1)
+			//		aS.Add((aS[i - 1] * aS[i - 1] * _a) % _n);
+			//}
 
-			zTbx.Text = Convert.ToString(aS.Last());
+			var res = ModPow.Calculate(_a,_b,_n);
+
+			zTbx.Text = Convert.ToString(res);//проверить
 		}
 
 		void MapVars()
