@@ -24,7 +24,7 @@ namespace Labs.MillerRabinLab
 			
 
 			//кол-во раундов
-			BigInteger r = (int)Math.Round(BigInteger.Log(n, 2));
+			BigInteger r = (int)Math.Floor(BigInteger.Log(n, 2)) + 1;
 
 			BigInteger s, t;
 
@@ -83,17 +83,41 @@ namespace Labs.MillerRabinLab
 		{
 			BigInteger a;
 
+			//размер n-2 в битах
+			BigInteger bitSize = (int)Math.Floor(BigInteger.Log(n-2, 2)) + 1;
+
 			do
 			{
-				var rng = new RNGCryptoServiceProvider();
-				byte[] bytes = new byte[n.ToByteArray().LongLength];
-				rng.GetBytes(bytes);
-
-				a = new BigInteger(bytes);
+				a = GenerateRandomNumberByBitSize(bitSize);
 			}
 			while (!(a >= 2 && a <= n - 2));
 
 			return a;
+		}
+
+		/// <summary>
+		/// Генерирует число с заданным размеров в битах
+		/// </summary>
+		/// <param name="bitSize">размер в битах</param>
+		/// <returns>число</returns>
+		public static BigInteger GenerateRandomNumberByBitSize(BigInteger bitSize)
+		{
+			string bit = "";
+			Random rnd = new Random();
+			BigInteger res = 0;
+
+			for (int i = 0; i < bitSize; i++)
+			{
+				bit += rnd.Next(2);
+			}
+
+			for (int i = 0; i < bitSize; i++)
+			{
+				if (bit[i] == '1')
+					res += BigInteger.Pow(2, i);
+			}
+
+			return res;
 		}
 	}
 }

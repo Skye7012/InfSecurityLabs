@@ -5,12 +5,12 @@ using Xunit;
 
 namespace Tests
 {
-	public class MillerRabinTest
+	public class IsPrimeTest
 	{
 		private readonly BigInteger m127;
 		private readonly BigInteger m521;
 
-		public MillerRabinTest()
+		public IsPrimeTest()
 		{
 			m127 = GetMNubmer(127);
 			m521 = GetMNubmer(521);

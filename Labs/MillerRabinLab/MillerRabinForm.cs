@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,16 +17,45 @@ namespace Labs.MillerRabinLab
 		{
 			InitializeComponent();
 
-			byte[] bytes = new byte[] { 1, 2, 3, 4, 5 };
+			var qw =MillerRabin.IsPrime(35);
 
-			BigInteger b = new BigInteger(bytes);
-
-			var bytes2 = b.ToByteArray();
+			byte[] bytes = new byte[512];
 
 			var rng = new RNGCryptoServiceProvider();
 			rng.GetBytes(bytes);
 
-			b = new BigInteger(bytes);
+			var b = new BigInteger(bytes);
+			var x = b.ToByteArray().Length;
+
+			var size = b.ToString().Length;
+
+			BigInteger z = BigInteger.Pow(2,64);
+
+			size = z.ToString().Length;
+
+			//BitArray bitArray = new BitArray(512);
+
+			string bit = "";
+			Random rnd = new Random();
+
+			z = 0;
+
+			for (int i = 0; i < 512; i++)
+			{
+				bit += rnd.Next(2);
+			}
+
+			for (int i = 0; i < 512; i++)
+			{
+				if(bit[i] == '1')
+					z += BigInteger.Pow(2, i);
+			}
+
+			//bytes = new byte[] {255,255,255,255,255,255,255,255 };
+			//rng.GetBytes(bytes);
+
+			//z = new BigInteger(bytes);
+			size = z.ToString().Length;
 		}
 	}
 }
