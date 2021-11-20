@@ -1,4 +1,5 @@
 using Labs.MillerRabinLab;
+using Labs.PowLab;
 using System;
 using System.Numerics;
 using Xunit;

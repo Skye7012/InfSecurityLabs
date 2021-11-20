@@ -21,7 +21,7 @@ namespace Labs.MillerRabinLab
 			InitializeComponent();
 		}
 
-		private void isPrimeBtn_Click(object sender, EventArgs e)
+		private void Solve()
 		{
 			var number = BigInteger.Parse(numberTbx.Text);
 			if (MillerRabin.IsPrime(number))
@@ -60,6 +60,18 @@ namespace Labs.MillerRabinLab
 				isPrimeBtn.Enabled = true;
 			else
 				isPrimeBtn.Enabled = false;
+		}
+
+		private void isPrimeBtn_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				Solve();
+			}
+			catch
+			{
+				MessageBox.Show("Неверные исходные данные");
+			}
 		}
 	}
 }

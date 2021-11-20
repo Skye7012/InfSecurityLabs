@@ -43,30 +43,9 @@ namespace Labs.PowLab
 		{
 			MapVars();
 
-			//var binDegree = _b.ToBinaryString();
-
-			//if(binDegree.Length == 1)
-			//{
-			//	zTbx.Text = Convert.ToString(_a%_n);
-			//	return;
-			//}
-
-			//var aS = new List<BigInteger>() { _a };
-
-
-			//for (int i = 1; i < binDegree.Length; i++)
-			//{
-			//	int b = Convert.ToInt32(binDegree[i].ToString());
-
-			//	if (b == 0)
-			//		aS.Add((aS[i - 1] * aS[i - 1]) % _n);
-			//	else if (b == 1)
-			//		aS.Add((aS[i - 1] * aS[i - 1] * _a) % _n);
-			//}
-
 			var res = ModPow.Calculate(_a,_b,_n);
 
-			zTbx.Text = Convert.ToString(res);//проверить
+			zTbx.Text = Convert.ToString(res);
 		}
 
 		void MapVars()
@@ -110,7 +89,7 @@ namespace Labs.PowLab
 			}
 			catch
 			{
-				MessageBox.Show("Неверные данные");
+				MessageBox.Show("Неверные исходные данные");
 			}
 		}
 

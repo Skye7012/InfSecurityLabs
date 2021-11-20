@@ -20,8 +20,8 @@ namespace Labs
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(new PowForm());
-			//Application.Run(new GcdForm());
+			Application.Run(new PowForm());
+			Application.Run(new GcdForm());
 			Application.Run(new MillerRabinForm());
 		}
 	}
