@@ -19,16 +19,15 @@ namespace Labs.MillerRabinLab
 		public MillerRabinForm()
 		{
 			InitializeComponent();
+		}
 
-			_varTextBoxes = new List<TextBox>()
-			{
-				bitNumberSizeTbx, numberTbx,
-			};
-
-			foreach (var item in _varTextBoxes)
-			{
-				item.TextChanged += new EventHandler(VariablesTextChanged);
-			}
+		private void isPrimeBtn_Click(object sender, EventArgs e)
+		{
+			var number = BigInteger.Parse(numberTbx.Text);
+			if (MillerRabin.IsPrime(number))
+				answerTbx.Text = "Число вероятно простое";
+			else
+				answerTbx.Text = "Число составное";
 		}
 
 		private void generateNumberBtn_Click(object sender, EventArgs e)
@@ -37,34 +36,30 @@ namespace Labs.MillerRabinLab
 			numberTbx.Text = Convert.ToString(MillerRabin.GenerateRandomNumberByBitSize(bitSize));
 		}
 
-		private void VariablesTextChanged(object sender, EventArgs e)
+		private void bitNumberSizeTbx_TextChanged(object sender, EventArgs e)
 		{
-			if (AreVariablesValid())
+			BigInteger bitSize;
+			bool isValid = BigInteger.TryParse(bitNumberSizeTbx.Text, out bitSize)
+				&& !string.IsNullOrWhiteSpace(bitNumberSizeTbx.Text)
+				&& bitSize > 0;
+
+			if (isValid)
 				generateNumberBtn.Enabled = true;
 			else
 				generateNumberBtn.Enabled = false;
-			//BigInteger bitSize;
-			//bool b = BigInteger.TryParse(bitNumberSizeTbx.Text, out bitSize)
-			//	&& !string.IsNullOrWhiteSpace(bitNumberSizeTbx.Text);
-			//if (b)
-			//	generateNumberBtn.Enabled = true;
-			//else
-			//	generateNumberBtn.Enabled = false;
 		}
 
-		bool AreVariablesValid()
+		private void numberTbx_TextChanged(object sender, EventArgs e)
 		{
-			BigInteger temp;
-
-			bool isValid = _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
-				&& BigInteger.TryParse(x.Text, out temp)
-				&& temp > 0);
+			BigInteger number;
+			bool isValid = BigInteger.TryParse(numberTbx.Text, out number)
+				&& !string.IsNullOrWhiteSpace(numberTbx.Text)
+				&& number > 1;
 
 			if (isValid)
-				return true;
-			return false;
+				isPrimeBtn.Enabled = true;
+			else
+				isPrimeBtn.Enabled = false;
 		}
-
-
 	}
 }

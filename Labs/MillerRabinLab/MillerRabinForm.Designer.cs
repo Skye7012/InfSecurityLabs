@@ -29,14 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.varGroupBox = new System.Windows.Forms.GroupBox();
-			this.generateNumberBtn = new System.Windows.Forms.Button();
 			this.answerTbx = new System.Windows.Forms.TextBox();
 			this.nLbl = new System.Windows.Forms.Label();
-			this.bitNumberSizeTbx = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.isPrimeBtn = new System.Windows.Forms.Button();
 			this.numberTbx = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.isPrimeBtn = new System.Windows.Forms.Button();
+			this.generateNumberBtn = new System.Windows.Forms.Button();
+			this.bitNumberSizeTbx = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.varGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -56,19 +56,6 @@
 			this.varGroupBox.TabIndex = 4;
 			this.varGroupBox.TabStop = false;
 			// 
-			// generateNumberBtn
-			// 
-			this.generateNumberBtn.Dock = System.Windows.Forms.DockStyle.Top;
-			this.generateNumberBtn.Enabled = false;
-			this.generateNumberBtn.Location = new System.Drawing.Point(3, 75);
-			this.generateNumberBtn.Margin = new System.Windows.Forms.Padding(0);
-			this.generateNumberBtn.Name = "generateNumberBtn";
-			this.generateNumberBtn.Size = new System.Drawing.Size(754, 30);
-			this.generateNumberBtn.TabIndex = 6;
-			this.generateNumberBtn.Text = "Сгенерировать число";
-			this.generateNumberBtn.UseVisualStyleBackColor = true;
-			this.generateNumberBtn.Click += new System.EventHandler(this.generateNumberBtn_Click);
-			// 
 			// answerTbx
 			// 
 			this.answerTbx.Dock = System.Windows.Forms.DockStyle.Top;
@@ -87,40 +74,6 @@
 			this.nLbl.TabIndex = 4;
 			this.nLbl.Text = "Ответ";
 			// 
-			// bitNumberSizeTbx
-			// 
-			this.bitNumberSizeTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.bitNumberSizeTbx.Location = new System.Drawing.Point(3, 46);
-			this.bitNumberSizeTbx.Name = "bitNumberSizeTbx";
-			this.bitNumberSizeTbx.Size = new System.Drawing.Size(754, 29);
-			this.bitNumberSizeTbx.TabIndex = 3;
-			// 
-			// label3
-			// 
-			this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label3.Location = new System.Drawing.Point(3, 25);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(754, 21);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Размер числа в битах";
-			// 
-			// numberTbx
-			// 
-			this.numberTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.numberTbx.Location = new System.Drawing.Point(3, 126);
-			this.numberTbx.Name = "numberTbx";
-			this.numberTbx.Size = new System.Drawing.Size(754, 29);
-			this.numberTbx.TabIndex = 1;
-			// 
-			// label2
-			// 
-			this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label2.Location = new System.Drawing.Point(3, 105);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(754, 21);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "Число";
-			// 
 			// isPrimeBtn
 			// 
 			this.isPrimeBtn.Dock = System.Windows.Forms.DockStyle.Top;
@@ -132,6 +85,56 @@
 			this.isPrimeBtn.TabIndex = 7;
 			this.isPrimeBtn.Text = "Проверить на простоту";
 			this.isPrimeBtn.UseVisualStyleBackColor = true;
+			this.isPrimeBtn.Click += new System.EventHandler(this.isPrimeBtn_Click);
+			// 
+			// numberTbx
+			// 
+			this.numberTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.numberTbx.Location = new System.Drawing.Point(3, 126);
+			this.numberTbx.Name = "numberTbx";
+			this.numberTbx.Size = new System.Drawing.Size(754, 29);
+			this.numberTbx.TabIndex = 1;
+			this.numberTbx.TextChanged += new System.EventHandler(this.numberTbx_TextChanged);
+			// 
+			// label2
+			// 
+			this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label2.Location = new System.Drawing.Point(3, 105);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(754, 21);
+			this.label2.TabIndex = 0;
+			this.label2.Text = "Число";
+			// 
+			// generateNumberBtn
+			// 
+			this.generateNumberBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.generateNumberBtn.Enabled = false;
+			this.generateNumberBtn.Location = new System.Drawing.Point(3, 75);
+			this.generateNumberBtn.Margin = new System.Windows.Forms.Padding(0);
+			this.generateNumberBtn.Name = "generateNumberBtn";
+			this.generateNumberBtn.Size = new System.Drawing.Size(754, 30);
+			this.generateNumberBtn.TabIndex = 6;
+			this.generateNumberBtn.Text = "Сгенерировать число";
+			this.generateNumberBtn.UseVisualStyleBackColor = true;
+			this.generateNumberBtn.Click += new System.EventHandler(this.generateNumberBtn_Click);
+			// 
+			// bitNumberSizeTbx
+			// 
+			this.bitNumberSizeTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.bitNumberSizeTbx.Location = new System.Drawing.Point(3, 46);
+			this.bitNumberSizeTbx.Name = "bitNumberSizeTbx";
+			this.bitNumberSizeTbx.Size = new System.Drawing.Size(754, 29);
+			this.bitNumberSizeTbx.TabIndex = 3;
+			this.bitNumberSizeTbx.TextChanged += new System.EventHandler(this.bitNumberSizeTbx_TextChanged);
+			// 
+			// label3
+			// 
+			this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label3.Location = new System.Drawing.Point(3, 25);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(754, 21);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "Размер числа в битах";
 			// 
 			// MillerRabinForm
 			// 
