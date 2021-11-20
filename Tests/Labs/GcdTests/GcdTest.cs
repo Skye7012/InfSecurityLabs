@@ -1,3 +1,4 @@
+using Labs.GcdLab;
 using Labs.PowLab;
 using System;
 using System.Collections.Generic;
@@ -11,38 +12,70 @@ namespace Tests
 		[Fact]
 		public void A_Bigger()
 		{
-			var actual = Gcd.Calculate(x.a, x.b, x.mod);
-				Assert.Equal(x.expected,actual);
+			BigInteger gcd, x, y;
+
+			Gcd.Calculate(70, 60, out gcd, out x, out y);
+
+			Assert.Equal(10,gcd);
+			Assert.Equal(1,x);
+			Assert.Equal(-1,y);
 		}
 
 		[Fact]
-		public void NotProperlyRequest_ShouldSolveIT()
+		public void A_Less()
 		{
-			foreach (var x in _notPropVars)
-			{
-				var actual = ModPow.Calculate(x.a, x.b, x.mod);
-				Assert.NotEqual(x.expected, actual);
-			}
+			BigInteger gcd, x, y;
+
+			Gcd.Calculate(30, 56, out gcd, out x, out y);
+
+			Assert.Equal(2, gcd);
+			Assert.Equal(-13, x);
+			Assert.Equal(7, y);
 		}
 
 		[Fact]
-		public void DivideByZeroException()
+		public void AModBIs0()
 		{
-			Assert.Throws<DivideByZeroException>( () => ModPow.Calculate(1,1,0));
+			BigInteger gcd, x, y;
+
+			Gcd.Calculate(36, 6, out gcd, out x, out y);
+
+			Assert.Equal(6, gcd);
+			Assert.Equal(0, x);
+			Assert.Equal(1, y);
+
+			Gcd.Calculate(6, 36, out gcd, out x, out y);
+
+			Assert.Equal(6, gcd);
+			Assert.Equal(1, x);
+			Assert.Equal(0, y);
 		}
 
 		[Fact]
-		public void BigNumbers()
+		public void AIsB()
+		{
+			BigInteger gcd, x, y;
+
+			Gcd.Calculate(77, 77, out gcd, out x, out y);
+
+			Assert.Equal(77, gcd);
+			Assert.Equal(0, x);
+			Assert.Equal(1, y);
+		}
+
+		[Fact]
+		public void BigNumber()
 		{
 			BigInteger a = BigInteger.Parse("11231232312311231232312353453535452352345234112312323123112312323123534535354523523452346654656");
-			BigInteger b = BigInteger.Parse("11231232312311231232312353453535452352345234112312323123112312323123534535354523523452346654656423423545345345");
-			BigInteger mod = BigInteger.Parse("112312323123112312323123534545234112312323123112312323123534535354523523452346654656423423545345345");
-			var expected = BigInteger.ModPow(a, b, mod);
-			var actual = ModPow.Calculate(a, b, mod);
+			BigInteger b = BigInteger.Parse("23452341123123231231123123231235345353545235234523466546564234235453453451123123231231123123231235345353545235");
 
-			//"69596851053739570716432202477456780810195556305253437318262107164635743247833817765618322929492606"
+			BigInteger gcd, x, y;
 
-			Assert.Equal(expected, actual);
+			Gcd.Calculate(a, b, out gcd, out x, out y);
+
+			Assert.Equal(13, gcd);
+			Assert.Equal(BigInteger.Parse("662986343628637211856134460192133306446158652092979267507865060829709733184755516447479918579451310837405343"), x);
+			Assert.Equal(BigInteger.Parse("-317501506825745719709674277099570782978794148939751650650185136970334532282635995376174782817"), y);
 		}
 	}
 }

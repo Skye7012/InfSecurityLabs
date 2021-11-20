@@ -20,12 +20,14 @@ namespace Labs.PowLab
 		{
 			var binDegree = b.ToBinaryString();
 
-			if (binDegree.Length == 1)
-				return a % mod;
-			else if (a == 0)
-				return 1 % mod;
+			if (a == 0)
+				throw new DivideByZeroException("a не может быть равен нулю");
 			else if (mod == 0)
-				throw new Exception("Модуль не может быть равен нулю");
+				throw new DivideByZeroException("Модуль не может быть равен нулю");
+			else if (b == 0)
+				return 1 & mod;
+			else if (binDegree.Length == 1)
+				return a % mod;
 
 			var aS = new List<BigInteger>() { a };
 

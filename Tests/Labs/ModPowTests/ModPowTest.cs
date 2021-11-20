@@ -17,8 +17,8 @@ namespace Tests
 				{
 					(9,40,3,0),
 					(7,35,5,3),
-					(0,22,6,1),
-					(0,22,1,0),
+					//(0,22,6,1),
+					//(0,22,1,0),
 					(1,22,1,0),
 					(1,22,8,1),
 
@@ -55,6 +55,7 @@ namespace Tests
 		public void DivideByZeroException()
 		{
 			Assert.Throws<DivideByZeroException>( () => ModPow.Calculate(1,1,0));
+			Assert.Throws<DivideByZeroException>( () => ModPow.Calculate(0,1,1));
 		}
 
 		[Fact]
