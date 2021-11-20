@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,49 +14,57 @@ namespace Labs.MillerRabinLab
 {
 	public partial class MillerRabinForm : Form
 	{
+		private readonly List<TextBox> _varTextBoxes;
+
 		public MillerRabinForm()
 		{
 			InitializeComponent();
 
-			var qw =MillerRabin.IsPrime(35);
-
-			byte[] bytes = new byte[512];
-
-			var rng = new RNGCryptoServiceProvider();
-			rng.GetBytes(bytes);
-
-			var b = new BigInteger(bytes);
-			var x = b.ToByteArray().Length;
-
-			var size = b.ToString().Length;
-
-			BigInteger z = BigInteger.Pow(2,64);
-
-			size = z.ToString().Length;
-
-			//BitArray bitArray = new BitArray(512);
-
-			string bit = "";
-			Random rnd = new Random();
-
-			z = 0;
-
-			for (int i = 0; i < 512; i++)
+			_varTextBoxes = new List<TextBox>()
 			{
-				bit += rnd.Next(2);
-			}
+				bitNumberSizeTbx, numberTbx,
+			};
 
-			for (int i = 0; i < 512; i++)
+			foreach (var item in _varTextBoxes)
 			{
-				if(bit[i] == '1')
-					z += BigInteger.Pow(2, i);
+				item.TextChanged += new EventHandler(VariablesTextChanged);
 			}
-
-			//bytes = new byte[] {255,255,255,255,255,255,255,255 };
-			//rng.GetBytes(bytes);
-
-			//z = new BigInteger(bytes);
-			size = z.ToString().Length;
 		}
+
+		private void generateNumberBtn_Click(object sender, EventArgs e)
+		{
+			var bitSize = BigInteger.Parse(bitNumberSizeTbx.Text);
+			numberTbx.Text = Convert.ToString(MillerRabin.GenerateRandomNumberByBitSize(bitSize));
+		}
+
+		private void VariablesTextChanged(object sender, EventArgs e)
+		{
+			if (AreVariablesValid())
+				generateNumberBtn.Enabled = true;
+			else
+				generateNumberBtn.Enabled = false;
+			//BigInteger bitSize;
+			//bool b = BigInteger.TryParse(bitNumberSizeTbx.Text, out bitSize)
+			//	&& !string.IsNullOrWhiteSpace(bitNumberSizeTbx.Text);
+			//if (b)
+			//	generateNumberBtn.Enabled = true;
+			//else
+			//	generateNumberBtn.Enabled = false;
+		}
+
+		bool AreVariablesValid()
+		{
+			BigInteger temp;
+
+			bool isValid = _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
+				&& BigInteger.TryParse(x.Text, out temp)
+				&& temp > 0);
+
+			if (isValid)
+				return true;
+			return false;
+		}
+
+
 	}
 }
