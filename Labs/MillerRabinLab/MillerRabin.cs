@@ -119,5 +119,24 @@ namespace Labs.MillerRabinLab
 
 			return res;
 		}
+
+		/// <summary>
+		/// Генерирует вероятно простое число с заданным размеров в битах
+		/// </summary>
+		/// <param name="bitSize">размер в битах</param>
+		/// <returns>Вероятно простое число</returns>
+		public static BigInteger GeneratePrimeNumber(BigInteger bitSize)
+		{
+			BigInteger res;
+
+			do
+			{
+				res = GenerateRandomNumberByBitSize(bitSize);
+			}
+			while (!IsPrime(res));
+
+			return res;
+		}
+			
 	}
 }

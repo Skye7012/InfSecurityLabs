@@ -23,6 +23,8 @@ namespace Tests
 					(1,22,8,1),
 
 					(12,54,7,1),
+
+					(7,23,13,2),
 				};
 
 			_notPropVars = new List<(BigInteger a, BigInteger b, BigInteger mod, BigInteger expected)>()

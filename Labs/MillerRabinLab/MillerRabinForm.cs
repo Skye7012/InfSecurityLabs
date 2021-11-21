@@ -33,7 +33,10 @@ namespace Labs.MillerRabinLab
 		private void generateNumberBtn_Click(object sender, EventArgs e)
 		{
 			var bitSize = BigInteger.Parse(bitNumberSizeTbx.Text);
-			numberTbx.Text = Convert.ToString(MillerRabin.GenerateRandomNumberByBitSize(bitSize));
+
+			BigInteger res = MillerRabin.GeneratePrimeNumber(bitSize);
+
+			numberTbx.Text = Convert.ToString(res);
 		}
 
 		private void bitNumberSizeTbx_TextChanged(object sender, EventArgs e)

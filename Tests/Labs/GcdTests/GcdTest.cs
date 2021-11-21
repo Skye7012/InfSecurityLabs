@@ -10,6 +10,17 @@ namespace Tests
 	public class GcdTest
 	{
 		[Fact]
+		public void ProperlyRequest_ShouldSolveIT()
+		{
+			BigInteger gcd, x, y;
+
+			Gcd.Calculate(197, 37, out gcd, out x, out y);
+
+			Assert.Equal(1, gcd);
+			Assert.Equal(-3, x);
+			Assert.Equal(16, y);
+		}
+		[Fact]
 		public void A_Bigger()
 		{
 			BigInteger gcd, x, y;
