@@ -1,6 +1,7 @@
 using Labs.GcdLab;
 using Labs.MillerRabinLab;
 using Labs.PowLab;
+using Labs.RsaLab;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,10 @@ namespace Labs
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new PowForm());
-			Application.Run(new GcdForm());
-			Application.Run(new MillerRabinForm());
+			Application.Run(new RsaForm());
+			//Application.Run(new PowForm());
+			//Application.Run(new GcdForm());
+			//Application.Run(new MillerRabinForm());
 		}
 	}
 }

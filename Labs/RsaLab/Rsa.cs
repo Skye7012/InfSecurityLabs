@@ -1,5 +1,6 @@
 ﻿using Labs.GcdLab;
 using Labs.MillerRabinLab;
+using Labs.PowLab;
 using Labs.Servise;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Labs.RsaLab
 				throw new Exception("Wrong Argruments");
 
 			E = GenerateE();
-
+			D = GenerateD();
 		}
 
 		public BigInteger GenerateE()
@@ -38,6 +39,29 @@ namespace Labs.RsaLab
 				res -= 1;
 
 			return res;
+		}
+
+		public BigInteger GenerateD()
+		{
+			if (N == default(BigInteger))
+				throw new Exception("Not initialized N");
+
+			BigInteger gcd, x, y;
+			Gcd.Calculate(E, Phi, out gcd, out x, out y);
+			BigInteger d = 1;
+			while(x < 0)
+			{
+				d++;
+				Gcd.Calculate(E*d, Phi, out gcd, out x, out y);
+
+				if (d >= N - 1)
+					throw new Exception("Cannot Generate D");
+			}
+
+			if(x * d >= N - 1)
+				throw new Exception("Cannot Generate D");
+
+			return x * d;
 		}
 	}
 }
