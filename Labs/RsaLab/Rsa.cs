@@ -28,6 +28,33 @@ namespace Labs.RsaLab
 			D = GenerateD();
 		}
 
+		public List<BigInteger> Encrypt(string text)
+		{
+			List<BigInteger> indexes = new List<BigInteger>();
+
+			foreach (var let in text)
+			{
+				int id = (int)let;
+				BigInteger res = ModPow.Calculate(id, E, N);
+				indexes.Add(res);
+			}
+
+			return indexes;
+		}
+
+		public string Decrypt(List<BigInteger> indexes)
+		{
+			StringBuilder res = new StringBuilder();
+
+			foreach (var id in indexes)
+			{
+				int plainId = (int)ModPow.Calculate(id, D, N);
+				res.Append((char)plainId);
+			}
+
+			return res.ToString();
+		}
+
 		public BigInteger GenerateE()
 		{
 			int length = N.GetLength()/3;
@@ -39,7 +66,7 @@ namespace Labs.RsaLab
 				(new string
 				(Enumerable.Repeat('9', length)
 					.ToArray()));
-			while (Gcd.Calculate(N,res) != 1)
+			while (Gcd.Calculate(Phi,res) != 1)
 				res -= 1;
 
 			return res;
@@ -53,7 +80,7 @@ namespace Labs.RsaLab
 			BigInteger gcd, x, y;
 			Gcd.Calculate(E, Phi, out gcd, out x, out y);
 			BigInteger d = 1;
-			while(x < 0)
+			while(x < 0 || gcd != 1)
 			{
 				d++;
 				Gcd.Calculate(E*d, Phi, out gcd, out x, out y);

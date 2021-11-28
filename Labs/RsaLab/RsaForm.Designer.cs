@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.leftGroupBox = new System.Windows.Forms.GroupBox();
-			this.varsGroupBox = new System.Windows.Forms.GroupBox();
+			this.argsGroupBox = new System.Windows.Forms.GroupBox();
 			this.dTbx = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.eTbx = new System.Windows.Forms.TextBox();
@@ -38,8 +38,6 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.nTbx = new System.Windows.Forms.TextBox();
 			this.nLbl = new System.Windows.Forms.Label();
-			this.argsGroupBox = new System.Windows.Forms.GroupBox();
-			this.calculateBtn = new System.Windows.Forms.Button();
 			this.qTbx = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.pTbx = new System.Windows.Forms.TextBox();
@@ -57,14 +55,12 @@
 			this.plainTbx = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.leftGroupBox.SuspendLayout();
-			this.varsGroupBox.SuspendLayout();
 			this.argsGroupBox.SuspendLayout();
 			this.cryptGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// leftGroupBox
 			// 
-			this.leftGroupBox.Controls.Add(this.varsGroupBox);
 			this.leftGroupBox.Controls.Add(this.argsGroupBox);
 			this.leftGroupBox.Controls.Add(this.generateBtn);
 			this.leftGroupBox.Controls.Add(this.sizeTbx);
@@ -76,99 +72,16 @@
 			this.leftGroupBox.TabIndex = 4;
 			this.leftGroupBox.TabStop = false;
 			// 
-			// varsGroupBox
-			// 
-			this.varsGroupBox.Controls.Add(this.dTbx);
-			this.varsGroupBox.Controls.Add(this.label8);
-			this.varsGroupBox.Controls.Add(this.eTbx);
-			this.varsGroupBox.Controls.Add(this.label7);
-			this.varsGroupBox.Controls.Add(this.phiTbx);
-			this.varsGroupBox.Controls.Add(this.label6);
-			this.varsGroupBox.Controls.Add(this.nTbx);
-			this.varsGroupBox.Controls.Add(this.nLbl);
-			this.varsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-			this.varsGroupBox.Enabled = false;
-			this.varsGroupBox.Location = new System.Drawing.Point(3, 275);
-			this.varsGroupBox.Name = "varsGroupBox";
-			this.varsGroupBox.Size = new System.Drawing.Size(379, 272);
-			this.varsGroupBox.TabIndex = 13;
-			this.varsGroupBox.TabStop = false;
-			// 
-			// dTbx
-			// 
-			this.dTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.dTbx.Location = new System.Drawing.Point(3, 196);
-			this.dTbx.Name = "dTbx";
-			this.dTbx.ReadOnly = true;
-			this.dTbx.Size = new System.Drawing.Size(373, 29);
-			this.dTbx.TabIndex = 20;
-			// 
-			// label8
-			// 
-			this.label8.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label8.Location = new System.Drawing.Point(3, 175);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(373, 21);
-			this.label8.TabIndex = 19;
-			this.label8.Text = "d";
-			// 
-			// eTbx
-			// 
-			this.eTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.eTbx.Location = new System.Drawing.Point(3, 146);
-			this.eTbx.Name = "eTbx";
-			this.eTbx.ReadOnly = true;
-			this.eTbx.Size = new System.Drawing.Size(373, 29);
-			this.eTbx.TabIndex = 18;
-			// 
-			// label7
-			// 
-			this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label7.Location = new System.Drawing.Point(3, 125);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(373, 21);
-			this.label7.TabIndex = 17;
-			this.label7.Text = "e";
-			// 
-			// phiTbx
-			// 
-			this.phiTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.phiTbx.Location = new System.Drawing.Point(3, 96);
-			this.phiTbx.Name = "phiTbx";
-			this.phiTbx.ReadOnly = true;
-			this.phiTbx.Size = new System.Drawing.Size(373, 29);
-			this.phiTbx.TabIndex = 16;
-			// 
-			// label6
-			// 
-			this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label6.Location = new System.Drawing.Point(3, 75);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(373, 21);
-			this.label6.TabIndex = 15;
-			this.label6.Text = "φ(n)";
-			// 
-			// nTbx
-			// 
-			this.nTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.nTbx.Location = new System.Drawing.Point(3, 46);
-			this.nTbx.Name = "nTbx";
-			this.nTbx.ReadOnly = true;
-			this.nTbx.Size = new System.Drawing.Size(373, 29);
-			this.nTbx.TabIndex = 14;
-			// 
-			// nLbl
-			// 
-			this.nLbl.Dock = System.Windows.Forms.DockStyle.Top;
-			this.nLbl.Location = new System.Drawing.Point(3, 25);
-			this.nLbl.Name = "nLbl";
-			this.nLbl.Size = new System.Drawing.Size(373, 21);
-			this.nLbl.TabIndex = 13;
-			this.nLbl.Text = "n";
-			// 
 			// argsGroupBox
 			// 
-			this.argsGroupBox.Controls.Add(this.calculateBtn);
+			this.argsGroupBox.Controls.Add(this.dTbx);
+			this.argsGroupBox.Controls.Add(this.label8);
+			this.argsGroupBox.Controls.Add(this.eTbx);
+			this.argsGroupBox.Controls.Add(this.label7);
+			this.argsGroupBox.Controls.Add(this.phiTbx);
+			this.argsGroupBox.Controls.Add(this.label6);
+			this.argsGroupBox.Controls.Add(this.nTbx);
+			this.argsGroupBox.Controls.Add(this.nLbl);
 			this.argsGroupBox.Controls.Add(this.qTbx);
 			this.argsGroupBox.Controls.Add(this.label3);
 			this.argsGroupBox.Controls.Add(this.pTbx);
@@ -177,21 +90,81 @@
 			this.argsGroupBox.Enabled = false;
 			this.argsGroupBox.Location = new System.Drawing.Point(3, 105);
 			this.argsGroupBox.Name = "argsGroupBox";
-			this.argsGroupBox.Size = new System.Drawing.Size(379, 170);
-			this.argsGroupBox.TabIndex = 8;
+			this.argsGroupBox.Size = new System.Drawing.Size(379, 405);
+			this.argsGroupBox.TabIndex = 13;
 			this.argsGroupBox.TabStop = false;
 			// 
-			// calculateBtn
+			// dTbx
 			// 
-			this.calculateBtn.Dock = System.Windows.Forms.DockStyle.Top;
-			this.calculateBtn.Location = new System.Drawing.Point(3, 125);
-			this.calculateBtn.Margin = new System.Windows.Forms.Padding(0);
-			this.calculateBtn.Name = "calculateBtn";
-			this.calculateBtn.Size = new System.Drawing.Size(373, 30);
-			this.calculateBtn.TabIndex = 11;
-			this.calculateBtn.Text = "Calculate";
-			this.calculateBtn.UseVisualStyleBackColor = true;
-			this.calculateBtn.Click += new System.EventHandler(this.calculateBtn_Click);
+			this.dTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.dTbx.Location = new System.Drawing.Point(3, 296);
+			this.dTbx.Name = "dTbx";
+			this.dTbx.ReadOnly = true;
+			this.dTbx.Size = new System.Drawing.Size(373, 29);
+			this.dTbx.TabIndex = 20;
+			// 
+			// label8
+			// 
+			this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label8.Location = new System.Drawing.Point(3, 275);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(373, 21);
+			this.label8.TabIndex = 19;
+			this.label8.Text = "d";
+			// 
+			// eTbx
+			// 
+			this.eTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.eTbx.Location = new System.Drawing.Point(3, 246);
+			this.eTbx.Name = "eTbx";
+			this.eTbx.ReadOnly = true;
+			this.eTbx.Size = new System.Drawing.Size(373, 29);
+			this.eTbx.TabIndex = 18;
+			// 
+			// label7
+			// 
+			this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label7.Location = new System.Drawing.Point(3, 225);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(373, 21);
+			this.label7.TabIndex = 17;
+			this.label7.Text = "e";
+			// 
+			// phiTbx
+			// 
+			this.phiTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.phiTbx.Location = new System.Drawing.Point(3, 196);
+			this.phiTbx.Name = "phiTbx";
+			this.phiTbx.ReadOnly = true;
+			this.phiTbx.Size = new System.Drawing.Size(373, 29);
+			this.phiTbx.TabIndex = 16;
+			// 
+			// label6
+			// 
+			this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+			this.label6.Location = new System.Drawing.Point(3, 175);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(373, 21);
+			this.label6.TabIndex = 15;
+			this.label6.Text = "φ(n)";
+			// 
+			// nTbx
+			// 
+			this.nTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.nTbx.Location = new System.Drawing.Point(3, 146);
+			this.nTbx.Name = "nTbx";
+			this.nTbx.ReadOnly = true;
+			this.nTbx.Size = new System.Drawing.Size(373, 29);
+			this.nTbx.TabIndex = 14;
+			// 
+			// nLbl
+			// 
+			this.nLbl.Dock = System.Windows.Forms.DockStyle.Top;
+			this.nLbl.Location = new System.Drawing.Point(3, 125);
+			this.nLbl.Name = "nLbl";
+			this.nLbl.Size = new System.Drawing.Size(373, 21);
+			this.nLbl.TabIndex = 13;
+			this.nLbl.Text = "n";
 			// 
 			// qTbx
 			// 
@@ -238,7 +211,7 @@
 			this.generateBtn.Name = "generateBtn";
 			this.generateBtn.Size = new System.Drawing.Size(379, 30);
 			this.generateBtn.TabIndex = 16;
-			this.generateBtn.Text = "Generate p and q";
+			this.generateBtn.Text = "Generate Arguments";
 			this.generateBtn.UseVisualStyleBackColor = true;
 			this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
 			// 
@@ -281,6 +254,7 @@
 			// decryptedTbx
 			// 
 			this.decryptedTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.decryptedTbx.Enabled = false;
 			this.decryptedTbx.Location = new System.Drawing.Point(3, 206);
 			this.decryptedTbx.Name = "decryptedTbx";
 			this.decryptedTbx.ReadOnly = true;
@@ -307,10 +281,12 @@
 			this.decryptBtn.TabIndex = 7;
 			this.decryptBtn.Text = "Decrypt";
 			this.decryptBtn.UseVisualStyleBackColor = true;
+			this.decryptBtn.Click += new System.EventHandler(this.decryptBtn_Click);
 			// 
 			// cryptTbx
 			// 
 			this.cryptTbx.Dock = System.Windows.Forms.DockStyle.Top;
+			this.cryptTbx.Enabled = false;
 			this.cryptTbx.Location = new System.Drawing.Point(3, 126);
 			this.cryptTbx.Name = "cryptTbx";
 			this.cryptTbx.Size = new System.Drawing.Size(403, 29);
@@ -336,6 +312,7 @@
 			this.encryptBtn.TabIndex = 6;
 			this.encryptBtn.Text = "Encrypt";
 			this.encryptBtn.UseVisualStyleBackColor = true;
+			this.encryptBtn.Click += new System.EventHandler(this.encryptBtn_Click);
 			// 
 			// plainTbx
 			// 
@@ -344,6 +321,7 @@
 			this.plainTbx.Name = "plainTbx";
 			this.plainTbx.Size = new System.Drawing.Size(403, 29);
 			this.plainTbx.TabIndex = 1;
+			this.plainTbx.TextChanged += new System.EventHandler(this.plainTbx_TextChanged);
 			// 
 			// label5
 			// 
@@ -365,8 +343,6 @@
 			this.Text = "RsaForm";
 			this.leftGroupBox.ResumeLayout(false);
 			this.leftGroupBox.PerformLayout();
-			this.varsGroupBox.ResumeLayout(false);
-			this.varsGroupBox.PerformLayout();
 			this.argsGroupBox.ResumeLayout(false);
 			this.argsGroupBox.PerformLayout();
 			this.cryptGroupBox.ResumeLayout(false);
@@ -386,7 +362,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox plainTbx;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.GroupBox varsGroupBox;
+		private System.Windows.Forms.GroupBox argsGroupBox;
 		private System.Windows.Forms.TextBox dTbx;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.TextBox eTbx;
@@ -399,8 +375,6 @@
 		private System.Windows.Forms.TextBox sizeTbx;
 		private System.Windows.Forms.Label sizeLbl;
 		private System.Windows.Forms.Button generateBtn;
-		private System.Windows.Forms.GroupBox argsGroupBox;
-		private System.Windows.Forms.Button calculateBtn;
 		private System.Windows.Forms.TextBox qTbx;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox pTbx;
