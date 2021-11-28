@@ -57,6 +57,7 @@ namespace Labs.RsaLab
 			dTbx.Text = Convert.ToString(rsa.D);
 
 			varsGroupBox.Enabled = true;
+			cryptGroupBox.Enabled = true;
 		}
 	}
 }

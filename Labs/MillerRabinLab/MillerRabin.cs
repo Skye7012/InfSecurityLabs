@@ -32,9 +32,14 @@ namespace Labs.MillerRabinLab
 
 			for (int i = 0; i < r; i++)
 			{
-				BigInteger a = GenerateRandomA(n);
+				BigInteger a = 0;
+				BigInteger x = 0;
 
-				BigInteger x = ModPow.Calculate(a, t, n);
+				while (x == 0)
+				{
+					a = GenerateRandomA(n);
+					x = ModPow.Calculate(a, t, n);
+				}
 
 				if (x == 1 || x == n - 1)
 					continue;
@@ -43,7 +48,7 @@ namespace Labs.MillerRabinLab
 				{
 					x = ModPow.Calculate(x, 2, n);
 
-					if (x == 1)
+					if (x == 1 || x == 0)
 						return false;
 					else if (x == n - 1)
 						break;
