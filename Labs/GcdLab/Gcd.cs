@@ -9,6 +9,13 @@ namespace Labs.GcdLab
 {
 	public class Gcd
 	{
+		public static BigInteger Calculate(BigInteger a, BigInteger b)
+		{
+			BigInteger gcd,x, y;
+			Calculate(a, b, out gcd, out x, out y);
+			return gcd;
+		}
+
 		/// <summary>
 		/// Вычислить Нод и х, y
 		/// </summary>

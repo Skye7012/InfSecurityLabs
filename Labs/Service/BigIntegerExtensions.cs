@@ -34,10 +34,10 @@ namespace Labs.Servise
 
 			return new string(stack.ToArray());
 		}
-		public static string ToStringProp(this BigInteger bigint)
+		public static int GetLength(this BigInteger bigint)
 		{
-			throw new Exception();//do
-			return null;
+			string str = Convert.ToString(bigint);
+			return str.Length;
 		}
 	}
 }
