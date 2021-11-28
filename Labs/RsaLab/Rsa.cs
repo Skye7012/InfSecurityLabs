@@ -15,7 +15,7 @@ namespace Labs.RsaLab
 		public BigInteger Phi { get; protected set; }
 		public BigInteger E { get; protected set; }
 		public BigInteger D { get; protected set; }
-		public string CalculateVars(BigInteger p, BigInteger q)
+		public Rsa(BigInteger p, BigInteger q)
 		{
 			N = p * q;
 			Phi = (p - 1) * (q - 1);
@@ -27,7 +27,7 @@ namespace Labs.RsaLab
 
 		}
 
-		private BigInteger GenerateE()
+		public BigInteger GenerateE()
 		{
 			int length = N.GetLength()/3;
 			BigInteger res = BigInteger.Parse
