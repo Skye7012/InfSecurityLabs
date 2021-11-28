@@ -31,6 +31,10 @@ namespace Labs.RsaLab
 		public BigInteger GenerateE()
 		{
 			int length = N.GetLength()/3;
+
+			if (length < 1)
+				throw new Exception("To small N value");
+
 			BigInteger res = BigInteger.Parse
 				(new string
 				(Enumerable.Repeat('9', length)
