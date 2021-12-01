@@ -299,7 +299,7 @@
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(403, 21);
 			this.label4.TabIndex = 2;
-			this.label4.Text = "Cryptography";
+			this.label4.Text = "Cryptogram";
 			// 
 			// encryptBtn
 			// 
