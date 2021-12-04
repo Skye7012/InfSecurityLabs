@@ -16,6 +16,12 @@ namespace Labs.RsaLab
 		public BigInteger Phi { get; protected set; }
 		public BigInteger E { get; protected set; }
 		public BigInteger D { get; protected set; }
+
+		/// <summary>
+		/// Конструтор
+		/// </summary>
+		/// <param name="p">Простое число</param>
+		/// <param name="q">Простое число</param>
 		public Rsa(BigInteger p, BigInteger q)
 		{
 			N = p * q;
@@ -28,6 +34,11 @@ namespace Labs.RsaLab
 			D = GenerateD();
 		}
 
+		/// <summary>
+		/// Зашифровывает сообщение
+		/// </summary>
+		/// <param name="text">Исходный текст</param>
+		/// <returns>Коллекцию индексов символов</returns>
 		public List<BigInteger> Encrypt(string text)
 		{
 			List<BigInteger> indexes = new List<BigInteger>();
@@ -42,6 +53,11 @@ namespace Labs.RsaLab
 			return indexes;
 		}
 
+		/// <summary>
+		/// Расшифровывает сообщение
+		/// </summary>
+		/// <param name="indexes">Коллекция индексов символов</param>
+		/// <returns>Расшифровыванное сообщение</returns>
 		public string Decrypt(List<BigInteger> indexes)
 		{
 			StringBuilder res = new StringBuilder();
@@ -55,12 +71,16 @@ namespace Labs.RsaLab
 			return res.ToString();
 		}
 
+		/// <summary>
+		/// Геренерирует e
+		/// </summary>
+		/// <returns></returns>
 		public BigInteger GenerateE()
 		{
 			int length = N.GetLength()/3;
 
 			if (length < 1)
-				throw new Exception("To small N value");
+				throw new Exception("Too small N value");
 
 			BigInteger res = BigInteger.Parse
 				(new string
@@ -72,27 +92,21 @@ namespace Labs.RsaLab
 			return res;
 		}
 
+		/// <summary>
+		/// Генерирует d
+		/// </summary>
 		public BigInteger GenerateD()
 		{
 			if (N == default(BigInteger))
 				throw new Exception("Not initialized N");
 
 			BigInteger gcd, x, y;
-			Gcd.Calculate(E, Phi, out gcd, out x, out y);
-			BigInteger d = 1;
-			while(x < 0 || gcd != 1)
-			{
-				d++;
-				Gcd.Calculate(E*d, Phi, out gcd, out x, out y);
+			Gcd.Calculate(Phi, E, out gcd, out x, out y);
 
-				if (d >= N - 1)
-					throw new Exception("Cannot Generate D");
-			}
+			if (y < 0)
+				y += Phi;
 
-			if(x * d >= N - 1)
-				throw new Exception("Cannot Generate D");
-
-			return x * d;
+			return y;
 		}
 	}
 }

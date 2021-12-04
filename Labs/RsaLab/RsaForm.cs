@@ -12,7 +12,6 @@ namespace Labs.RsaLab
 {
 	public partial class RsaForm : Form
 	{
-		//TODO: е должно быть в 3 раза меньше по кол-ву цифр?
 		Rsa _rsa;
 		public RsaForm()
 		{
@@ -25,7 +24,7 @@ namespace Labs.RsaLab
 			bool isValid = BigInteger.TryParse(sizeTbx.Text, out bitSize)
 				&& !string.IsNullOrWhiteSpace(sizeTbx.Text)
 				&& bitSize > 4; //
-			
+
 			//>4 потому что только с 5 битами и более
 			//можно сгенерировать правильные p,q,n,phi,e,d
 
@@ -107,6 +106,18 @@ namespace Labs.RsaLab
 
 		private void decryptBtn_Click(object sender, EventArgs e)
 		{
+			try
+			{
+				Decrypt();
+			}
+			catch
+			{
+				MessageBox.Show("Cryptogram has changed and become not valide to decrypt");
+			}
+		}
+
+		private void Decrypt()
+		{
 			var stringIds = cryptTbx.Text.Split(' ');
 			var ids = new List<BigInteger>();
 
@@ -115,36 +126,13 @@ namespace Labs.RsaLab
 				ids.Add(BigInteger.Parse(index));
 			}
 
-
 			var res = "";
 
-			try
-			{
-				res = _rsa.Decrypt(ids);
-
-			}
-			catch
-			{
-				MessageBox.Show("Cryptogram has changed and become not valide to decrypt");
-			}
+			res = _rsa.Decrypt(ids);
 
 			decryptedTbx.Text = res;
 
 			decryptedTbx.Enabled = true;
 		}
-
-		//private void calculateBtn_Click(object sender, EventArgs e)
-		//{
-		//	BigInteger p = BigInteger.Parse(pTbx.Text);
-		//	BigInteger q = BigInteger.Parse(qTbx.Text);
-		//	Rsa rsa = new Rsa(p, q);
-		//	nTbx.Text = Convert.ToString(rsa.N);
-		//	phiTbx.Text = Convert.ToString(rsa.Phi);
-		//	eTbx.Text = Convert.ToString(rsa.E);
-		//	dTbx.Text = Convert.ToString(rsa.D);
-
-		//	argsGroupBox.Enabled = true;
-		//	cryptGroupBox.Enabled = true;
-		//}
 	}
 }
