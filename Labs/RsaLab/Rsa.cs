@@ -12,6 +12,8 @@ namespace Labs.RsaLab
 {
 	public class Rsa
 	{
+		public BigInteger P { get; protected set; }
+		public BigInteger Q { get; protected set; }
 		public BigInteger N { get; protected set; }
 		public BigInteger Phi { get; protected set; }
 		public BigInteger E { get; protected set; }
@@ -20,8 +22,45 @@ namespace Labs.RsaLab
 		/// <summary>
 		/// Конструтор
 		/// </summary>
+		/// <param name="p"></param>
+		/// <param name="q"></param>
+		public Rsa(BigInteger bitSize)
+		{
+			if (bitSize < 5)
+				throw new Exception("Too small bit Size, it must be at least bigger than 4");
+
+			while (true)
+			{
+				try
+				{
+					BigInteger p = MillerRabin.GeneratePrimeNumber(bitSize);
+					BigInteger q = MillerRabin.GeneratePrimeNumber(bitSize);
+					while (p == q)
+						q = MillerRabin.GeneratePrimeNumber(bitSize);
+
+					P = p;
+					Q = q;
+
+					N = p * q;
+					Phi = (p - 1) * (q - 1);
+
+					E = GenerateE();
+					D = GenerateD();
+
+					break;
+				}
+				catch { }
+			}
+
+
+		}
+
+		/// <summary>
+		/// Конструтор
+		/// </summary>
 		/// <param name="p">Простое число</param>
 		/// <param name="q">Простое число</param>
+		[Obsolete]
 		public Rsa(BigInteger p, BigInteger q)
 		{
 			N = p * q;
@@ -64,7 +103,8 @@ namespace Labs.RsaLab
 
 			foreach (var id in indexes)
 			{
-				int plainId = (int)ModPow.Calculate(id, D, N);
+				BigInteger bPlainId = ModPow.Calculate(id, D, N);
+				int plainId = (int)bPlainId;
 				res.Append((char)plainId);
 			}
 
@@ -89,6 +129,9 @@ namespace Labs.RsaLab
 			while (Gcd.Calculate(Phi,res) != 1)
 				res -= 1;
 
+			if (!(res >= 2 && res < N))
+				throw new Exception("Cannot generate E");
+
 			return res;
 		}
 
@@ -97,14 +140,17 @@ namespace Labs.RsaLab
 		/// </summary>
 		public BigInteger GenerateD()
 		{
-			if (N == default(BigInteger))
-				throw new Exception("Not initialized N");
+			if (E == default(BigInteger))
+				throw new Exception("Not initialized E");
 
 			BigInteger gcd, x, y;
 			Gcd.Calculate(Phi, E, out gcd, out x, out y);
 
 			if (y < 0)
 				y += Phi;
+
+			if (!(y > 1 && y < N))
+				throw new Exception("Cannot generate D");
 
 			return y;
 		}

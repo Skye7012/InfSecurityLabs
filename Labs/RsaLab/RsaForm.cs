@@ -23,7 +23,7 @@ namespace Labs.RsaLab
 			BigInteger bitSize;
 			bool isValid = BigInteger.TryParse(sizeTbx.Text, out bitSize)
 				&& !string.IsNullOrWhiteSpace(sizeTbx.Text)
-				&& bitSize > 4; //
+				&& bitSize > 4;
 
 			//>4 потому что только с 5 битами и более
 			//можно сгенерировать правильные p,q,n,phi,e,d
@@ -33,19 +33,24 @@ namespace Labs.RsaLab
 
 		private void generateBtn_Click(object sender, EventArgs ev)
 		{
+			try
+			{
+				GenerateBtn();
+			}
+			catch 
+			{ 
+				MessageBox.Show("Wrong bitSize"); 
+			}
+
+		}
+
+		private void GenerateBtn()
+		{
 			BigInteger bitSize = BigInteger.Parse(sizeTbx.Text);
 
 			BigInteger p, q, n, phi, e, d;
-			while (true)
-			{
-				try
-				{
-					GeneratePrimeNumbers(bitSize, out p, out q);
-					GenerateVars(p, q, out n, out phi, out e, out d);
-					break;
-				}
-				catch { }
-			}
+
+			GenerateVars(bitSize, out p, out q, out n, out phi, out e, out d);
 
 			pTbx.Text = Convert.ToString(p);
 			qTbx.Text = Convert.ToString(q);
@@ -63,10 +68,12 @@ namespace Labs.RsaLab
 		/// </summary>
 		/// <exception cref="Exception">To small N value</exception>
 		/// <exception cref="Exception">Cannot Generate D</exception>
-		private void GenerateVars(BigInteger p, BigInteger q,
+		private void GenerateVars(BigInteger bitSize, out BigInteger p, out BigInteger q,
 			out BigInteger n, out BigInteger phi, out BigInteger e, out BigInteger d)
 		{
-			Rsa rsa = new Rsa(p, q);
+			Rsa rsa = new Rsa(bitSize);
+			p = rsa.P;
+			q = rsa.Q;
 			n = rsa.N;
 			phi = rsa.Phi;
 			e = rsa.E;
