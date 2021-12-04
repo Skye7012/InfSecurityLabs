@@ -11,6 +11,21 @@ namespace Labs.Servise
 
 	public static class StringExtensions
 	{
+		public static List<int> ToIdList(this string text)
+		{
+			List<int> indexes = new List<int>();
+
+			foreach (var let in text)
+			{
+				int id = (int)let;
+				indexes.Add(id);
+			}
+
+			return indexes;
+		}
+
+
+
 		/// <summary>
 		/// Увеличивает индекс каждой буквы в тексте на заданное число n
 		/// </summary>

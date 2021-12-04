@@ -1,9 +1,11 @@
 ﻿using Labs.MillerRabinLab;
+using Labs.Servise;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Windows.Forms;
@@ -20,6 +22,12 @@ namespace Labs.RsaLab
 
 		private void sizeTbx_TextChanged(object sender, EventArgs e)
 		{
+			argsGroupBox.Enabled = false;
+			cryptGroupBox.Enabled = false;
+			encryptBtn.Enabled = false;
+			cryptTbx.Enabled = false;
+			decryptBtn.Enabled = false;
+
 			BigInteger bitSize;
 			bool isValid = BigInteger.TryParse(sizeTbx.Text, out bitSize)
 				&& !string.IsNullOrWhiteSpace(sizeTbx.Text)
@@ -96,9 +104,29 @@ namespace Labs.RsaLab
 
 		private void plainTbx_TextChanged(object sender, EventArgs e)
 		{
-			bool isValid = !string.IsNullOrWhiteSpace(plainTbx.Text);
+			bool isValid = !string.IsNullOrWhiteSpace(plainTbx.Text)
+				&& plainTbx.Text.ToIdList().All(x => x >= 0 && x <= _rsa.N - 1);
 
+
+			plainLabelChange(isValid);
 			encryptBtn.Enabled = isValid;
+		}
+
+		void plainLabelChange(bool isValid)
+		{
+			string correct = "Plain Text";
+			string incorrect = "Plain Text (Not Valid Message, m must be 0<=m<=n-1)";
+
+			if (isValid)
+			{
+				plainLbl.Text = correct;
+				plainLbl.ForeColor = Color.Black;
+			}
+			else
+			{
+				plainLbl.Text = incorrect;
+				plainLbl.ForeColor = Color.Red;
+			}
 		}
 
 		private void encryptBtn_Click(object sender, EventArgs e)

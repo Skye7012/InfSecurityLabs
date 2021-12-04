@@ -53,7 +53,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.encryptBtn = new System.Windows.Forms.Button();
 			this.plainTbx = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
+			this.plainLbl = new System.Windows.Forms.Label();
 			this.leftGroupBox.SuspendLayout();
 			this.argsGroupBox.SuspendLayout();
 			this.cryptGroupBox.SuspendLayout();
@@ -242,7 +242,7 @@
 			this.cryptGroupBox.Controls.Add(this.label4);
 			this.cryptGroupBox.Controls.Add(this.encryptBtn);
 			this.cryptGroupBox.Controls.Add(this.plainTbx);
-			this.cryptGroupBox.Controls.Add(this.label5);
+			this.cryptGroupBox.Controls.Add(this.plainLbl);
 			this.cryptGroupBox.Dock = System.Windows.Forms.DockStyle.Right;
 			this.cryptGroupBox.Enabled = false;
 			this.cryptGroupBox.Location = new System.Drawing.Point(391, 0);
@@ -323,14 +323,14 @@
 			this.plainTbx.TabIndex = 1;
 			this.plainTbx.TextChanged += new System.EventHandler(this.plainTbx_TextChanged);
 			// 
-			// label5
+			// plainLbl
 			// 
-			this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label5.Location = new System.Drawing.Point(3, 25);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(403, 21);
-			this.label5.TabIndex = 0;
-			this.label5.Text = "Plain Text";
+			this.plainLbl.Dock = System.Windows.Forms.DockStyle.Top;
+			this.plainLbl.Location = new System.Drawing.Point(3, 25);
+			this.plainLbl.Name = "plainLbl";
+			this.plainLbl.Size = new System.Drawing.Size(403, 21);
+			this.plainLbl.TabIndex = 0;
+			this.plainLbl.Text = "Plain Text";
 			// 
 			// RsaForm
 			// 
@@ -361,7 +361,7 @@
 		private System.Windows.Forms.TextBox cryptTbx;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox plainTbx;
-		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label plainLbl;
 		private System.Windows.Forms.GroupBox argsGroupBox;
 		private System.Windows.Forms.TextBox dTbx;
 		private System.Windows.Forms.Label label8;
