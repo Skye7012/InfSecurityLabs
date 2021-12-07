@@ -105,7 +105,7 @@ namespace Labs.RsaLab
 		private void plainTbx_TextChanged(object sender, EventArgs e)
 		{
 			bool isValid = !string.IsNullOrWhiteSpace(plainTbx.Text)
-				&& plainTbx.Text.ToIdList().All(x => x >= 0 && x <= _rsa.N - 1);
+				&& plainTbx.Text.ToIdList().All(x => x > 0 && x <= _rsa.N - 1);
 
 
 			plainLabelChange(isValid);
@@ -115,7 +115,7 @@ namespace Labs.RsaLab
 		void plainLabelChange(bool isValid)
 		{
 			string correct = "Plain Text";
-			string incorrect = "Plain Text (Not Valid Message, m must be 0<=m<=n-1)";
+			string incorrect = "Plain Text (Not Valid Message, m must be 0<m<=n-1)";
 
 			if (isValid)
 			{

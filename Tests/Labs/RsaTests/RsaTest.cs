@@ -16,7 +16,7 @@ namespace Tests
 
 		public RsaTest()
 		{
-			text = "Амогус!";
+			text = "HelloKitty";
 		}
 
 		[Fact]

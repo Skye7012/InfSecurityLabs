@@ -104,7 +104,7 @@ namespace Labs.RsaLab
 			foreach (var id in indexes)
 			{
 				BigInteger bPlainId = ModPow.Calculate(id, D, N);
-				int plainId = (int)bPlainId;
+				int plainId = (int) (bPlainId%65536);
 				res.Append((char)plainId);
 			}
 
