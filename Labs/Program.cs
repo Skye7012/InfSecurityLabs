@@ -23,9 +23,9 @@ namespace Labs
 			Application.SetCompatibleTextRenderingDefault(false);
 
 			Application.Run(new RsaForm());
-			Application.Run(new PowForm());
-			Application.Run(new GcdForm());
-			Application.Run(new MillerRabinForm());
+			//Application.Run(new PowForm());
+			//Application.Run(new GcdForm());
+			//Application.Run(new MillerRabinForm());
 		}
 	}
 }

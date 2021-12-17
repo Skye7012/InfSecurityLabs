@@ -1,4 +1,5 @@
 ﻿using Labs.MillerRabinLab;
+using Labs.Service;
 using Labs.Servise;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Labs.RsaLab
 	public partial class RsaForm : Form
 	{
 		Rsa _rsa;
+		Win1251Alphabet _alphabet = new Win1251Alphabet();
 		public RsaForm()
 		{
 			InitializeComponent();
@@ -131,6 +133,12 @@ namespace Labs.RsaLab
 
 		private void encryptBtn_Click(object sender, EventArgs e)
 		{
+			if (_alphabet.ConvertTextToIdsNumber(plainTbx.Text) > _rsa.N - 1)
+			{
+				MessageBox.Show("Plain Text (Not Valid Message, m must be 0<m<=n-1)");
+				return;
+			}
+
 			var ids = _rsa.Encrypt(plainTbx.Text);
 			var res = string.Join(" ", ids);
 			cryptTbx.Text = res;
@@ -153,17 +161,17 @@ namespace Labs.RsaLab
 
 		private void Decrypt()
 		{
-			var stringIds = cryptTbx.Text.Split(' ');
-			var ids = new List<BigInteger>();
+			//var stringIds = cryptTbx.Text.Split(' ');
+			//var ids = new List<BigInteger>();
 
-			foreach (var index in stringIds)
-			{
-				ids.Add(BigInteger.Parse(index));
-			}
+			//foreach (var index in stringIds)
+			//{
+			//	ids.Add(BigInteger.Parse(index));
+			//}
 
-			var res = "";
+			//var res = "";
 
-			res = _rsa.Decrypt(ids);
+			var res = _rsa.Decrypt(BigInteger.Parse(cryptTbx.Text));
 
 			decryptedTbx.Text = res;
 

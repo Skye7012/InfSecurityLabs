@@ -1,6 +1,7 @@
 ﻿using Labs.GcdLab;
 using Labs.MillerRabinLab;
 using Labs.PowLab;
+using Labs.Service;
 using Labs.Servise;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Labs.RsaLab
 		public BigInteger E { get; protected set; }
 		public BigInteger D { get; protected set; }
 
+		private Win1251Alphabet _alphabet;
+
 		/// <summary>
 		/// Конструтор
 		/// </summary>
@@ -33,6 +36,8 @@ namespace Labs.RsaLab
 			{
 				try
 				{
+					_alphabet = new Win1251Alphabet();
+
 					BigInteger p = MillerRabin.GeneratePrimeNumber(bitSize);
 					BigInteger q = MillerRabin.GeneratePrimeNumber(bitSize);
 					while (p == q)
@@ -78,18 +83,10 @@ namespace Labs.RsaLab
 		/// </summary>
 		/// <param name="text">Исходный текст</param>
 		/// <returns>Коллекцию индексов символов</returns>
-		public List<BigInteger> Encrypt(string text)
+		public BigInteger Encrypt(string text)
 		{
-			List<BigInteger> indexes = new List<BigInteger>();
-
-			foreach (var let in text)
-			{
-				int id = (int)let;
-				BigInteger res = ModPow.Calculate(id, E, N);
-				indexes.Add(res);
-			}
-
-			return indexes;
+			var num = _alphabet.ConvertTextToIdsNumber(text);
+			return ModPow.Calculate(num, E, N);
 		}
 
 		/// <summary>
@@ -104,8 +101,30 @@ namespace Labs.RsaLab
 			foreach (var id in indexes)
 			{
 				BigInteger bPlainId = ModPow.Calculate(id, D, N);
-				int plainId = (int) (bPlainId%65536);
+				//int plainId = (int) (bPlainId%65536);
+				int plainId = (int)(bPlainId);
 				res.Append((char)plainId);
+			}
+
+			return res.ToString();
+		}
+
+		/// <summary>
+		/// Расшифровывает сообщение
+		/// </summary>
+		/// <param name="cryptogram">Криптограма</param>
+		/// <returns>Расшифровыванное сообщение</returns>
+		public string Decrypt(BigInteger cryptogram)
+		{
+			var plainTextDigits = ModPow.Calculate(cryptogram, D, N).ToString();
+			var ids = new List<int>();
+
+			var res = new StringBuilder();
+			for(int i = 0; i < plainTextDigits.Length; i+=2)
+			{
+				string idString = plainTextDigits[i].ToString() + plainTextDigits[i + 1].ToString();
+				var id = int.Parse(idString);
+				res.Append(_alphabet.GetLetter(id));
 			}
 
 			return res.ToString();
