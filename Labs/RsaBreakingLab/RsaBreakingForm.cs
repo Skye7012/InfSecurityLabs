@@ -38,24 +38,14 @@ namespace Labs.RsaBreakingLab
 		void Break()
 		{
 			using var timer = new MyTimer();
-			BigInteger N = BigInteger.Parse(nTbx.Text);
+			BigInteger n = BigInteger.Parse(nTbx.Text);
 			BigInteger e = BigInteger.Parse(eTbx.Text);
-			BigInteger sw = BigInteger.Parse(swTbx.Text);
-			BigInteger p, q, iter;
-			RsaBreaking.BreakN(N, out p, out q, out iter);
-			BigInteger phi = (p - 1) * (q - 1);
-			BigInteger d = RsaBreaking.FindD(phi, e, N);
-			var res = RsaBreaking.Decrypt(sw, d, N);
+			BigInteger cryptogram = BigInteger.Parse(swTbx.Text);
+			var breaker = new RsaBreaking(n, e);
+			var res = breaker.Break(cryptogram);
 			decryptedTbx.Text = res;
-			string info = $"iterations: {iter}\ntime past: {timer.GetPast()}";
+			string info = $"iterations: {breaker.Iter}\ntime past: {timer.GetPast()}";
 			InfoLbl.Text = info;
-		}
-
-		bool IsSomeTbxEmpty()
-		{
-			List<TextBox> textBoxes = new List<TextBox>()
-				{ nTbx,eTbx,swTbx};
-			return textBoxes.Any(x => string.IsNullOrWhiteSpace(x.Text));
 		}
 
 		bool AreTbxValid()

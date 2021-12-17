@@ -7,64 +7,38 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Labs.RsaBreakingLab
 {
 	class RsaBreaking
 	{
-		public static BigInteger BreakN(BigInteger N)
+		BigInteger _n, _e;
+		MyTimer _myTimer;
+		public BigInteger Iter { get; set; }
+		public BigInteger P { get; set; }
+		public BigInteger Q { get; set; }
+		public BigInteger Phi { get; set; }
+		public BigInteger D { get; set; }
+		public RsaBreaking( BigInteger n, BigInteger e)
 		{
-			BigInteger x = MillerRabin.GenerateRandomNumber(1, N - 1);
-			BigInteger y = 1;
-			int i = 0;
-			int stage = 2;
-			while (Gcd.Calculate(N, BigInteger.Abs(x - y)) == 1)
-			{
-				if (i == stage)
-				{
-					y = x;
-					stage *= 2;
-				}
-				x = (x * x + 1) % N;
-				i++;
-			}
-
-			return Gcd.Calculate(N, BigInteger.Abs(x - y));
-		}
-
-		public static void BreakN(BigInteger N, out BigInteger p, out BigInteger q, out BigInteger iter)
-		{
-			BigInteger x = MillerRabin.GenerateRandomNumber(1, N - 1);
-			BigInteger y = 1;
-			int i = 0;
-			int stage = 2;
-			while (Gcd.Calculate(N, BigInteger.Abs(x - y)) == 1)
-			{
-				if (i == stage)
-				{
-					Debug.WriteLine($"{stage}\t{DateTime.Now}");
-					y = x;
-					stage *= 2;
-				}
-				x = (x * x + 1) % N;
-				i++;
-			}
-			iter = i;
-			p = Gcd.Calculate(N, BigInteger.Abs(x - y));
-			q = N / p;
+			_myTimer = new MyTimer();
+			_n = n;
+			_e = e;
+			BreakN();
+			FindD();
 		}
 
 		/// <summary>
-		/// Расшифровывает сообщение
+		/// Расшифровать Криптограму
 		/// </summary>
-		/// <param name="cryptogram">Криптограма</param>
-		/// <returns>Расшифровыванное сообщение</returns>
-		public static string Decrypt(BigInteger cryptogram, BigInteger d, BigInteger n)
+		/// <param name="cryptogram"></param>
+		/// <returns></returns>
+		public string Break(BigInteger cryptogram)
 		{
 			var alphabet = new Win1251Alphabet();
 
-			var plainTextDigits = ModPow.Calculate(cryptogram, d, n).ToString();
-			var ids = new List<int>();
+			var plainTextDigits = ModPow.Calculate(cryptogram, D, _n).ToString();
 
 			var res = new StringBuilder();
 			for (int i = 0; i < plainTextDigits.Length; i += 2)
@@ -78,17 +52,45 @@ namespace Labs.RsaBreakingLab
 		}
 
 		/// <summary>
-		/// Генерирует d
+		/// Взломать N
 		/// </summary>
-		public static BigInteger FindD(BigInteger phi, BigInteger e, BigInteger n)
+		void BreakN()
 		{
+			string state = "";
+			BigInteger x = MillerRabin.GenerateRandomNumber(1, _n - 1);
+			BigInteger y = 1;
+			int i = 0;
+			int stage = 2;
+			while (Gcd.Calculate(_n, BigInteger.Abs(x - y)) == 1)
+			{
+				if (i == stage)
+				{
+					state = $"{stage}\t{_myTimer.GetPast()}";
+					Debug.WriteLine(state);
+					y = x;
+					stage *= 2;
+				}
+				x = (x * x + 1) % _n;
+				i++;
+			}
+			Iter = i;
+			P = Gcd.Calculate(_n, BigInteger.Abs(x - y));
+			Q = _n / P;
+		}
+
+		/// <summary>
+		/// Найти D
+		/// </summary>
+		public void FindD()
+		{
+			Phi = (P - 1) * (Q - 1);
 			BigInteger gcd, x, y;
-			Gcd.Calculate(phi, e, out gcd, out x, out y);
+			Gcd.Calculate(Phi, _e, out gcd, out x, out y);
 
 			if (y < 0)
-				y += phi;
+				y += Phi;
 
-			return y;
+			D = y;
 		}
 	}
 }
