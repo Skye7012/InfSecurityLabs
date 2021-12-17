@@ -36,6 +36,7 @@ namespace Labs.RsaBreakingLab
 			this.swTbx = new System.Windows.Forms.TextBox();
 			this.SwLbl = new System.Windows.Forms.Label();
 			this.argsGroupBox = new System.Windows.Forms.GroupBox();
+			this.InfoLbl = new System.Windows.Forms.Label();
 			this.decryptedTbx = new System.Windows.Forms.TextBox();
 			this.decrLbl = new System.Windows.Forms.Label();
 			this.breakBtn = new System.Windows.Forms.Button();
@@ -95,6 +96,7 @@ namespace Labs.RsaBreakingLab
 			// 
 			// argsGroupBox
 			// 
+			this.argsGroupBox.Controls.Add(this.InfoLbl);
 			this.argsGroupBox.Controls.Add(this.decryptedTbx);
 			this.argsGroupBox.Controls.Add(this.decrLbl);
 			this.argsGroupBox.Controls.Add(this.breakBtn);
@@ -110,6 +112,16 @@ namespace Labs.RsaBreakingLab
 			this.argsGroupBox.Size = new System.Drawing.Size(800, 510);
 			this.argsGroupBox.TabIndex = 14;
 			this.argsGroupBox.TabStop = false;
+			// 
+			// InfoLbl
+			// 
+			this.InfoLbl.AutoSize = true;
+			this.InfoLbl.Dock = System.Windows.Forms.DockStyle.Top;
+			this.InfoLbl.Location = new System.Drawing.Point(3, 255);
+			this.InfoLbl.MinimumSize = new System.Drawing.Size(400, 50);
+			this.InfoLbl.Name = "InfoLbl";
+			this.InfoLbl.Size = new System.Drawing.Size(400, 50);
+			this.InfoLbl.TabIndex = 22;
 			// 
 			// decryptedTbx
 			// 
@@ -169,5 +181,6 @@ namespace Labs.RsaBreakingLab
 		private System.Windows.Forms.TextBox decryptedTbx;
 		private System.Windows.Forms.Label decrLbl;
 		private System.Windows.Forms.Button breakBtn;
+		private System.Windows.Forms.Label InfoLbl;
 	}
 }

@@ -32,7 +32,7 @@ namespace Labs.RsaBreakingLab
 			return Gcd.Calculate(N, BigInteger.Abs(x - y));
 		}
 
-		public static void BreakN(BigInteger N, out BigInteger p, out BigInteger q)
+		public static void BreakN(BigInteger N, out BigInteger p, out BigInteger q, out BigInteger iter)
 		{
 			BigInteger x = MillerRabin.GenerateRandomNumber(1, N - 1);
 			BigInteger y = 1;
@@ -49,7 +49,7 @@ namespace Labs.RsaBreakingLab
 				x = (x * x + 1) % N;
 				i++;
 			}
-
+			iter = i;
 			p = Gcd.Calculate(N, BigInteger.Abs(x - y));
 			q = N / p;
 		}
