@@ -42,9 +42,9 @@ namespace Labs.RsaBreakingLab
 			{
 				if (i == stage)
 				{
+					Debug.WriteLine($"{stage}\t{DateTime.Now}");
 					y = x;
 					stage *= 2;
-					Debug.WriteLine(stage);
 				}
 				x = (x * x + 1) % N;
 				i++;
@@ -82,17 +82,11 @@ namespace Labs.RsaBreakingLab
 		/// </summary>
 		public static BigInteger FindD(BigInteger phi, BigInteger e, BigInteger n)
 		{
-			if (e == default(BigInteger))
-				throw new Exception("Not initialized E");
-
 			BigInteger gcd, x, y;
 			Gcd.Calculate(phi, e, out gcd, out x, out y);
 
 			if (y < 0)
 				y += phi;
-
-			if (!(y > 1 && y < n))
-				throw new Exception("Cannot generate D");
 
 			return y;
 		}

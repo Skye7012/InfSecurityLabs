@@ -8,8 +8,6 @@ namespace Labs.Service
 	public class MyTimer : IDisposable
 	{
 		public DateTime BeginTime { get; }
-		//public TimeSpan Past { get; set; }
-		//public DateTime EndTime { get; set; }
 		public MyTimer()
 		{
 			BeginTime = DateTime.Now;

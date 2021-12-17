@@ -126,7 +126,6 @@ namespace Labs.RsaBreakingLab
 			// decryptedTbx
 			// 
 			this.decryptedTbx.Dock = System.Windows.Forms.DockStyle.Top;
-			this.decryptedTbx.Enabled = false;
 			this.decryptedTbx.Location = new System.Drawing.Point(3, 226);
 			this.decryptedTbx.Name = "decryptedTbx";
 			this.decryptedTbx.ReadOnly = true;

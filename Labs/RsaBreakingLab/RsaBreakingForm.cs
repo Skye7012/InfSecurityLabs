@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Windows.Forms;
@@ -19,6 +20,23 @@ namespace Labs.RsaBreakingLab
 
 		private void breakBtn_Click(object sender, EventArgs eA)
 		{
+			if (IsSomeTbxEmpty())
+			{
+				MessageBox.Show("Some var is empty");
+				return;
+			}
+			try
+			{
+				Break();
+			}
+			catch
+			{
+				MessageBox.Show("Wrong Vars");
+			}
+		}
+
+		void Break()
+		{
 			using var timer = new MyTimer();
 			BigInteger N = BigInteger.Parse(nTbx.Text);
 			BigInteger e = BigInteger.Parse(eTbx.Text);
@@ -30,9 +48,14 @@ namespace Labs.RsaBreakingLab
 			var res = RsaBreaking.Decrypt(sw, d, N);
 			decryptedTbx.Text = res;
 			string info = $"iterations: {iter}\ntime past: {timer.GetPast()}";
-			InfoLbl.Text = info; 
+			InfoLbl.Text = info;
 		}
 
-
+		bool IsSomeTbxEmpty()
+		{
+			List<TextBox> textBoxes = new List<TextBox>()
+				{ nTbx,eTbx,swTbx};
+			return textBoxes.Any(x => string.IsNullOrWhiteSpace(x.Text));
+		}
 	}
 }
