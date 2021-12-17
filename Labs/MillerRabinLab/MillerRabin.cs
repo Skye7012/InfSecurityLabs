@@ -101,6 +101,28 @@ namespace Labs.MillerRabinLab
 		}
 
 		/// <summary>
+		/// Сгенироровать случайное число
+		/// </summary>
+		/// <param name="minValue">Нижняя граница</param>
+		/// <param name="maxValue">Верхняя граница</param>
+		/// <returns>случайное число</returns>
+		public static BigInteger GenerateRandomNumber(BigInteger minValue, BigInteger maxValue)
+		{
+			BigInteger res;
+
+			//размер n-2 в битах
+			BigInteger bitSize = (int)Math.Floor(BigInteger.Log(maxValue, 2)) + 1;
+
+			do
+			{
+				res = GenerateRandomNumberByBitSize(bitSize);
+			}
+			while (!(res >= minValue && res <= maxValue));
+
+			return res;
+		}
+
+		/// <summary>
 		/// Генерирует число с заданным размеров в битах
 		/// </summary>
 		/// <param name="bitSize">размер в битах</param>

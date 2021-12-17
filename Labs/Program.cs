@@ -1,6 +1,7 @@
 using Labs.GcdLab;
 using Labs.MillerRabinLab;
 using Labs.PowLab;
+using Labs.RsaBreakingLab;
 using Labs.RsaLab;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace Labs
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			Application.Run(new RsaForm());
+			Application.Run(new RsaBreakingForm());
+			//Application.Run(new RsaForm());
 			//Application.Run(new PowForm());
 			//Application.Run(new GcdForm());
 			//Application.Run(new MillerRabinForm());
