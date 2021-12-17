@@ -20,9 +20,9 @@ namespace Labs.RsaBreakingLab
 
 		private void breakBtn_Click(object sender, EventArgs eA)
 		{
-			if (IsSomeTbxEmpty())
+			if (!AreTbxValid())
 			{
-				MessageBox.Show("Some var is empty");
+				MessageBox.Show("Some var is not valid");
 				return;
 			}
 			try
@@ -56,6 +56,15 @@ namespace Labs.RsaBreakingLab
 			List<TextBox> textBoxes = new List<TextBox>()
 				{ nTbx,eTbx,swTbx};
 			return textBoxes.Any(x => string.IsNullOrWhiteSpace(x.Text));
+		}
+
+		bool AreTbxValid()
+		{
+			List<TextBox> textBoxes = new List<TextBox>()
+				{ nTbx,eTbx,swTbx};
+			return textBoxes.All(x => 
+				!string.IsNullOrWhiteSpace(x.Text)
+				&& x.Text.Length > 2);
 		}
 	}
 }
