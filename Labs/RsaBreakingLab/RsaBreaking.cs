@@ -65,7 +65,7 @@ namespace Labs.RsaBreakingLab
 			{
 				if (i == stage)
 				{
-					state = $"{stage}\t{_myTimer.GetPast()}";
+					state = $"{stage}\t{_myTimer.GetPast()}\t\t{DateTime.Now.ToLongTimeString()}";
 					Debug.WriteLine(state);
 					y = x;
 					stage *= 2;

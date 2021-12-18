@@ -11,6 +11,7 @@ namespace Labs.Service
 		public MyTimer()
 		{
 			BeginTime = DateTime.Now;
+			Debug.WriteLine($"Begining Time:\t{BeginTime}");
 		}
 		public void Dispose()
 		{

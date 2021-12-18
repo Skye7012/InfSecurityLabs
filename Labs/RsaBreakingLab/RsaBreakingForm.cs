@@ -52,9 +52,11 @@ namespace Labs.RsaBreakingLab
 		{
 			List<TextBox> textBoxes = new List<TextBox>()
 				{ nTbx,eTbx,swTbx};
+			BigInteger q;
 			return textBoxes.All(x => 
 				!string.IsNullOrWhiteSpace(x.Text)
-				&& x.Text.Length > 2);
+				&& BigInteger.TryParse(x.Text, out q)
+				&& q > 100);
 		}
 	}
 }
