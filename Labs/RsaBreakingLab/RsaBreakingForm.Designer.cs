@@ -139,7 +139,7 @@ namespace Labs.RsaBreakingLab
 			this.decrLbl.Name = "decrLbl";
 			this.decrLbl.Size = new System.Drawing.Size(794, 21);
 			this.decrLbl.TabIndex = 19;
-			this.decrLbl.Text = "Decrypted Text";
+			this.decrLbl.Text = "Deciphered Text";
 			// 
 			// breakBtn
 			// 
