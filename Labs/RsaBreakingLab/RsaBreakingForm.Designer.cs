@@ -144,6 +144,7 @@ namespace Labs.RsaBreakingLab
 			// breakBtn
 			// 
 			this.breakBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.breakBtn.Enabled = false;
 			this.breakBtn.Location = new System.Drawing.Point(3, 175);
 			this.breakBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.breakBtn.Name = "breakBtn";

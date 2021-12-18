@@ -13,18 +13,23 @@ namespace Labs.RsaBreakingLab
 {
 	public partial class RsaBreakingForm : Form
 	{
+		List<TextBox> _varTextBoxes;
 		public RsaBreakingForm()
 		{
 			InitializeComponent();
+			_varTextBoxes = new List<TextBox>()
+			{
+				nTbx, eTbx,swTbx
+			};
+
+			foreach (var item in _varTextBoxes)
+			{
+				item.TextChanged += new EventHandler(VariablesTextChanged);
+			}
 		}
 
 		private void breakBtn_Click(object sender, EventArgs eA)
 		{
-			if (!AreTbxValid())
-			{
-				MessageBox.Show("Some var is not valid");
-				return;
-			}
 			try
 			{
 				Break();
@@ -48,15 +53,21 @@ namespace Labs.RsaBreakingLab
 			InfoLbl.Text = info;
 		}
 
-		bool AreTbxValid()
+		bool AreVariablesValid()
 		{
-			List<TextBox> textBoxes = new List<TextBox>()
-				{ nTbx,eTbx,swTbx};
-			BigInteger q;
-			return textBoxes.All(x => 
-				!string.IsNullOrWhiteSpace(x.Text)
-				&& BigInteger.TryParse(x.Text, out q)
-				&& q > 100);
+			BigInteger temp;
+
+			return _varTextBoxes.All(x => !string.IsNullOrWhiteSpace(x.Text)
+				&& BigInteger.TryParse(x.Text, out temp)
+				&& temp > 100);
+		}
+
+		private void VariablesTextChanged(object sender, EventArgs e)
+		{
+			if (AreVariablesValid())
+				breakBtn.Enabled = true;
+			else
+				breakBtn.Enabled = false;
 		}
 	}
 }
